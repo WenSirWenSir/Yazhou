@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@color/TextAndBodyColor"
     android:orientation="vertical"
     tools:context=".MainAct">
     <!--滑动控件-->
@@ -42,33 +42,27 @@
             <LinearLayout
                 android:id="@+id/activity_mainloginstatusBody"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="270dp"
+                android:orientation="vertical"
                 android:layout_gravity="center"
                 android:background="@color/TextAndBodyColor"
                 android:fitsSystemWindows="true">
 
-                <!--
-                <VideoView
-                    android:id="@+id/activity_main_videoview"
-                    android:layout_width="fill_parent"
-                    android:layout_height="230dp"
-                    />
-
-                    -->
             </LinearLayout>
             <!--显示商品图片-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:paddingLeft="15dp"
+                android:layout_marginBottom="130dp"
                 android:paddingRight="15dp">
 
                 <LinearLayout
                     android:id="@+id/main_shoplistBody"
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
-                    android:layout_marginBottom="80dp"
                     android:background="@drawable/border_radius_ltop_lright"
                     android:orientation="vertical">
 
@@ -132,7 +126,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:id="@+id/activity_main_price"
-            android:paddingLeft="17dp"
+            android:paddingLeft="15dp"
             android:text="0"
             android:textColor="@color/TextAndBodyColor"
             android:textSize="30dp"
@@ -164,12 +158,11 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:id="@+id/activity_main_reservetime"
-            android:paddingLeft="17dp"
-            android:text="1:89:0"
+            android:paddingLeft="15dp"
+            android:text="19:89:90"
             android:textColor="@color/TextAndBodyColor"
             android:textSize="30dp"
             android:textStyle="bold" />
-
     </LinearLayout>
 
 </RelativeLayout>

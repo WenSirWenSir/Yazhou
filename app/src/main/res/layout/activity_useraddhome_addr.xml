@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+    <!--标题-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/TextAndBodyColor">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="新增地址"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/activity_useraddhome_addr_btnback"
+            android:src="@drawable/ico_back" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f1f1f1"
+        android:layout_marginTop="35dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
+                android:text="收件人"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="80dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingLeft="5dp"
+                    android:id="@+id/activity_useraddhome_addr_editName"
+                    android:text="填写您的姓名"
+                    android:textColor="#a9a9a9"
+                    android:textSize="14dip"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
+                android:text="联系方式"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+            <!--联系电话-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="80dp">
+
+                <EditText
+                    android:id="@+id/activity_useraddhome_addr_editPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingLeft="5dp"
+                    android:text="填写您的电话"
+                    android:textColor="#a9a9a9"
+                    android:textSize="14dip"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
+                android:text="所在区域"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+            <!--联系电话-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="80dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="40dp"
+                    android:gravity="center|left"
+                    android:maxLines="1"
+                    android:paddingLeft="5dp"
+                    android:id="@+id/activity_useraddhome_addrString"
+                    android:text="省、市、区"
+                    android:textColor="#a9a9a9"
+                    android:textSize="14dip"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/activity_useraddhome_addr_btnopenmap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ico_addr" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
+                android:text="街道地址"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+            <!--联系电话-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="80dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:id="@+id/activity_useraddhome_addr_editStreet"
+                    android:paddingLeft="5dp"
+                    android:text="街道、门牌、大楼、建筑"
+                    android:textColor="#a9a9a9"
+                    android:textSize="14dip"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+    <!--保存按钮-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="#f1f1f1"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_alignParentBottom="true"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="保存地址"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:background="@color/TextAndBodyColor"
+            android:textSize="15dp"
+            android:gravity="center"
+            />
+
+
+
+    </LinearLayout>
+</RelativeLayout>

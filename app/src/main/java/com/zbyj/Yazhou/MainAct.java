@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewParent;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import com.zbyj.Yazhou.ConNet.SystemVisitInterService;
 import com.zbyj.Yazhou.ConfigPageValue.MAP;
 import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
 import com.zbyj.Yazhou.ProgramAct.InputAddrAct;
+import com.zbyj.Yazhou.ProgramAct.UserAddHomeAddr;
 import com.zbyj.Yazhou.Utils.JsonEndata;
 import com.zbyj.Yazhou.Utils.NotificationUtils;
 
@@ -54,7 +56,11 @@ public class MainAct extends YazhouActivity implements ScrollViewListener {
         setContentView(R.layout.activity_main);
         setStatusBar(getResources().getString(R.color.TextAndBodyColor));
         setBackStatic(true);
-        hideBottomUIMenu();
+        //hideBottomUIMenu();
+
+        /**
+         * 检查是否有虚拟键盘
+         */
         init();
         checkGetPermission();//判断是否授权
         /**
@@ -136,7 +142,7 @@ public class MainAct extends YazhouActivity implements ScrollViewListener {
         //设置边框和填充颜色
         GradientDrawable btn_orderDrawable = (GradientDrawable) btn_order.getBackground();
         btn_orderDrawable.setColor(Color.parseColor("#ffffff"));
-        btn_orderDrawable.setStroke(20, Color.BLACK);
+        btn_orderDrawable.setStroke(10, Color.BLACK);
         //设置边框和填充颜色
         GradientDrawable btn_titleDrawable = (GradientDrawable) btn_orderTitle.getBackground();
         btn_titleDrawable.setColor(Color.parseColor(this.getResources().getString(R.color.TextAndBodyColor)));
@@ -161,11 +167,22 @@ public class MainAct extends YazhouActivity implements ScrollViewListener {
             activity_mainloginstatusBody.addView(view);
             //设置按钮为预定
             btn_orderTitle.setText("预定");
+
+            /**
+             * 开始登陆成功的按钮监听
+             */
+            ImageView check_homeaddr = view.findViewById(R.id.item_main_showuaddr_img);
+
+            /**
+             * 新增用户的收件地址
+             */
+            check_homeaddr.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    YazhouStartActivityForResult(UserAddHomeAddr.class, false, MAP.SET_USERADDR_SUCESS);
+                }
+            });
             showNotification(LoginAct.class, R.drawable.ico_freightcart, getResources().getString(R.string.no_orderpage));
-            TextView btn_lookorder = view.findViewById(R.id.item_main_showuaddr_btn_lookorder);
-            GradientDrawable btn_lookorderDrawable = (GradientDrawable) btn_lookorder.getBackground();
-            btn_lookorderDrawable.setColor(Color.parseColor(getResources().getString(R.color.TextAndBodyColor)));
-            btn_lookorderDrawable.setStroke(3, Color.parseColor("#000000"));
         }
 
         Listener();
@@ -242,12 +259,15 @@ public class MainAct extends YazhouActivity implements ScrollViewListener {
             public void onClick(View v) {
                 TextView tv = (TextView) v;
                 if (tv.getText().toString().equals("登录")) {
-                    YaZhouStartActivity(InputAddrAct.class,false);
+                    //YazhouStartActivityForResult(InputAddrAct.class, false, MAP.SET_USERADDR_SUCESS);
+                    //YaZhouStartActivity(UserAddHomeAddr.class,false);
+                    YaZhouStartActivity(LoginAct.class, false);
+
                 } else {
                     //YaZhouStartActivity(LoginAct.class,false);
                     //测试百度地图
-                    YaZhouStartActivity(InputAddrAct.class,false);
-
+                    //YazhouStartActivityForResult(InputAddrAct.class, false, MAP.SET_USERADDR_SUCESS);
+                    //YaZhouStartActivity(UserAddHomeAddr.class,false);
                     Toast.makeText(getApplicationContext(), "开始预定", Toast.LENGTH_LONG).show();
                 }
             }
@@ -389,23 +409,4 @@ public class MainAct extends YazhouActivity implements ScrollViewListener {
         }
     }
 
-
-    /**
-     *
-     * 设置地图回调之后的监听
-     * @param requestCode
-     * @param resultCode
-     * @param data
-     */
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if(requestCode == 1){
-            if(resultCode == MAP.SET_USERADDR_SUCESS){
-                String addr = data.getStringExtra(MAP.GET_USERADDR_ONSUCESS);
-                Toast.makeText(getApplicationContext(),"用户选择的地址" + addr,Toast.LENGTH_LONG).show();
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 }

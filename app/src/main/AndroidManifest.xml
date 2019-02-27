@@ -66,6 +66,9 @@
         <activity
             android:name=".ProgramAct.InputAddrAct"
             android:screenOrientation="portrait" />
+        <activity android:name=".ProgramAct.UserAddHomeAddr"
+            android:screenOrientation="portrait"
+            />
     </application>
 
 </manifest>

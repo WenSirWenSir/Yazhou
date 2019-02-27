@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.zbyj.Yazhou.ConNet.SystemVisitInterService;
 import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
+import com.zbyj.Yazhou.ProgramAct.InputAddrAct;
 import com.zbyj.Yazhou.Utils.JsonEndata;
 
 public class SelectSexAct extends YazhouActivity {
@@ -146,7 +147,7 @@ public class SelectSexAct extends YazhouActivity {
                                             @Override
                                             public void onClick(View v) {
                                                 //打开地图模块
-                                                YaZhouStartActivity(Debugmap.class, true);
+                                                YaZhouStartActivity(InputAddrAct.class, true);
                                             }
                                         });
                                         alertDialog.setCancelable(false);

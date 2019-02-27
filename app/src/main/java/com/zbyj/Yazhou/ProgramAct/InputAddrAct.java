@@ -3,12 +3,16 @@ package com.zbyj.Yazhou.ProgramAct;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.location.BDAbstractLocationListener;
@@ -28,6 +32,10 @@ import com.baidu.mapapi.synchronization.DisplayOptions;
 import com.zbyj.Yazhou.ConfigPageValue.MAP;
 import com.zbyj.Yazhou.R;
 import com.zbyj.Yazhou.YazhouActivity;
+import com.zbyj.Yazhou.config;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputAddrAct extends YazhouActivity {
     private MapView mapView;
@@ -50,6 +58,7 @@ public class InputAddrAct extends YazhouActivity {
      * 地图控件初始化
      */
     private void init() {
+
         listView = findViewById(R.id.activity_inputaddr_listview);
         mapView = findViewById(R.id.activity_inputaddr_mapview);
         baiduMap = mapView.getMap();
@@ -57,14 +66,22 @@ public class InputAddrAct extends YazhouActivity {
         locationClient = new LocationClient(this.getApplicationContext());
         locationClientOption = new LocationClientOption();
         locationClientOption.setIsNeedAddress(true);//是否需要地址位置信息
-        locationClientOption.setOpenGps(true);//打开GPS定位
+        // locationClientOption.setOpenGps(true);//打开GPS定位
         locationClientOption.setCoorType("bd09ll");//坐标类型
         locationClient.setLocOption(locationClientOption);
+        List<String> list = new ArrayList<String>();
+        list.add("龙岩市上杭县临城镇上杭大道");
+        list.add("龙岩市新罗区罗龙路好运来精品酒店");
+        list.add("厦门市附件胜利科技离开家第三方");
+        list.add("龙岩市上杭县北园路贞三巷28号");
+        showAddrAdapter adapter  = new showAddrAdapter(list);
+        listView.setAdapter(adapter);
         locationClient.registerLocationListener(new BDAbstractLocationListener() {
             @Override
             public void onReceiveLocation(BDLocation bdLocation) {
-
+                Log.i(config.DEBUG_STR, "调用开始");
                 if (mapView == null) {
+                    Log.e(config.DEBUG_STR, "mapView的控件为空");
                     locationClient.stop();
                 } else {
                     /**
@@ -91,8 +108,7 @@ public class InputAddrAct extends YazhouActivity {
                     /**
                      * 定位成功 显示位置信息
                      */
-
-                    listView.setAdapter(new showAddrAdapter());
+                    //listView.setAdapter(new showAddrAdapter());
                 }
             }
         });
@@ -124,22 +140,32 @@ public class InputAddrAct extends YazhouActivity {
      * 按钮监听
      */
     private void Linstener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                LinearLayout layout = (LinearLayout) view;
+                TextView tv  = layout.findViewById(R.id.item_showaddr_list_addr);
+                gotoBackData(tv.getText().toString());
+                finish();
+            }
+        });
     }
 
     /**
      * 显示地址的adapter
      */
     public class showAddrAdapter extends BaseAdapter {
+        private List<String> mList;
         /**
          * 实例化该方法 要传入对应要显示的值  为地址信息
          */
-        public showAddrAdapter() {
-
+        public showAddrAdapter(List<String> list) {
+            this.mList = list;
         }
 
         @Override
         public int getCount() {
-            return 20;
+            return this.mList.size();
         }
 
         @Override
@@ -154,21 +180,27 @@ public class InputAddrAct extends YazhouActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            Viewpage viewpage;
             if (convertView == null) {
                 convertView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.item_showaddr_list, null);
                 convertView.setTag("" + position);
-                convertView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        LinearLayout lv = (LinearLayout) v;
-                        Toast.makeText(getApplicationContext(), lv.getTag().toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                viewpage = new Viewpage();
+                viewpage.title = convertView.findViewById(R.id.item_showaddr_list_addr);
+                convertView.setTag(viewpage);
             }
+            else{
+                //以前存在
+                viewpage = (Viewpage) convertView.getTag();
+
+            }
+            viewpage.title.setText(mList.get(position));
             return convertView;
         }
-    }
 
+        public class Viewpage{
+            TextView title;
+        }
+    }
     /**
      * 向哪里来的界面返回数据信息
      */

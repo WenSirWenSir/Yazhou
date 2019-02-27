@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        Yazhou {
+            keyAlias 'WenSir'
+            keyPassword 'capitalist12..@..'
+            storeFile file('/Users/mac/Desktop/keystor/YaZhou')
+            storePassword 'capitalist12..@..'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.zbyj.Yazhou"
@@ -14,10 +22,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.Yazhou
+        }
+        debug {
+            signingConfig signingConfigs.Yazhou
         }
     }
-    sourceSets{
-        main{
+    sourceSets {
+        main {
             jniLibs.srcDir 'libs'
         }
 

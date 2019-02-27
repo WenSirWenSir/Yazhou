@@ -31,8 +31,17 @@ public class YazhouActivity extends Activity {
             this.finish();
         }
     }
-
-
+    /**
+     *
+     */
+    protected void YazhouStartActivityForResult(Class<?> mClass,Boolean ColseF,int requestCode){
+        Intent i = new Intent();
+        i.setClass(this,mClass);
+        startActivityForResult(i,requestCode);
+        if(ColseF){
+            this.finish();
+        }
+    }
     /**
      * 打开一个窗口 并且传入值
      */
