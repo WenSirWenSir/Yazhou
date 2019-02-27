@@ -129,4 +129,5 @@ public class YazhouActivity extends Activity {
             decorView.setSystemUiVisibility(options);
         }
     }
+
 }

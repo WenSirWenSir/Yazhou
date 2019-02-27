@@ -9,7 +9,6 @@ public class config {
     public static final String DEBUG_STR = "Yazhou";
     public static final String SERVICE = "http://120.79.63.36";
 
-
     /**
      * 界面传值的value
      */

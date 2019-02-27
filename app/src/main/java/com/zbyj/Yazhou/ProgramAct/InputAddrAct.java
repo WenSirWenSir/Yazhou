@@ -1,7 +1,14 @@
 package com.zbyj.Yazhou.ProgramAct;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.baidu.location.BDAbstractLocationListener;
@@ -18,6 +25,7 @@ import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.synchronization.DisplayOptions;
+import com.zbyj.Yazhou.ConfigPageValue.MAP;
 import com.zbyj.Yazhou.R;
 import com.zbyj.Yazhou.YazhouActivity;
 
@@ -26,6 +34,7 @@ public class InputAddrAct extends YazhouActivity {
     private BaiduMap baiduMap;
     private LocationClient locationClient;
     private LocationClientOption locationClientOption;
+    private ListView listView;//显示地址的listview
 
     @SuppressLint("ResourceType")
     @Override
@@ -41,6 +50,7 @@ public class InputAddrAct extends YazhouActivity {
      * 地图控件初始化
      */
     private void init() {
+        listView = findViewById(R.id.activity_inputaddr_listview);
         mapView = findViewById(R.id.activity_inputaddr_mapview);
         baiduMap = mapView.getMap();
         baiduMap.setMyLocationEnabled(true);
@@ -78,6 +88,11 @@ public class InputAddrAct extends YazhouActivity {
                     baiduMap.animateMapStatus(mapStatusUpdate);
                     mapStatusUpdate = MapStatusUpdateFactory.zoomTo(19);
                     baiduMap.animateMapStatus(mapStatusUpdate);
+                    /**
+                     * 定位成功 显示位置信息
+                     */
+
+                    listView.setAdapter(new showAddrAdapter());
                 }
             }
         });
@@ -111,4 +126,55 @@ public class InputAddrAct extends YazhouActivity {
     private void Linstener() {
     }
 
+    /**
+     * 显示地址的adapter
+     */
+    public class showAddrAdapter extends BaseAdapter {
+        /**
+         * 实例化该方法 要传入对应要显示的值  为地址信息
+         */
+        public showAddrAdapter() {
+
+        }
+
+        @Override
+        public int getCount() {
+            return 20;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.item_showaddr_list, null);
+                convertView.setTag("" + position);
+                convertView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        LinearLayout lv = (LinearLayout) v;
+                        Toast.makeText(getApplicationContext(), lv.getTag().toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            return convertView;
+        }
+    }
+
+    /**
+     * 向哪里来的界面返回数据信息
+     */
+    public void gotoBackData(String addr) {
+        Intent i = new Intent();
+        i.putExtra(MAP.GET_USERADDR_ONSUCESS, addr);
+        setResult(MAP.SET_USERADDR_SUCESS, i);
+    }
 }

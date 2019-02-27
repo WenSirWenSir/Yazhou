@@ -8,27 +8,83 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:background="@color/TextAndBodyColor"
-        >
+        android:background="@color/TextAndBodyColor">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="选择您的地址"
-            android:textSize="15sp"
             android:textColor="#000000"
-            android:textStyle="bold"
-            />
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <!--关键字搜索-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ico_addr" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="上杭"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp">
+
+            <EditText
+                android:id="@+id/include_search_layout_inputEdit"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/border_mapsearch_input"
+                android:focusableInTouchMode="false"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:text="输入您要搜索的地址"
+                android:textColor="#666666"
+                android:textSize="14dip"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
     <com.baidu.mapapi.map.MapView
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
         android:id="@+id/activity_inputaddr_mapview"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
 
 
     </com.baidu.mapapi.map.MapView>
     <!--选择地址的控件-->
+    <ListView
+        android:id="@+id/activity_inputaddr_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+
+    </ListView>
 </LinearLayout>

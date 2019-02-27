@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.zbyj.Yazhou.ConNet.SystemVisitInterService;
+import com.zbyj.Yazhou.ConfigPageValue.MAP;
 import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
 import com.zbyj.Yazhou.ProgramAct.InputAddrAct;
 import com.zbyj.Yazhou.Utils.JsonEndata;
@@ -385,5 +387,25 @@ public class MainAct extends YazhouActivity implements ScrollViewListener {
             });
             builder.show();
         }
+    }
+
+
+    /**
+     *
+     * 设置地图回调之后的监听
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(requestCode == 1){
+            if(resultCode == MAP.SET_USERADDR_SUCESS){
+                String addr = data.getStringExtra(MAP.GET_USERADDR_ONSUCESS);
+                Toast.makeText(getApplicationContext(),"用户选择的地址" + addr,Toast.LENGTH_LONG).show();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
