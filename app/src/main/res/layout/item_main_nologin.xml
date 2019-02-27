@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:background="@color/TextAndBodyColor">
+
+    <!--提示信息-->
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/item_main_nologin_warning"
+        android:src="@drawable/ico_warning" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/item_main_nologin_warning"
+        android:id="@+id/item_main_nologin_title"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:text="您还没有登录哦" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/item_main_nologin_title"
+        android:textSize="12dp"
+        android:textColor="#666666"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:text="您可以点击下方的按钮,登录Or注册" />
+
+</RelativeLayout>

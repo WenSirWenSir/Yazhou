@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?><!--  一个只有确定和取消的dialog模板  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/TextAndBodyColor"
+    android:paddingTop="20dp"
+    android:paddingBottom="15dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/item_trueorfalse_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="提示"
+        android:gravity="center"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#666666"
+        android:id="@+id/item_trueorfalse_dialog_content"
+        android:text=""
+        android:textSize="15dp"
+        android:padding="10dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="取消"
+            android:id="@+id/item_trueorfalse_dialog_btnCancle"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:textColor="#666666"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="去设置"
+            android:textColor="#000000"
+            android:id="@+id/item_trueorfalse_dialog_btnDetermine"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:gravity="center"
+            />
+
+
+    </LinearLayout>
+</LinearLayout>

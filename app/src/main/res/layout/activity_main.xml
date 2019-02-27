@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:context=".MainAct">
+    <!--滑动控件-->
+    <localViews.RefreshScrollView
+        android:id="@+id/main_RefreshScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/TextAndBodyColor"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/main_RefreshHeadView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="#ffffff"
+                tools:ignore="Suspicious0dp">
+
+                <TextView
+                    android:id="@+id/main_RefreshStatue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="正在刷新"
+                    android:textColor="#000000"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_mainloginstatusBody"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:background="@color/TextAndBodyColor"
+                android:fitsSystemWindows="true">
+
+                <!--
+                <VideoView
+                    android:id="@+id/activity_main_videoview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="230dp"
+                    />
+
+                    -->
+            </LinearLayout>
+            <!--显示商品图片-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <LinearLayout
+                    android:id="@+id/main_shoplistBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:layout_marginBottom="80dp"
+                    android:background="@drawable/border_radius_ltop_lright"
+                    android:orientation="vertical">
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </localViews.RefreshScrollView>
+    <!--导航订购控件-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="#000000">
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_order"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/border_radius_order_big">
+
+        <TextView
+            android:id="@+id/btn_orderTitle"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/border_radius_order_small"
+            android:gravity="center"
+            android:text="预定"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/btn_order"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:text="套餐支付合计金额"
+            android:textColor="#777777"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <localViews.ShowNumberTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/activity_main_price"
+            android:paddingLeft="17dp"
+            android:text="0"
+            android:textColor="@color/TextAndBodyColor"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!--左边的布局-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/btn_order"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:text="预定到达所需时间"
+            android:textColor="#777777"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <localViews.ShowNumberTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/activity_main_reservetime"
+            android:paddingLeft="17dp"
+            android:text="1:89:0"
+            android:textColor="@color/TextAndBodyColor"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>

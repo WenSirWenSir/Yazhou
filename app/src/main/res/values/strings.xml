@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">押粥</string>
+    <string name="app_development">copyRight©左边远景软件开发工作室</string>
+    <string name="no_Connect">网络访问错误,请检查您的网络连接</string>
+    <string name="no_orderpage">您还没有预定过哦,赶紧去预定份吧！</string>
+    <string name="item_main_showuaddr_lookorder">查看我的所有订单</string>
+    <string name="MESSAGE_USER_LOGIN_FAIL" tools:ignore="ExtraTranslation">您的账户限制登录</string>
+    <string name="MESSAGE_LOGIN_SUCESS">验证成功</string>
+    <string name="MESSAGE_LOGIN_VERIFICATION_ERROR">您的验证码输入有误,请检查</string>
+    <string name="UPDATE_USERSEX_SUCESS">设置完成</string>
+    <string name="INTER_ERROR">网络访问错误</string>
+    <string name="MESSAGE_LOGIN_USERFIRST">系统检测到您是第一次登录,是否马上去添加一个收件的地址呢?</string>
+</resources>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--让用户设置性别-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:id="@+id/activity_login_headbody"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/TextAndBodyColor"
+            android:orientation="horizontal">
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:background="#afafaf"
+            android:gravity="center|left"
+            android:paddingLeft="25dp"
+            android:text="选择您喜欢的物品"
+            android:textColor="@color/TextAndBodyColor"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="160dp"
+            android:gravity="center"
+            android:paddingLeft="30dp"
+            android:text="点击下面的物品(PS:要是您能用得着的哦)"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+        <!--这个是注册输入的背景-->
+        <LinearLayout
+            android:id="@+id/activity_select_sexbody"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="320dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/activity_select_sex_sir"
+                    android:visibility="gone"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/border_radius"
+                    tools:ignore="Orientation">
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:id="@+id/activity_select_sex_sirimg"
+                    android:layout_height="70dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ico_sir"
+
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <!--加一个边框-->
+                <LinearLayout
+                    android:id="@+id/activity_select_sex_lady"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone"
+                    android:background="@drawable/border_radius"
+                    tools:ignore="Orientation">
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:id="@+id/activity_select_sex_ladyimg"
+                    android:layout_height="70dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ico_lady"
+
+                    />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/activity_select_sexbody"
+            android:layout_marginTop="50dp"
+            android:background="#ffffff"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp">
+
+            <TextView
+                android:id="@+id/activity_select_btnconfirm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border_radius_ltop_lright"
+                android:gravity="center"
+                android:text="选定"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/activity_select_sex_headbody"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border_radius_order_big">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ico_sex"
+
+                />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</ScrollView>

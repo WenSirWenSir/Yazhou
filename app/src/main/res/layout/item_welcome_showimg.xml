@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><!--首页展示图片的界面-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:layout_weight="1"
+        >
+        
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/yuanxiao"
+            />
+        <!--程序的图标-->
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:text="跳过"
+            android:textColor="#000000"
+            android:id="@+id/activity_welcome_showimg_btnback"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/border_radius"
+            />
+
+    </RelativeLayout>
+</LinearLayout>

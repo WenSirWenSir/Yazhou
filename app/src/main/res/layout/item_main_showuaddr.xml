@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!--用户已经登录 显示用户的收件地址和收件电话-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:background="@color/TextAndBodyColor">
+
+    <ImageView
+        android:id="@+id/item_main_showuaddr_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ico_addr" />
+    <!--提示信息-->
+    <TextView
+        android:id="@+id/item_main_showuaddr_addr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_main_showuaddr_img"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="好运来精品酒店2楼8203"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_main_showuaddr_addr"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="翁启鑫(先生Sir) 电话 18063790396"
+        android:textColor="#000000"
+        android:id="@+id/item_main_showuaddr_phone_name"
+        android:textSize="14sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:layout_below="@id/item_main_showuaddr_phone_name"
+        >
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:text="@string/item_main_showuaddr_lookorder"
+            android:textSize="15dp"
+            android:id="@+id/item_main_showuaddr_btn_lookorder"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:background="@drawable/border_radius"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>
