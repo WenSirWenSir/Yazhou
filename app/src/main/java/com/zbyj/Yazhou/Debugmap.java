@@ -9,8 +9,11 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.MapStatusUpdate;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.model.LatLng;
 
 public class Debugmap extends YazhouActivity {
     private BaiduMap baiduMap;
@@ -39,6 +42,13 @@ public class Debugmap extends YazhouActivity {
                             .latitude(bdLocation.getLatitude())
                             .longitude(bdLocation.getLongitude()).build();
                     baiduMap.setMyLocationData(myLocationData);
+                    Toast.makeText(getApplicationContext(), bdLocation.getProvince() + bdLocation.getCity() + bdLocation.getStreet(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "定位到的经度" + bdLocation.getLongitude() + "定位到的维度" + bdLocation.getLatitude(), Toast.LENGTH_LONG).show();
+                    LatLng latLng = new LatLng(bdLocation.getLatitude(), bdLocation.getLongitude());
+                    MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLng(latLng);
+                    baiduMap.animateMapStatus(mapStatusUpdate);
+                    mapStatusUpdate = MapStatusUpdateFactory.zoomTo(19);
+                    baiduMap.animateMapStatus(mapStatusUpdate);
                 } else {
                     return;
                 }

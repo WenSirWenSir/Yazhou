@@ -27,6 +27,8 @@ import android.widget.ImageSwitcher;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.utils.DistanceUtil;
 import com.zbyj.Yazhou.ConNet.SystemVisitInterService;
 import com.zbyj.Yazhou.ConfigPageValue.ONREFUSEPHONE;
 import com.zbyj.Yazhou.Utils.JsonEndata;
@@ -138,11 +140,11 @@ public class tools {
      * @param key
      * @return
      */
-    public static String gettoKen(Context tContext,String key) {
-        SharedPreferences sharedPreferences = tContext.getSharedPreferences("YazhouUser",0);
+    public static String gettoKen(Context tContext, String key) {
+        SharedPreferences sharedPreferences = tContext.getSharedPreferences("YazhouUser", 0);
         try {
-            return sharedPreferences.getString(key,"");//如果不存在  就返回一个空字符
-        }catch(Exception e){
+            return sharedPreferences.getString(key, "");//如果不存在  就返回一个空字符
+        } catch (Exception e) {
             Log.e(config.DEBUG_STR, "tools.java[+]" + e.getMessage());
             return "";
         }
@@ -159,7 +161,7 @@ public class tools {
         SharedPreferences sharedPreferences = tContext.getSharedPreferences("YazhouUser", 0);
         try {
             sharedPreferences.edit().putString(tdata[0], tdata[1]).commit();
-            Log.i(config.DEBUG_STR,"保存用户数据成功");
+            Log.i(config.DEBUG_STR, "保存用户数据成功");
         } catch (Exception e) {
             Log.e(config.DEBUG_STR, "tools.java[+]" + e.getMessage());
         }
@@ -232,11 +234,10 @@ public class tools {
             @Override
             public void onSucess(String tOrgin) {
                 JsonEndata jsonEndata = new JsonEndata(tOrgin);
-                if(jsonEndata.getJsonKeyValue(config.WEB_SERVICE_SEND_MESSAGESTATUS).equals(config.SEND_MESSAGE_OK)){
-                    Toast.makeText(tContext,"短信发送成功,请注意查收",Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(tContext,"短信发送失败,请检查您的网络是否连接",Toast.LENGTH_SHORT).show();
+                if (jsonEndata.getJsonKeyValue(config.WEB_SERVICE_SEND_MESSAGESTATUS).equals(config.SEND_MESSAGE_OK)) {
+                    Toast.makeText(tContext, "短信发送成功,请注意查收", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(tContext, "短信发送失败,请检查您的网络是否连接", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -249,7 +250,7 @@ public class tools {
             public void onFail(String tOrgin) {
 
             }
-        },"phone",tPhone);
+        }, "phone", tPhone);
 
     }
 
@@ -301,7 +302,7 @@ public class tools {
             }
             return strBuf.toString();
         } catch (Exception e) {
-            Log.e(config.DEBUG_STR,"tools.java:" + e.getMessage());
+            Log.e(config.DEBUG_STR, "tools.java:" + e.getMessage());
             return "";
         }
     }
@@ -314,8 +315,24 @@ public class tools {
         TelephonyManager telephonyManager = (TelephonyManager) tContext.getSystemService(Context.TELEPHONY_SERVICE);
         try {
             return telephonyManager.getImei();
-        } catch (Exception e){
+        } catch (Exception e) {
             return "";
+        }
+    }
+
+    /**
+     * 计算两个地图点p1点 和 p2点之间的距离
+     * 失败返回一个null
+     * @param p1
+     * @param p2
+     *
+     */
+    public static Double CalcMapdistance(LatLng p1, LatLng p2) {
+        try {
+            return DistanceUtil.getDistance(p1, p2);
+        } catch (Exception e) {
+            Log.e(config.DEBUG_STR, e.getMessage());
+            return null;
         }
     }
 

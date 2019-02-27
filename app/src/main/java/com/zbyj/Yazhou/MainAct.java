@@ -23,6 +23,7 @@ import android.widget.VideoView;
 
 import com.zbyj.Yazhou.ConNet.SystemVisitInterService;
 import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
+import com.zbyj.Yazhou.ProgramAct.InputAddrAct;
 import com.zbyj.Yazhou.Utils.JsonEndata;
 import com.zbyj.Yazhou.Utils.NotificationUtils;
 
@@ -239,12 +240,11 @@ public class MainAct extends YazhouActivity implements ScrollViewListener {
             public void onClick(View v) {
                 TextView tv = (TextView) v;
                 if (tv.getText().toString().equals("登录")) {
-                    YaZhouStartActivity(LoginAct.class, false);
-
+                    YaZhouStartActivity(InputAddrAct.class,false);
                 } else {
                     //YaZhouStartActivity(LoginAct.class,false);
                     //测试百度地图
-                    YaZhouStartActivity(Debugmap.class, false);
+                    YaZhouStartActivity(InputAddrAct.class,false);
 
                     Toast.makeText(getApplicationContext(), "开始预定", Toast.LENGTH_LONG).show();
                 }

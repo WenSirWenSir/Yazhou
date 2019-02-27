@@ -63,7 +63,9 @@
             android:name=".SelectSexAct"
             android:screenOrientation="portrait"
             android:theme="@style/TranslucentTheme" />
-        <activity android:name=".Debugmap"/>
+        <activity
+            android:name=".ProgramAct.InputAddrAct"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
