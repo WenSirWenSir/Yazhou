@@ -97,6 +97,7 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:id="@+id/item_main_showuaddr_comment"
             android:layout_weight="1">
 
             <ImageView

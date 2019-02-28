@@ -27,6 +27,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
     //程序在手机屏幕关闭后后台进程仍然运行
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    //照相权限
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -66,9 +68,12 @@
         <activity
             android:name=".ProgramAct.InputAddrAct"
             android:screenOrientation="portrait" />
-        <activity android:name=".ProgramAct.UserAddHomeAddr"
-            android:screenOrientation="portrait"
-            />
+        <activity
+            android:name=".ProgramAct.UserAddHomeAddr"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProgramAct.UserComment"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

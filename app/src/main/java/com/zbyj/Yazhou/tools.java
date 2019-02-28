@@ -17,6 +17,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -338,6 +339,9 @@ public class tools {
             return null;
         }
     }
+
+
+
 
 
 }

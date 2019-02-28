@@ -103,7 +103,7 @@ public class InputAddrAct extends YazhouActivity {
                     LatLng latLng = new LatLng(bdLocation.getLatitude(), bdLocation.getLongitude());
                     MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newLatLng(latLng);
                     baiduMap.animateMapStatus(mapStatusUpdate);
-                    mapStatusUpdate = MapStatusUpdateFactory.zoomTo(19);
+                    mapStatusUpdate = MapStatusUpdateFactory.zoomTo(17);
                     baiduMap.animateMapStatus(mapStatusUpdate);
                     /**
                      * 定位成功 显示位置信息

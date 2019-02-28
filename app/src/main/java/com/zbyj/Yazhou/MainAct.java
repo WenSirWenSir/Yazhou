@@ -28,6 +28,7 @@ import com.zbyj.Yazhou.ConfigPageValue.MAP;
 import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
 import com.zbyj.Yazhou.ProgramAct.InputAddrAct;
 import com.zbyj.Yazhou.ProgramAct.UserAddHomeAddr;
+import com.zbyj.Yazhou.ProgramAct.UserComment;
 import com.zbyj.Yazhou.Utils.JsonEndata;
 import com.zbyj.Yazhou.Utils.NotificationUtils;
 
@@ -173,7 +174,17 @@ public class MainAct extends YazhouActivity implements ScrollViewListener {
              */
             ImageView check_homeaddr = view.findViewById(R.id.item_main_showuaddr_img);
             RelativeLayout btn_userexit = view.findViewById(R.id.item_main_showuaddr_userexit);
+            RelativeLayout btn_comment = view.findViewById(R.id.item_main_showuaddr_comment);
 
+            /**
+             * 用户查看早早点评
+             */
+            btn_comment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    YaZhouStartActivity(UserComment.class,false);
+                }
+            });
             /**
              * 用户选择退出  就提示他是否真的要退出
              */
