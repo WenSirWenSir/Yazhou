@@ -17,13 +17,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b57701bc-4ac5-480b-924a-a1241c4b6847" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/ProgramAct/UserAddHomeAddr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ico_back.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ico_breakoff.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ico_comment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ico_orderpage.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ico_setting.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_useraddhome_addr.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterDir="false" />
@@ -32,20 +25,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/Debugmap.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/MainAct.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/MainAct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/ProgramAct/InputAddrAct.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/ProgramAct/InputAddrAct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/SelectSexAct.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/SelectSexAct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/YazhouActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/YazhouActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/tools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_useraddhome_addr.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_useraddhome_addr.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_main_showuaddr.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_main_showuaddr.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_showaddr_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_showaddr_list.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -71,7 +54,7 @@
       <file leaf-file-name="InputAddrAct.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/ProgramAct/InputAddrAct.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
+            <state relative-caret-position="336">
               <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -83,30 +66,17 @@
       <file leaf-file-name="MainAct.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/MainAct.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="55" column="38" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
+            <state relative-caret-position="55">
+              <caret line="164" column="91" selection-start-line="164" selection-start-column="91" selection-end-line="164" selection-end-column="91" />
               <folding>
-                <element signature="e#2273#4939#0" expanded="true" />
-                <element signature="e#4938#4939#0" expanded="true" />
-                <element signature="e#7755#7939#0" expanded="true" />
-                <element signature="e#7938#7939#0" expanded="true" />
-                <element signature="e#7543#7590#0" expanded="true" />
-                <element signature="e#8427#8718#0" expanded="true" />
-                <element signature="e#8717#8718#0" expanded="true" />
-                <element signature="e#8833#9163#0" expanded="true" />
-                <element signature="e#9162#9163#0" expanded="true" />
-                <element signature="e#10114#10982#0" expanded="true" />
-                <element signature="e#10981#10982#0" expanded="true" />
-                <element signature="e#11132#11409#0" expanded="true" />
-                <element signature="e#11408#11409#0" expanded="true" />
-                <element signature="e#11434#11646#0" expanded="true" />
-                <element signature="e#11645#11646#0" expanded="true" />
-                <element signature="e#12230#12496#0" expanded="true" />
-                <element signature="e#12495#12496#0" expanded="true" />
-                <element signature="e#14609#14786#0" expanded="true" />
-                <element signature="e#14785#14786#0" expanded="true" />
-                <element signature="e#14975#15145#0" expanded="true" />
-                <element signature="e#15144#15145#0" expanded="true" />
+                <element signature="e#7859#8102#0" expanded="true" />
+                <element signature="e#8423#8629#0" expanded="true" />
+                <element signature="e#8628#8629#0" expanded="true" />
+                <element signature="e#8831#9035#0" expanded="true" />
+                <element signature="e#9034#9035#0" expanded="true" />
+                <element signature="e#8101#8102#0" expanded="true" />
+                <element signature="e#7755#7992#0" expanded="true" />
+                <element signature="e#7991#7992#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,20 +85,14 @@
       <file leaf-file-name="UserAddHomeAddr.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/ProgramAct/UserAddHomeAddr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+            <state relative-caret-position="130">
+              <caret line="94" column="7" selection-start-line="94" selection-start-column="7" selection-end-line="94" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1704#1889#0" expanded="true" />
-                <element signature="e#1888#1889#0" expanded="true" />
-                <element signature="e#2060#2374#0" expanded="true" />
-                <element signature="e#2373#2374#0" expanded="true" />
-                <element signature="e#2415#2729#0" expanded="true" />
-                <element signature="e#2728#2729#0" expanded="true" />
-                <element signature="e#2664#2806#0" expanded="true" />
-                <element signature="e#2805#2806#0" expanded="true" />
-                <element signature="e#2848#3062#0" expanded="true" />
-                <element signature="e#3061#3062#0" expanded="true" />
+                <element signature="e#2852#2994#0" expanded="true" />
+                <element signature="e#2993#2994#0" expanded="true" />
+                <element signature="e#3036#3250#0" expanded="true" />
+                <element signature="e#3249#3250#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,25 +100,25 @@
       </file>
       <file leaf-file-name="activity_useraddhome_addr.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_useraddhome_addr.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="187" column="36" selection-start-line="187" selection-start-column="36" selection-end-line="187" selection-end-column="36" />
+            </state>
+          </provider>
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="183" column="23" selection-start-line="183" selection-start-column="23" selection-end-line="183" selection-end-column="23" />
-            </state>
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="item_main_showuaddr.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="item_main_showuaddr.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_main_showuaddr.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="344">
+              <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+            </state>
+          </provider>
           <provider selected="true" editor-type-id="android-designer2">
             <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-            </state>
           </provider>
         </entry>
       </file>
@@ -176,34 +140,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="item_main_nologin.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_main_nologin.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="60" selection-start-line="60" selection-end-line="60" />
+            </state>
+          </provider>
           <provider editor-type-id="android-designer2">
             <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="53" column="26" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
-            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="tools.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/tools.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
+            <state relative-caret-position="6960">
               <caret line="338" column="9" selection-start-line="338" selection-start-column="9" selection-end-line="338" selection-end-column="9" />
             </state>
           </provider>
@@ -2521,15 +2473,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/tools.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ico_comment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ico_backoff.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/MainAct.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_useraddhome_addr.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/ProgramAct/UserAddHomeAddr.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_main_showuaddr.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_useraddhome_addr.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/MainAct.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_main_showuaddr.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="y" value="22" />
     <option name="width" value="1280" />
     <option name="height" value="728" />
@@ -2542,9 +2494,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2571,13 +2522,6 @@
             <path>
               <item name="Yazhou" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="Yazhou" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="ProgramAct" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Yazhou" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
@@ -2590,6 +2534,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2737,7 +2682,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -2771,14 +2715,14 @@
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.32827586" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.32827586" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Captures" order="6" weight="0.25" />
       <window_info id="Capture Tool" order="7" />
@@ -2793,7 +2737,7 @@
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Terminal" order="12" />
       <window_info anchor="right" id="Gradle" order="6" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24959612" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24959612" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
@@ -2807,6 +2751,132 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ico_orderpage.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="36" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_main_nologin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/tools.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6960">
+          <caret line="338" column="9" selection-start-line="338" selection-start-column="9" selection-end-line="338" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="45" column="45" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/ProgramAct/InputAddrAct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/MainAct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="55" column="38" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/ProgramAct/UserAddHomeAddr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2852#2994#0" expanded="true" />
+            <element signature="e#2993#2994#0" expanded="true" />
+            <element signature="e#3036#3250#0" expanded="true" />
+            <element signature="e#3249#3250#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_useraddhome_addr.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4392">
+          <caret line="183" column="23" selection-start-line="183" selection-start-column="23" selection-end-line="183" selection-end-column="23" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_main_showuaddr.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ico_setting.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ico_orderpage.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="36" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_main_nologin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/tools.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6960">
+          <caret line="338" column="9" selection-start-line="338" selection-start-column="9" selection-end-line="338" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1272">
+          <caret line="53" column="26" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/ProgramAct/InputAddrAct.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3000">
@@ -2821,29 +2891,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7440">
           <caret line="347" selection-start-line="347" selection-end-line="347" />
-          <folding>
-            <element signature="e#2273#4939#0" expanded="true" />
-            <element signature="e#4938#4939#0" expanded="true" />
-            <element signature="e#7755#7939#0" expanded="true" />
-            <element signature="e#7938#7939#0" expanded="true" />
-            <element signature="e#7543#7590#0" expanded="true" />
-            <element signature="e#8427#8718#0" expanded="true" />
-            <element signature="e#8717#8718#0" expanded="true" />
-            <element signature="e#8833#9163#0" expanded="true" />
-            <element signature="e#9162#9163#0" expanded="true" />
-            <element signature="e#10114#10982#0" expanded="true" />
-            <element signature="e#10981#10982#0" expanded="true" />
-            <element signature="e#11132#11409#0" expanded="true" />
-            <element signature="e#11408#11409#0" expanded="true" />
-            <element signature="e#11434#11646#0" expanded="true" />
-            <element signature="e#11645#11646#0" expanded="true" />
-            <element signature="e#12230#12496#0" expanded="true" />
-            <element signature="e#12495#12496#0" expanded="true" />
-            <element signature="e#14609#14786#0" expanded="true" />
-            <element signature="e#14785#14786#0" expanded="true" />
-            <element signature="e#14975#15145#0" expanded="true" />
-            <element signature="e#15144#15145#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2855,13 +2902,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_showaddr_list.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ico_mapaddr.xml">
@@ -2879,13 +2926,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_inputaddr.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1968">
           <caret line="82" column="53" selection-start-line="82" selection-start-column="53" selection-end-line="82" selection-end-column="53" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/config.java">
@@ -2916,17 +2963,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/Debugmap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="43" column="63" selection-start-line="38" selection-start-column="20" selection-end-line="43" selection-end-column="63" />
-          <folding>
-            <element signature="e#1322#2737#0" expanded="true" />
-            <element signature="e#2736#2737#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/Debugmap.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ico_addr.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state />
@@ -2962,13 +2999,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_showaddr_list.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/config.java">
@@ -2982,21 +3019,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
           <caret line="153" column="59" selection-start-line="153" selection-start-column="59" selection-end-line="153" selection-end-column="59" />
-          <folding>
-            <element signature="e#7433#7825#0" expanded="true" />
-            <element signature="e#7824#7825#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_inputaddr.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="43">
           <caret line="50" column="47" lean-forward="true" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/ConfigPageValue/MAP.java">
@@ -3014,18 +3047,18 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="523">
           <caret line="65" column="17" lean-forward="true" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
         </state>
       </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/tools.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
+        <state relative-caret-position="6960">
           <caret line="338" column="9" selection-start-line="338" selection-start-column="9" selection-end-line="338" selection-end-column="9" />
         </state>
       </provider>
@@ -3034,16 +3067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="2" column="36" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_main_nologin.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -3061,16 +3084,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ico_backoff.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ico_backoff.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/ProgramAct/InputAddrAct.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
+        <state relative-caret-position="336">
           <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -3078,84 +3095,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_main_nologin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_useraddhome_addr.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="187" column="36" selection-start-line="187" selection-start-column="36" selection-end-line="187" selection-end-column="36" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/ProgramAct/UserAddHomeAddr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+        <state relative-caret-position="130">
+          <caret line="94" column="7" selection-start-line="94" selection-start-column="7" selection-end-line="94" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1704#1889#0" expanded="true" />
-            <element signature="e#1888#1889#0" expanded="true" />
-            <element signature="e#2060#2374#0" expanded="true" />
-            <element signature="e#2373#2374#0" expanded="true" />
-            <element signature="e#2415#2729#0" expanded="true" />
-            <element signature="e#2728#2729#0" expanded="true" />
-            <element signature="e#2664#2806#0" expanded="true" />
-            <element signature="e#2805#2806#0" expanded="true" />
-            <element signature="e#2848#3062#0" expanded="true" />
-            <element signature="e#3061#3062#0" expanded="true" />
+            <element signature="e#2852#2994#0" expanded="true" />
+            <element signature="e#2993#2994#0" expanded="true" />
+            <element signature="e#3036#3250#0" expanded="true" />
+            <element signature="e#3249#3250#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/MainAct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="164" column="91" selection-start-line="164" selection-start-column="91" selection-end-line="164" selection-end-column="91" />
+          <folding>
+            <element signature="e#7859#8102#0" expanded="true" />
+            <element signature="e#8423#8629#0" expanded="true" />
+            <element signature="e#8628#8629#0" expanded="true" />
+            <element signature="e#8831#9035#0" expanded="true" />
+            <element signature="e#9034#9035#0" expanded="true" />
+            <element signature="e#8101#8102#0" expanded="true" />
+            <element signature="e#7755#7992#0" expanded="true" />
+            <element signature="e#7991#7992#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_main_showuaddr.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+        </state>
+      </provider>
       <provider selected="true" editor-type-id="android-designer2">
         <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zbyj/Yazhou/MainAct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="55" column="38" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
-          <folding>
-            <element signature="e#2273#4939#0" expanded="true" />
-            <element signature="e#4938#4939#0" expanded="true" />
-            <element signature="e#7755#7939#0" expanded="true" />
-            <element signature="e#7938#7939#0" expanded="true" />
-            <element signature="e#7543#7590#0" expanded="true" />
-            <element signature="e#8427#8718#0" expanded="true" />
-            <element signature="e#8717#8718#0" expanded="true" />
-            <element signature="e#8833#9163#0" expanded="true" />
-            <element signature="e#9162#9163#0" expanded="true" />
-            <element signature="e#10114#10982#0" expanded="true" />
-            <element signature="e#10981#10982#0" expanded="true" />
-            <element signature="e#11132#11409#0" expanded="true" />
-            <element signature="e#11408#11409#0" expanded="true" />
-            <element signature="e#11434#11646#0" expanded="true" />
-            <element signature="e#11645#11646#0" expanded="true" />
-            <element signature="e#12230#12496#0" expanded="true" />
-            <element signature="e#12495#12496#0" expanded="true" />
-            <element signature="e#14609#14786#0" expanded="true" />
-            <element signature="e#14785#14786#0" expanded="true" />
-            <element signature="e#14975#15145#0" expanded="true" />
-            <element signature="e#15144#15145#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_useraddhome_addr.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="183" column="23" selection-start-line="183" selection-start-column="23" selection-end-line="183" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="53" column="26" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
-        </state>
       </provider>
     </entry>
   </component>

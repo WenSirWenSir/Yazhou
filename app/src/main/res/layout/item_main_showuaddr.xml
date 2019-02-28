@@ -34,7 +34,7 @@
         android:layout_below="@id/item_main_showuaddr_addr"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="您可以点击上面的图标增加一个收件地址"
+        android:text="点击上面的图标增加一个收件地址哦"
         android:textColor="#000000"
         android:textSize="14sp" />
     <!--导航栏-->
@@ -107,7 +107,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="押粥评论"
+                android:text="早早点评"
                 android:gravity="center"
                 android:textColor="#000000"
                 android:layout_marginTop="50dp"
@@ -121,6 +121,7 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:id="@+id/item_main_showuaddr_userexit"
             android:layout_weight="1">
 
             <ImageView

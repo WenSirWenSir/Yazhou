@@ -172,6 +172,43 @@ public class MainAct extends YazhouActivity implements ScrollViewListener {
              * 开始登陆成功的按钮监听
              */
             ImageView check_homeaddr = view.findViewById(R.id.item_main_showuaddr_img);
+            RelativeLayout btn_userexit = view.findViewById(R.id.item_main_showuaddr_userexit);
+
+            /**
+             * 用户选择退出  就提示他是否真的要退出
+             */
+            btn_userexit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final AlertDialog builder = new AlertDialog.Builder(MainAct.this).create();
+                    View item = LayoutInflater.from(getApplicationContext()).inflate(R.layout.item_trueorfalse_dialog,null);
+                    builder.setView(item);
+                    TextView btn_confirm = item.findViewById(R.id.item_trueorfalse_dialog_btnDetermine);
+                    btn_confirm.setText("我要退出");
+                    btn_confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            onUserExit();
+                        }
+                    });
+                    TextView btn_cancle = item.findViewById(R.id.item_trueorfalse_dialog_btnCancle);
+                    btn_cancle.setText("怎么可能");
+                    btn_cancle.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            OutputFlower();
+                            builder.dismiss();//任何的dialog弹出都会让虚拟键盘重新载入 一旦销毁 必须调用hide隐藏
+                            hideBottomUIMenu();//隐藏虚拟键盘
+                        }
+                    });
+                    TextView dialog_text = item.findViewById(R.id.item_trueorfalse_dialog_content);
+                    dialog_text.setText("您确定要退出左边早早嘛");
+                    TextView dialog_title = item.findViewById(R.id.item_trueorfalse_dialog_title);
+                    dialog_title.setText("程序猿的含泪提示");
+                    builder.setCancelable(false);
+                    builder.show();
+                }
+            });
 
             /**
              * 新增用户的收件地址
@@ -188,6 +225,18 @@ public class MainAct extends YazhouActivity implements ScrollViewListener {
         Listener();
         Visit();
 
+    }
+
+    /**
+     * 不选择退出 给你朵小发发
+     */
+    private void OutputFlower() {
+    }
+
+    /**
+     * 用户请求退出
+     */
+    private void onUserExit() {
     }
 
     private void Visit() {

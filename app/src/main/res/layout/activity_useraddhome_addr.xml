@@ -196,7 +196,7 @@
                     android:maxLines="1"
                     android:id="@+id/activity_useraddhome_addr_editStreet"
                     android:paddingLeft="5dp"
-                    android:text="街道、门牌、大楼、建筑"
+                    android:text="街道、门牌、大楼、建筑、具体位置"
                     android:textColor="#a9a9a9"
                     android:textSize="14dip"
                     android:textStyle="bold" />
