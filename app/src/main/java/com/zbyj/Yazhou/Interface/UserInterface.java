@@ -1,6 +1,6 @@
 package com.zbyj.Yazhou.Interface;
 
-import com.zbyj.Yazhou.Utils.JsonEndata;
+import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
 
 /**
  * 用户的监听集合

@@ -14,10 +14,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zbyj.Yazhou.ConNet.SystemVisitInterService;
 import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
+import com.zbyj.Yazhou.LeftCompanyProgram.Net;
 import com.zbyj.Yazhou.ProgramAct.InputAddrAct;
-import com.zbyj.Yazhou.Utils.JsonEndata;
+import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
 
 public class SelectSexAct extends YazhouActivity {
     private RelativeLayout activity_select_sex_headbody;
@@ -112,7 +112,7 @@ public class SelectSexAct extends YazhouActivity {
                     Toast.makeText(getApplicationContext(), "您还没有选择您喜欢的物品呢", Toast.LENGTH_SHORT).show();
                 } else {
                     //更新用户的性别
-                    SystemVisitInterService.InterServiceGet(getApplicationContext(), config.getUsermoduleIntentFactory(), new SystemVisitInterService.onVisitInterServiceListener() {
+                    Net.InterServiceGet(getApplicationContext(), config.getUsermoduleIntentFactory(), new Net.onVisitInterServiceListener() {
                                 @Override
                                 public void onSucess(String tOrgin) {
                                     JsonEndata jsonEndata = new JsonEndata(tOrgin);

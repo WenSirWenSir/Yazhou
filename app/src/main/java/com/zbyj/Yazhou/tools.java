@@ -1,51 +1,36 @@
 package com.zbyj.Yazhou;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
-import android.text.TextUtils;
-import android.transition.ChangeImageTransform;
 import android.util.Log;
-import android.view.Display;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageSwitcher;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.DistanceUtil;
-import com.zbyj.Yazhou.ConNet.SystemVisitInterService;
 import com.zbyj.Yazhou.ConfigPageValue.ONREFUSEPHONE;
-import com.zbyj.Yazhou.Utils.JsonEndata;
+import com.zbyj.Yazhou.LeftCompanyProgram.Net;
+import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class tools {
 
@@ -234,7 +219,7 @@ public class tools {
      */
     public static void sendVerificationCodeSMS(final Context tContext, String tPhone) {
 
-        SystemVisitInterService.InterServiceGet(tContext, config.getSendVerificationAddr(), new SystemVisitInterService.onVisitInterServiceListener() {
+        Net.InterServiceGet(tContext, config.getSendVerificationAddr(), new Net.onVisitInterServiceListener() {
             @Override
             public void onSucess(String tOrgin) {
                 JsonEndata jsonEndata = new JsonEndata(tOrgin);

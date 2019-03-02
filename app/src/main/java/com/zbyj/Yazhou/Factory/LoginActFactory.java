@@ -4,12 +4,10 @@ package com.zbyj.Yazhou.Factory;
 import android.content.Context;
 import android.util.Log;
 
-import com.zbyj.Yazhou.ConNet.SystemVisitInterService;
-import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
 import com.zbyj.Yazhou.Interface.UserInterface;
-import com.zbyj.Yazhou.Utils.JsonEndata;
+import com.zbyj.Yazhou.LeftCompanyProgram.Net;
+import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
 import com.zbyj.Yazhou.config;
-import com.zbyj.Yazhou.tools;
 
 /**
  * 登录用到的工厂类
@@ -26,7 +24,7 @@ public class LoginActFactory {
      */
     public static void isCodecorrect(final Context tContext,final String tPhone, String tCode, final UserInterface.userCheckVerificationOndone userInterface) {
         //MD5加密  在网络中 不要用明文传输数据信息
-        SystemVisitInterService.InterServiceGet(tContext, config.getUsermoduleIntentFactory(), new SystemVisitInterService.onVisitInterServiceListener() {
+        Net.InterServiceGet(tContext, config.getUsermoduleIntentFactory(), new Net.onVisitInterServiceListener() {
             @Override
             public void onSucess(String tOrgin) {
                 //如果网络访问成功 就判断是否验证成功

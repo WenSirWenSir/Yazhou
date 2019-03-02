@@ -10,20 +10,16 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.TextureView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
 import com.zbyj.Yazhou.Factory.LoginActFactory;
 import com.zbyj.Yazhou.Interface.UserInterface;
-import com.zbyj.Yazhou.R;
-import com.zbyj.Yazhou.Utils.JsonEndata;
-import com.zbyj.Yazhou.YazhouActivity;
+import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
 
 import java.util.ArrayList;
 import java.util.Timer;

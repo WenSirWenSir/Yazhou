@@ -4,18 +4,15 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.NotificationManager;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -23,19 +20,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-import com.zbyj.Yazhou.ConNet.SystemVisitInterService;
 import com.zbyj.Yazhou.ConfigPageValue.MAP;
 import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
-import com.zbyj.Yazhou.ProgramAct.InputAddrAct;
+import com.zbyj.Yazhou.LeftCompanyProgram.Config;
+import com.zbyj.Yazhou.LeftCompanyProgram.Net;
 import com.zbyj.Yazhou.ProgramAct.UserAddHomeAddr;
 import com.zbyj.Yazhou.ProgramAct.UserComment;
-import com.zbyj.Yazhou.Utils.JsonEndata;
+import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
 import com.zbyj.Yazhou.Utils.NotificationUtils;
 
 import java.math.BigDecimal;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ExecutionException;
 
 import localInterface.ScrollViewListener;
 import localViews.RefreshScrollView;
@@ -57,6 +53,7 @@ public class MainAct extends YazhouActivity implements ScrollViewListener {
         setContentView(R.layout.activity_main);
         setStatusBar(getResources().getString(R.color.TextAndBodyColor));
         setBackStatic(true);
+        Toast.makeText(getApplicationContext(), Config.JSON_USERPAGE.USER_LEFTCOMPANY_ID,Toast.LENGTH_SHORT).show();
         //hideBottomUIMenu();
 
         /**
@@ -252,7 +249,7 @@ public class MainAct extends YazhouActivity implements ScrollViewListener {
 
     private void Visit() {
         //访问服务器获取需要的数据信息
-        SystemVisitInterService.InterServiceGet(getApplicationContext(), config.getReserveTime(), new SystemVisitInterService.onVisitInterServiceListener() {
+        Net.InterServiceGet(getApplicationContext(), config.getReserveTime(), new Net.onVisitInterServiceListener() {
             @Override
             public void onSucess(String tOrgin) {
                 JsonEndata jsonEndata = new JsonEndata(tOrgin);

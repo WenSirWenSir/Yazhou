@@ -16,9 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zbyj.Yazhou.ConNet.SystemVisitInterService;
 import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
-import com.zbyj.Yazhou.Utils.JsonEndata;
+import com.zbyj.Yazhou.LeftCompanyProgram.Net;
+import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,16 +47,15 @@ public class Welcome extends YazhouActivity {
         //测试
         Log.i(config.DEBUG_STR, "token" + tools.gettoKen(getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN));
 
-        if(tools.isIntentConnect(getApplicationContext())){
-            Log.i(config.DEBUG_STR,"网络连接中");
-        }
-        else{
-            Log.i(config.DEBUG_STR,"网络连接失败");
+        if (tools.isIntentConnect(getApplicationContext())) {
+            Log.i(config.DEBUG_STR, "网络连接中");
+        } else {
+            Log.i(config.DEBUG_STR, "网络连接失败");
         }
 
         if (tools.isIntentConnect(getApplicationContext())) {
             //判断是是否需要更新软件信息  和  是否需要展示图片信息
-            SystemVisitInterService.InterServiceGet(getApplicationContext(), config.getServiceProgramMainConfig(), new SystemVisitInterService.onVisitInterServiceListener() {
+            Net.InterServiceGet(getApplicationContext(), config.getServiceProgramMainConfig(), new Net.onVisitInterServiceListener() {
                 @SuppressLint("ResourceType")
                 @Override
                 public void onSucess(String tOrgin) {
@@ -86,7 +85,7 @@ public class Welcome extends YazhouActivity {
                             @Override
                             public void run() {
                                 //用户主动取消广告
-                                if(onUseronclick != null){
+                                if (onUseronclick != null) {
                                     onUseronclick.cancel();
                                 }
                                 YaZhouStartActivity(MainAct.class, true);
@@ -110,7 +109,7 @@ public class Welcome extends YazhouActivity {
                         mAnimation.setInterpolator(new BounceInterpolator());
                         mAnimation.setFillAfter(true);
                         img.startAnimation(mAnimation);
-                        onUseronclick  = new Timer();
+                        onUseronclick = new Timer();
                         onUseronclick.schedule(new TimerTask() {
                             @Override
                             public void run() {

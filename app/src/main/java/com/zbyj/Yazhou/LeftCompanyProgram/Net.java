@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2019.
- * 该代码由上杭左边远景软件开发工作室编写维护
- * 任何非本公司的个人或者企业无权进行
- * 修改/重建/编译/使用/拷贝/复制/发送 该程序代码.
- * 一经查证由个人或者公司发布/使用/编译/重写/拷贝/复制
- * 该软件源代码.本公司有权使用法律进行维权。
- * 负责人：WenSir@(翁启鑫)
- *
- */
+package com.zbyj.Yazhou.LeftCompanyProgram;
 
-/*
- * Copyright (c) 2019.
- * 该代码由上杭左边远景软件开发工作室编写维护
- * 任何非本公司的个人或者企业无权进行
- * 修改/重建/编译/使用/拷贝/复制/发送 该程序代码.
- * 一经查证由个人或者公司发布/使用/编译/重写/拷贝/复制
- * 该软件源代码.本公司有权使用法律进行维权。
- * 负责人：WenSir@(翁启鑫)
- *
- */
-package com.zbyj.Yazhou.ConNet;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.zbyj.Yazhou.R;
-import com.zbyj.Yazhou.config;
+
 import com.zbyj.Yazhou.tools;
 
 import java.io.BufferedReader;
@@ -36,14 +14,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
 /**
- * 访问互联网的工厂
+ * 网络访问模块  有关于网络访问的监听和提交事件都在这里
+ * <p>
+ * 该模块属于左边远景软件开发工作室公司服务器内模块 任何开发个体的android project都可以使用
+ * 该套模块
  */
-public class SystemVisitInterService {
+public class Net {
     private String tUrl = "";
     private StringBuffer mKvsBuffer = new StringBuffer();
-    private onVisitInterServiceListener mOnVisitInterServiceListener;
+    private Net.onVisitInterServiceListener mOnVisitInterServiceListener;
     private int VisitInterMethod;
 
     /**
@@ -53,13 +33,13 @@ public class SystemVisitInterService {
      * @param mOnVisitInterServiceListener 监听回调
      * @param kvs                          参数对,没有就直接用NULL
      */
-    public static void InterServiceGet(Context context, String tUrl, final onVisitInterServiceListener mOnVisitInterServiceListener, String... kvs) {
-        if (!tools.isIntentConnect(context)) {
+    public static void InterServiceGet(Context context, String tUrl, final Net.onVisitInterServiceListener mOnVisitInterServiceListener, String... kvs) {
+        if (!Tools.isIntentConnect(context)) {
             //网络无连接 就不做什么操作了
-            if(mOnVisitInterServiceListener != null){
+            if (mOnVisitInterServiceListener != null) {
                 mOnVisitInterServiceListener.onNotConnect();
             }
-            return ;
+            return;
         } else {
             final StringBuffer kvsBuffer = new StringBuffer();
             if (kvs != null && kvs.length > 1) {
@@ -68,15 +48,15 @@ public class SystemVisitInterService {
                         kvsBuffer.append(kvs[i] + "=" + kvs[i + 1] + "&");
                     }
                 } catch (Exception e) {
-                    Log.e(config.DEBUG_STR,"SystemVisitInerService.java[+]:"+e.getMessage());
+                    Log.e(Config.DEBUG, "SystemVisitInerService.java[+]:" + e.getMessage());
                 }
             }
             new AsyncTask<String, Void, String>() {
                 @Override
                 protected String doInBackground(String... urls) {
                     try {
-                        HttpURLConnection con = (HttpURLConnection) new URL(urls[0].trim().toString() +"?"+ kvsBuffer.toString()).openConnection();
-                        Log.i(config.DEBUG_STR,"访问网络地址:" + urls[0].trim().toString() +"?"+ kvsBuffer.toString());
+                        HttpURLConnection con = (HttpURLConnection) new URL(urls[0].trim().toString() + "?" + kvsBuffer.toString()).openConnection();
+                        Log.i(Config.DEBUG, "访问网络地址:" + urls[0].trim().toString() + "?" + kvsBuffer.toString());
                         con.setRequestMethod("GET");
                         con.setConnectTimeout(5000);
                         con.setReadTimeout(5000);
@@ -97,7 +77,7 @@ public class SystemVisitInterService {
                             return null;
                         }
                     } catch (Exception e) {
-                        Log.e(config.DEBUG_STR,"SystemVisitInerService.java[+]:"+e.getMessage());
+                        Log.e(Config.DEBUG, "SystemVisitInerService.java[+]:" + e.getMessage());
 
                     }
                     return null;
@@ -105,13 +85,12 @@ public class SystemVisitInterService {
 
                 @Override
                 protected void onPostExecute(String s) {
-                    if(s != null){
-                        if(mOnVisitInterServiceListener != null){
+                    if (s != null) {
+                        if (mOnVisitInterServiceListener != null) {
                             mOnVisitInterServiceListener.onSucess(s);
                         }
-                    }
-                    else{
-                        if(mOnVisitInterServiceListener != null){
+                    } else {
+                        if (mOnVisitInterServiceListener != null) {
                             mOnVisitInterServiceListener.onFail("");
                         }
                     }
@@ -123,15 +102,11 @@ public class SystemVisitInterService {
 
 
     public interface onVisitInterServiceListener {
-        Thread s = new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });
 
         void onSucess(String tOrgin);//成功的监听
+
         void onNotConnect();//网络断开连接
+
         void onFail(String tOrgin);//失败的监听
     }
 }

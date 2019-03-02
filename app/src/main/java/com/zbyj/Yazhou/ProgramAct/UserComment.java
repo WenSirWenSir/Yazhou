@@ -6,15 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.zbyj.Yazhou.ConfigPageValue.CAMER;
+import com.zbyj.Yazhou.LeftCompanyProgram.Config;
 import com.zbyj.Yazhou.R;
 import com.zbyj.Yazhou.YazhouActivity;
 
 public class UserComment extends YazhouActivity {
     private ImageView btn_camera;
-
+    private EditText et_comment;
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +28,11 @@ public class UserComment extends YazhouActivity {
 
     private void init() {
         btn_camera = findViewById(R.id.activity_usercomment_icoCamera);
+        et_comment = findViewById(R.id.activity_usercommend_etComment);//btn edit comment
         Listener();
     }
 
     private void Listener() {
-
         /**
          * 调用拍摄图片
          */
