@@ -1,6 +1,7 @@
 package com.zbyj.Yazhou.LeftCompanyProgram;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -11,8 +12,11 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.zbyj.Yazhou.R;
 
 import java.io.File;
 import java.security.MessageDigest;
@@ -30,8 +34,7 @@ public class Tools {
         if (manager == null) {
             return false;
         } else {
-            @SuppressLint("MissingPermission")
-            NetworkInfo[] info = manager.getAllNetworkInfo();
+            @SuppressLint("MissingPermission") NetworkInfo[] info = manager.getAllNetworkInfo();
             if (info != null) {
                 for (int i = 0; i < info.length; i++) {
                     if (info[i].getState() == NetworkInfo.State.CONNECTED) return true;
@@ -128,11 +131,13 @@ public class Tools {
     public static void sendVerificationCodeSMS(final Context tContext, String tPhone) {
 
 
-        Net.InterServiceGet(tContext, Config.HTTP_ADDR.SendVerificationCodeAddr(), new Net.onVisitInterServiceListener() {
+        Net.InterServiceGet(tContext, Config.HTTP_ADDR.SendVerificationCodeAddr(), new Net
+                .onVisitInterServiceListener() {
             @Override
             public void onSucess(String tOrgin) {
                 JsonEndata jsonEndata = new JsonEndata(tOrgin);
-                if (jsonEndata.getJsonKeyValue(Config.HttpMethodRequestStatus.HTTP_REQUEST_STATUS).equals(Config.SMS.SEND_SMS_OK)) {
+                if (jsonEndata.getJsonKeyValue(Config.HttpMethodRequestStatus.HTTP_REQUEST_STATUS).equals(Config.SMS
+                        .SEND_SMS_OK)) {
                     Toast.makeText(tContext, "短信发送成功,请注意查收", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(tContext, "短信发送失败,请检查您的网络是否连接", Toast.LENGTH_SHORT).show();
@@ -207,12 +212,73 @@ public class Tools {
      * change the background lines and background color
      */
     public static void setBackgroundValues(View view, int StorkeWith, String StorkeColor, String BackgroundColor) {
-        GradientDrawable gradientDrawable = (GradientDrawable) view.getBackground();//get view background
+        GradientDrawable gradientDrawable = (GradientDrawable) view.getBackground();//get view
+        // background
         if (StorkeWith != 0) {
-            gradientDrawable.setStroke(StorkeWith, Color.parseColor(StorkeColor));//Set background line Color and width
+            gradientDrawable.setStroke(StorkeWith, Color.parseColor(StorkeColor));//Set
+            // background line Color and width
         }
 
         //update background color
         gradientDrawable.setColor(Color.parseColor(BackgroundColor));
+    }
+
+
+    /**
+     * Create a AlertDilg box,
+     *
+     * @param view            view
+     * @param mConext         ApplictionContext
+     * @param title           titleStr
+     * @param context         contextStr
+     * @param cancleStr       cancleStr
+     * @param confirmStr      confirmStr
+     * @param alertDilgClick  interface Cancle and Confirm
+     * @param alertViewIDpage Calss for ConfigPageClass.AlertViewIDpage(Instance) you can call
+     *                        getAlertViewIDpageInstance to get
+     */
+
+    public static void showAlertDilg(View view, Context mConext, String title, String context, String cancleStr,
+                                     String confirmStr, final AlertDilgClick alertDilgClick, ConfigPageClass
+                                             .AlertViewIDpage alertViewIDpage) {
+        if (alertViewIDpage != null) {
+            final AlertDialog alertDialog = new AlertDialog.Builder(mConext).create();
+            alertViewIDpage.getTitle().setText(title);
+            alertViewIDpage.getContext().setText(context);
+            alertViewIDpage.getCancle().setText(cancleStr);
+            alertViewIDpage.getConfirm().setText(confirmStr);
+            // cancle
+            alertViewIDpage.getCancle().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (alertDilgClick != null) {
+
+                        alertDilgClick.onCancle(alertDialog);
+                    }
+                }
+            });
+            //btn confirm
+            alertViewIDpage.getConfirm().setText(confirmStr);
+            alertViewIDpage.getConfirm().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (alertDilgClick != null) {
+                        alertDilgClick.onConfirm(alertDialog);
+                    }
+                }
+            });
+            alertDialog.setView(view);
+            alertDialog.show();
+
+        } else {
+
+        }
+
+    }
+
+    public interface AlertDilgClick {
+        void onConfirm(AlertDialog alertDialog);
+
+        void onCancle(AlertDialog alertDialog);
     }
 }
