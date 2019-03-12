@@ -23,7 +23,7 @@ import com.zbyj.Yazhou.config;
 /**
  * 用户新增收件地址
  */
-public class UserAddHomeAddr extends YazhouActivity {
+public class UserAddHomeAddrAct extends YazhouActivity {
     private ImageView btn_back, btn_openmap;
     private TextView addrString;
     private EditText edit_name, edit_phone, edit_street;

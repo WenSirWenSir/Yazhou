@@ -163,7 +163,7 @@ public class Tools {
      * return values tyeps is kb
      */
 
-    public static int getApplicationMemorySize(int m) {
+    public static int getApplicationMemorySize() {
         return (int) Runtime.getRuntime().maxMemory();
     }
 

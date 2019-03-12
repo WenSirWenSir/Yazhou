@@ -8,54 +8,39 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#f1f1f1">
+        android:scrollbars="none"
+        android:background="#f1f1f1"
+        android:layout_marginBottom="55dp"
+        >
 
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#f1f1f1"
             android:layout_marginTop="30dp"
+            android:background="#f1f1f1"
             android:orientation="vertical">
 
-            <!--拍摄的标志图片-->
-            <RelativeLayout
-                android:id="@+id/activity_usercomment_opencameraBody"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                >
-
-                <ImageView
-                    android:id="@+id/activity_usercomment_icoCamera"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/ico_camera" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/activity_usercommend_opencameratitle"
-                    android:layout_below="@id/activity_usercomment_icoCamera"
-                    android:gravity="center"
-                    android:text="点击上方图片拍摄"
-                    android:textColor="#000000"
-                    android:textSize="13dp"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-
+                android:layout_height="wrap_content"
+                android:text="文字评论区域"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="#000000"
+                />
             <!--撰写评论区域-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_below="@id/activity_usercomment_opencameraBody"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:background="#ffffff"
                 android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:background="#ffffff">
+                android:focusableInTouchMode="true">
 
                 <EditText
                     android:id="@+id/activity_usercommend_etComment"
@@ -64,8 +49,8 @@
                     android:background="@drawable/border_mapsearch_input"
                     android:gravity="center_horizontal|left"
                     android:padding="10dp"
-                    android:textColor="#666666"
                     android:text="撰写评论时,请您准守互联网言语评论守则.如果有什么服务上的不足.您可以联系我们哦"
+                    android:textColor="#666666"
                     android:textSize="15dp"
                     android:textStyle="bold">
 
@@ -73,11 +58,235 @@
                 </EditText>
 
             </RelativeLayout>
-        </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="派送小哥颜值:"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/activity_usercomment_setboyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/ico_candy" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+
+                        android:src="@drawable/ico_candy" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+
+                        android:src="@drawable/ico_candy" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+
+                        android:src="@drawable/ico_candy" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+
+                        android:src="@drawable/ico_candy" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--味道-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="食品颜值与味道:"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:alpha="0.2"
+                        android:src="@drawable/ico_candy" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+
+                        android:alpha="0.2"
+                        android:src="@drawable/ico_candy" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+
+                        android:alpha="0.2"
+                        android:src="@drawable/ico_candy" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+
+                        android:alpha="0.2"
+                        android:src="@drawable/ico_candy" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:alpha="0.2"
+
+                        android:src="@drawable/ico_candy" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--派送准时与否-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="派送速度:"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:alpha="0.2"
+                        android:src="@drawable/ico_candy" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+
+                        android:alpha="0.2"
+                        android:src="@drawable/ico_candy" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+
+                        android:alpha="0.2"
+                        android:src="@drawable/ico_candy" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+
+                        android:alpha="0.2"
+                        android:src="@drawable/ico_candy" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:alpha="0.2"
+
+                        android:src="@drawable/ico_candy" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:textSize="13sp"
+                android:text="展示图片(只能拍摄一张哦)"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+            <!--拍摄的标志图片-->
+            <RelativeLayout
+                android:id="@+id/activity_usercomment_opencameraBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/activity_usercomment_icoCamera"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/ico_addphoto" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
     </ScrollView>
     <!--保存评论-->
 
     <TextView
+        android:id="@+id/activity_usercomment_btnOrderComment"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
@@ -85,7 +294,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        android:id="@+id/activity_usercomment_btnOrderComment"
         android:background="@color/TextAndBodyColor"
         android:gravity="center"
         android:text="发布评论"
@@ -110,7 +318,7 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/activity_useraddhome_addr_btnback"
+            android:id="@+id/activity_usercomment_btnback"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"

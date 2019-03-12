@@ -21,20 +21,29 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/activity_useraddhome_addr_btnback"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:id="@+id/activity_useraddhome_addr_btnback"
             android:src="@drawable/ico_back" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#f1f1f1"
         android:layout_marginTop="35dp"
+        android:background="#f1f1f1"
         android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="联系人信息"
+            android:textColor="#666666"
+            android:textSize="15sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -59,6 +68,7 @@
                 android:layout_marginLeft="80dp">
 
                 <EditText
+                    android:id="@+id/activity_useraddhome_addr_editName"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_centerVertical="true"
@@ -66,7 +76,6 @@
                     android:inputType="text"
                     android:maxLines="1"
                     android:paddingLeft="5dp"
-                    android:id="@+id/activity_useraddhome_addr_editName"
                     android:text="填写您的姓名"
                     android:textColor="#a9a9a9"
                     android:textSize="14dip"
@@ -116,6 +125,15 @@
 
         </RelativeLayout>
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="详细的收件地址"
+            android:textColor="#666666"
+            android:textSize="15sp" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -139,6 +157,7 @@
                 android:layout_marginLeft="80dp">
 
                 <TextView
+                    android:id="@+id/activity_useraddhome_addrString"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_centerVertical="true"
@@ -146,16 +165,15 @@
                     android:gravity="center|left"
                     android:maxLines="1"
                     android:paddingLeft="5dp"
-                    android:id="@+id/activity_useraddhome_addrString"
                     android:text="省、市、区"
                     android:textColor="#a9a9a9"
                     android:textSize="14dip"
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/activity_useraddhome_addr_btnopenmap"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:id="@+id/activity_useraddhome_addr_btnopenmap"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
@@ -188,13 +206,13 @@
                 android:layout_marginLeft="80dp">
 
                 <EditText
+                    android:id="@+id/activity_useraddhome_addr_editStreet"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_centerVertical="true"
                     android:background="@null"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:id="@+id/activity_useraddhome_addr_editStreet"
                     android:paddingLeft="5dp"
                     android:text="街道、门牌、大楼、建筑、具体位置"
                     android:textColor="#a9a9a9"
@@ -209,23 +227,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
         android:background="#f1f1f1"
         android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:layout_alignParentBottom="true"
-        >
+        android:paddingRight="30dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/TextAndBodyColor"
+            android:gravity="center"
             android:text="保存地址"
             android:textColor="#000000"
-            android:textStyle="bold"
-            android:background="@color/TextAndBodyColor"
             android:textSize="15dp"
-            android:gravity="center"
-            />
-
+            android:textStyle="bold" />
 
 
     </LinearLayout>

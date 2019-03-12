@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">@android:color/transparent</color>
+    <color name="colorPrimaryDark">@android:color/transparent</color>
+    <color name="colorAccent">@android:color/transparent</color>
     <color name="TitleColor">#41c661</color>
     <color name="ThemeColor">#61D9A6</color>
-    <color name="TextAndBodyColor">#F6e64a</color>
+    <color name="TextAndBodyColor">#f6e64a</color>
+    <color name="btn_color">#f6e64a</color>
     <color name="likeColor">#1ae5be</color>
+    <color name="purple">#9833FB</color>
 </resources>

@@ -147,4 +147,11 @@ public class config {
     public static String getUsermoduleIntentFactory() {
         return SERVICE_ADDR + "/tools/USER_TOOLS.php";
     }
+
+    /**
+     * 界面
+     */
+    public static final int FRAMELAYOUT_ORDER = 1;
+    public static final int FRAMELAYOUT_ORDERLIST = 2;
+    public static final int FRAMELAYOUT_USERPAGE = 3;
 }

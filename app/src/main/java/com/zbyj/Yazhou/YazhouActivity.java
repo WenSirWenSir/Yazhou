@@ -1,13 +1,17 @@
 package com.zbyj.Yazhou;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
 
 
 /**
@@ -16,6 +20,7 @@ import android.widget.Toast;
 public class YazhouActivity extends Activity {
     private Boolean isBackTwo = false;//退出再按一次
     private Boolean isBackOk = false;
+
     /**
      * 打开一个窗口
      *
@@ -26,34 +31,39 @@ public class YazhouActivity extends Activity {
         i.setClass(this, Bclass);
         this.startActivity(i);
         //界面动画
-        this.overridePendingTransition(R.anim.android_anim_activity_in, R.anim.android_anim_activity_out);
+        this.overridePendingTransition(R.anim.android_anim_activity_in, R.anim
+                .android_anim_activity_out);
         if (ColseF) {
             this.finish();
         }
     }
+
     /**
      *
      */
-    protected void YazhouStartActivityForResult(Class<?> mClass,Boolean ColseF,int requestCode){
+    protected void YazhouStartActivityForResult(Class<?> mClass, Boolean ColseF, int requestCode) {
         Intent i = new Intent();
-        i.setClass(this,mClass);
-        startActivityForResult(i,requestCode);
-        if(ColseF){
+        i.setClass(this, mClass);
+        startActivityForResult(i, requestCode);
+        if (ColseF) {
             this.finish();
         }
     }
+
     /**
      * 打开一个窗口 并且传入值
      */
-    protected void YaZhouStartActivityWithBundler(Class<?> Bclass,Boolean ColoseF,String... values){
+    protected void YaZhouStartActivityWithBundler(Class<?> Bclass, Boolean ColoseF, String...
+            values) {
         Intent intent = new Intent();
-        for(int i = 0;i < values.length;i+= 2){
-            intent.putExtra(values[i],values[i + 1]);
+        for (int i = 0; i < values.length; i += 2) {
+            intent.putExtra(values[i], values[i + 1]);
         }
-        intent.setClass(this,Bclass);
+        intent.setClass(this, Bclass);
         this.startActivity(intent);
-        this.overridePendingTransition(R.anim.android_anim_activity_in,R.anim.android_anim_activity_out);
-        if(ColoseF){
+        this.overridePendingTransition(R.anim.android_anim_activity_in, R.anim
+                .android_anim_activity_out);
+        if (ColoseF) {
             this.finish();
         }
     }
@@ -61,25 +71,27 @@ public class YazhouActivity extends Activity {
 
     /**
      * 获取传入窗口的值
+     *
      * @param key
      * @return
      */
-    protected String getBundlerValue(String key){
+    protected String getBundlerValue(String key) {
         try {
             Intent intent = this.getIntent();
             return intent.getStringExtra(key);
-        }catch (Exception e){
+        } catch (Exception e) {
             return "";
         }
     }
+
     /**
      * 设置状态栏
      */
     protected void setStatusBar(String tColor) {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //5.O版本及以上
             View decorView = getWindow().getDecorView();
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | SYSTEM_UI_FLAG_LAYOUT_STABLE;
             decorView.setSystemUiVisibility(option);
             getWindow().setStatusBarColor(Color.parseColor(tColor));
         }
@@ -88,13 +100,13 @@ public class YazhouActivity extends Activity {
     /**
      * 设置透明状态栏
      */
-    protected void setTransparentBar(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+    protected void setTransparentBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
         }
-
-
     }
 
     /**
@@ -127,14 +139,14 @@ public class YazhouActivity extends Activity {
         }
     }
 
-    public void hideBottomUIMenu(){
-        if(Build.VERSION.SDK_INT > 11 &&Build.VERSION.SDK_INT < 19){
+    public void hideBottomUIMenu() {
+        if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) {
             View v = this.getWindow().getDecorView();
             v.setSystemUiVisibility(View.GONE);
-        }
-        else if(Build.VERSION.SDK_INT >= 19){
+        } else if (Build.VERSION.SDK_INT >= 19) {
             View decorView = getWindow().getDecorView();
-            int options = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+            int options = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View
+                    .SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
             decorView.setSystemUiVisibility(options);
         }
     }

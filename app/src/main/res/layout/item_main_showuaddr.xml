@@ -3,6 +3,7 @@
 
 <!--用户已经登录 显示用户的收件地址和收件电话-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="270dp"
     android:background="@color/TextAndBodyColor">
@@ -22,7 +23,9 @@
         android:layout_below="@id/item_main_showuaddr_img"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text=""
+        android:text="上杭县上杭大道附近北园路园一巷21号第三方水电费水电费水电费的说法是否收到"
+        android:maxLines="2"
+        android:ellipsize="end"
         android:textColor="#000000"
         android:textSize="17sp"
         android:textStyle="bold" />
@@ -34,7 +37,7 @@
         android:layout_below="@id/item_main_showuaddr_addr"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="点击上面的图标增加一个收件地址哦"
+        android:text="翁启鑫(15206036936)"
         android:textColor="#000000"
         android:textSize="14sp" />
     <!--导航栏-->
@@ -47,6 +50,7 @@
         android:orientation="horizontal">
 
         <RelativeLayout
+            android:id="@+id/item_main_showuaddr_usercontext"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -55,49 +59,26 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/ico_setting" />
+                android:src="@drawable/ico_man" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
                 android:text="个人中心"
-                android:gravity="center"
                 android:textColor="#000000"
-                android:layout_marginTop="50dp"
                 android:textSize="13sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <ImageView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/ico_orderpage" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="我的订单"
-                android:textColor="#000000"
-                android:gravity="center"
-                android:layout_marginTop="50dp"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                />
-
-
-        </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
             android:id="@+id/item_main_showuaddr_comment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1">
 
             <ImageView
@@ -105,45 +86,19 @@
                 android:layout_height="45dp"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/ico_comment" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
                 android:text="早早点评"
-                android:gravity="center"
                 android:textColor="#000000"
-                android:layout_marginTop="50dp"
                 android:textSize="13sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
 
         </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/item_main_showuaddr_userexit"
-            android:layout_weight="1">
-
-            <ImageView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/ico_breakoff" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="开始逃跑"
-                android:gravity="center"
-                android:textColor="#f30d88"
-                android:layout_marginTop="50dp"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                />
-
-        </RelativeLayout>
-
-
     </LinearLayout>
 
 

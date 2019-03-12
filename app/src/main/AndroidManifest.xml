@@ -52,7 +52,7 @@
         <activity
             android:name=".MainAct"
             android:screenOrientation="portrait"
-            android:theme="@style/TranslucentTheme" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".LoginAct"
             android:screenOrientation="portrait"
@@ -69,11 +69,21 @@
             android:name=".ProgramAct.InputAddrAct"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ProgramAct.UserAddHomeAddr"
+            android:name=".ProgramAct.UserAddHomeAddrAct"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ProgramAct.UserComment"
+            android:name=".ProgramAct.UserCommentAct"
             android:screenOrientation="portrait" />
+        <activity android:name=".ProgramAct.UserContextAct"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ProgramAct.UserAllAddrsAct"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ProgramAct.zaozaoMainAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme"
+            />
     </application>
 
 </manifest>
