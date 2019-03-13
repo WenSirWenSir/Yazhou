@@ -2,6 +2,7 @@ package com.zbyj.Yazhou;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -37,10 +38,14 @@ public class LoginAct extends YazhouActivity {
      * 获取到的View的系统监听事件
      */
     private void Listener() {
+        Typeface typeface = Typeface.createFromAsset(getApplicationContext().getAssets(),
+                "font/main_number" + ".ttf");
+        activity_login_inputPhone.setTypeface(typeface);
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                YaZhouStartActivityWithBundler(EndlogCode.class,true,config.ACTIVITY_ACTION_PHONE, activity_login_inputPhone.getText().toString());
+                YaZhouStartActivityWithBundler(EndlogCode.class, true, config
+                        .ACTIVITY_ACTION_PHONE, activity_login_inputPhone.getText().toString());
             }
         });
     }
@@ -53,11 +58,13 @@ public class LoginAct extends YazhouActivity {
         //注册登录边框
         GradientDrawable btn_regBackground = (GradientDrawable) btn_reg.getBackground();
         btn_regBackground.setStroke(0, R.color.TextAndBodyColor);
-        btn_regBackground.setColor(Color.parseColor(getResources().getString(R.color.TextAndBodyColor)));
+        btn_regBackground.setColor(Color.parseColor(getResources().getString(R.color
+                .TextAndBodyColor)));
 
         //头部图标
         GradientDrawable headicoBackground = (GradientDrawable) headIco.getBackground();
-        headicoBackground.setStroke(10, Color.BLACK);
+        headicoBackground.setStroke(5, Color.parseColor("#e9e9e9"));
+        headicoBackground.setColor(Color.parseColor("#e9e9e9"));
     }
 
     @Override

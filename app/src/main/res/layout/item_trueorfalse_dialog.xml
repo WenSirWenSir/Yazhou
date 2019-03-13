@@ -27,7 +27,10 @@
         android:id="@+id/item_trueorfalse_dialog_content"
         android:text=""
         android:textSize="15dp"
-        android:padding="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp"
         />
     <LinearLayout
         android:layout_width="match_parent"

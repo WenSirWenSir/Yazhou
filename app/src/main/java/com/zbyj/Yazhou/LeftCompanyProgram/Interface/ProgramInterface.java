@@ -1,0 +1,1 @@
+package com.zbyj.Yazhou.LeftCompanyProgram.Interface;/** * 大家都可以用的接口 */public interface ProgramInterface {    public void onSucess(String data,int code);    public void onFaile(String data,int code);    /**     * 短信发送接口     */    public interface SMSInterface{        void onSendOk();        void onSendError();    }}

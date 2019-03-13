@@ -11,7 +11,10 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +22,10 @@ import android.widget.Toast;
 import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
 import com.zbyj.Yazhou.Factory.LoginActFactory;
 import com.zbyj.Yazhou.Interface.UserInterface;
+import com.zbyj.Yazhou.LeftCompanyProgram.Config;
+import com.zbyj.Yazhou.LeftCompanyProgram.Interface.ProgramInterface;
 import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
+import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -30,7 +36,7 @@ import java.util.TimerTask;
  * 输入手机验证码界面
  */
 public class EndlogCode extends YazhouActivity {
-    private TextView btn_login;
+    private TextView btn_login, tv_sendStatus;
     private Handler handler;
     private int position = 60;
     private GradientDrawable btn_encodeDrawable;
@@ -54,8 +60,20 @@ public class EndlogCode extends YazhouActivity {
 
     private void Listener() {
         inputCodeET.clear();//清空原先有的数据信息
+
+        /**
+         * 执行一个动画
+         */
+        RotateAnimation rotateAnimation = new RotateAnimation(0f, 360f, Animation
+                .RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        rotateAnimation.setFillAfter(true);
+        ImageView ico_img = findViewById(R.id.activity_entlogincode_icoImg);
+        tv_sendStatus = findViewById(R.id.activity_entlogincode_sendSmsStatus);
+        rotateAnimation.setDuration(1500);
+        ico_img.setAnimation(rotateAnimation);
         /**
          * 循环取出EditText添加监听
+         *
          */
         for (int i = 0; i < 4; i++) {
             //取出EditText的父布局
@@ -89,7 +107,23 @@ public class EndlogCode extends YazhouActivity {
     private void init() {
         //获取界面传值
         phone = getBundlerValue(config.ACTIVITY_ACTION_PHONE);
-        tools.sendVerificationCodeSMS(getApplicationContext(), phone);
+        Tools.sendVerificationCodeSMS(getApplicationContext(), phone, new ProgramInterface
+                .SMSInterface() {
+            @Override
+            public void onSendOk() {
+                //发送短信验证码完成
+                tv_sendStatus.setText("验证码已经发送至您的手机,请检查您的短信");
+                Toast.makeText(getApplicationContext(), "发送成功", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onSendError() {
+                //发送短信验证码失败
+                Toast.makeText(getApplicationContext(), "网络异常", Toast.LENGTH_SHORT).show();
+                tv_sendStatus.setText("网络异常,点击重新发送短信");
+
+            }
+        });
         //调用发送短信模块
         inCodeBody = findViewById(R.id.activity_entlogincode_inCodeBody);
         handler = new Handler() {
@@ -105,7 +139,8 @@ public class EndlogCode extends YazhouActivity {
                             t.cancel();
                             //标题重写
                             btn_login.setText("再次发送");
-                            btn_encodeDrawable.setColor(Color.parseColor(getResources().getString(R.color.TextAndBodyColor)));
+                            btn_encodeDrawable.setColor(Color.parseColor(getResources().getString
+                                    (R.color.TextAndBodyColor)));
                             t = null;
                             System.gc();
                             btn_login.setTag("0");//表示没有在获取验证码操作
@@ -188,36 +223,36 @@ public class EndlogCode extends YazhouActivity {
                         verificationCode += inputCodeET.get(y).getText().toString().trim();
                     }
                     //开始验证验证码
-                    LoginActFactory.isCodecorrect(getApplicationContext(), tools.getStringMD5(phone), verificationCode, new UserInterface.userCheckVerificationOndone() {
-                        /**
-                         * 系统处理完用户提交的验证码和手机信息
-                         *
-                         * @param jsonEndata
-                         */
+                    Tools.checkVerficationCode(getApplicationContext(), phone, verificationCode,
+                            new ProgramInterface() {
                         @Override
-                        public void ondone(JsonEndata jsonEndata) {
-                            String status = jsonEndata.getJsonKeyValue(config.USER_LOGIN_CHECK_STATUS);//获取登录状态
-                            if (status.equals(config.USER_LOGIN_SUCESS)) {
-                                //保存用户的数据信息
-                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.MESSAGE_LOGIN_SUCESS), Toast.LENGTH_SHORT).show();
-                                tools.settoKen(getApplicationContext(), config.SAVE_LOCAL_USERPHONE, phone);//设置手机号
-                                tools.settoKen(getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN, jsonEndata.getJsonKeyValue(USER_KEY_PAGE.KEY_TOKEN));//设置token
-                                tools.settoKen(getApplicationContext(),USER_KEY_PAGE.KEY_SEX,jsonEndata.getJsonKeyValue(USER_KEY_PAGE.KEY_SEX));//设置性别
+                        public void onSucess(String data, int code) {
+                            Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT)
+                                    .show();
+                            JsonEndata jsonEndata = new JsonEndata(data);
+                            if (jsonEndata.getJsonKeyValue(Config.HttpMethodUserAction
+                                    .KEY_STATUS).equals(Config.HttpMethodUserAction
+                                    .STATUS_LOGINOK)) {
+                                //登录成功
+                                Toast.makeText(getApplicationContext(), "验证成功", Toast
+                                        .LENGTH_SHORT).show();
+                            } else if (jsonEndata.getJsonKeyValue(Config.HttpMethodUserAction
+                                    .KEY_STATUS).equals(Config.HttpMethodUserAction
+                                    .STATUS_LOGCODE_TOMUCH)) {
+                                //错误次数太多
+                                Toast.makeText(getApplicationContext(), "错误次数太多,限制登录", Toast
+                                        .LENGTH_SHORT).show();
 
-                                //判断用户的性别是不是为空 如果为空就要跳出设置窗口设置用户的性别
-                                if (TextUtils.isEmpty(jsonEndata.getJsonKeyValue(USER_KEY_PAGE.KEY_SEX))) {
-                                    //是空为第一次注册
-                                    YaZhouStartActivity(SelectSexAct.class, true);
-                                } else {
-                                    //用户不是第一次登陆就直接跳转到主界面
-                                    YaZhouStartActivity(MainAct.class,true);
-
-                                }
-                            } else if (status.equals(config.USER_LOGIN_FAIL)) {
-                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.MESSAGE_USER_LOGIN_FAIL), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.MESSAGE_LOGIN_VERIFICATION_ERROR), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "验证码错误", Toast
+                                        .LENGTH_SHORT).show();
                             }
+
+                        }
+
+                        @Override
+                        public void onFaile(String data, int code) {
+
                         }
                     });
                 } else {

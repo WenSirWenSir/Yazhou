@@ -4,6 +4,22 @@ public class Config {
 
     public static final String DEBUG = "LeftCompanyProgram";
 
+    public static class HttpMethodUserAction{
+        public static final int SEND_VERIFICATION = 0;
+        public static final String KEY_ACTION = "action";
+        public static final String KEY_USER = "user_md5";
+        public static final String KEY_TOKEN = "user_token";
+        public static final String KEY_STATUS = "status";//键值 获取状态
+        public static final String KEY_PHONE  = "user_phone";
+        public static final String KEY_CODE  = "user_code";
+        public static final String STATUS_SENDOK = "0";
+        public static final String STATUS_LOGINOK = "0";
+        public static final String STATUS_LOGCODE_ERROR = "-3";//验证码错误
+        public static final String STATUS_LOGCODE_TOMUCH = "-2";//错误次数太多
+        public static final String CHECK_VERIFICATION = "1";
+        public static final int UPDATE_USER_VALUES = 1;
+    }
+
     /**
      * http request use method
      */
@@ -11,7 +27,6 @@ public class Config {
         public static final String HTTP_GET = "0";//use get
         public static final String HTTP_POST = "1";//use post
     }
-
 
     /**
      * gets the value in the returned data
@@ -55,6 +70,11 @@ public class Config {
         public static final String USER_ABOUT = "user_about";
         public static final String USER_SIGNATURE = "user_signature";
         public static final String USER_LAST_INCOORD = "last_incoord";//The user last logged incoord,longitude in the former，the dimension in the end
+        public static final String USER_EDUCATION = "education";//学历
+        public static final String USER_INTEREST = "interest";//爱好
+        public static final String USER_UNIT  = "unit";//单位
+        public static final String USER_ISBLACK_LIST = "black_list";//用户是否黑名单  0 表示不是 1 表示为黑名单
+
     }
 
 
@@ -63,7 +83,7 @@ public class Config {
      * For example, send smsService,user login,get user data,update user data
      */
     public static class HTTP_ADDR {
-        public static String SERVICE = "http://47.102.205.26";
+        public static String SERVICE = "http://47.102.205.26/";
 
         /**
          * get the address of the interface to send SMS captha
@@ -74,7 +94,14 @@ public class Config {
          * @return
          */
         public static String SendVerificationCodeAddr() {
-            return HTTP_ADDR.SERVICE + "";
+            return HTTP_ADDR.SERVICE + "reg/register.php";
+        }
+
+        /**
+         * 获取检查验证码的地址
+         */
+        public static String CheckVerificationAddr(){
+            return HTTP_ADDR.SERVICE + "reg/register.php";
         }
     }
 

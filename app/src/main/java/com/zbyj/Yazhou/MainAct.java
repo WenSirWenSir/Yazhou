@@ -7,12 +7,18 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.NotificationManager;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -30,15 +36,10 @@ import com.zbyj.Yazhou.Utils.NotificationUtils;
 import java.util.Timer;
 
 public class MainAct extends YazhouActivity {
-    private VideoView videoView;
-    private LinearLayout headView, activity_mainloginstatusBody;
-    private FrameLayout mainShoplistBody;
     private NotificationManager notificationManager;
     private FragmentManager fragmentTransaction;
-    private Handler handler;
-    private TextView headStatue;
     private Timer Reversetimer, PriceAni;
-    private RelativeLayout btn_Order, btn_Orderlist, btn_OrderUserpage;
+    private ImageView btn_Order, btn_Orderlist, btn_OrderUserpage;
     private MainFrame mainFrame = null;
     private OrderListFrame orderListFrame = null;
     private UserPageFrame userPageFrame = null;
@@ -54,7 +55,6 @@ public class MainAct extends YazhouActivity {
         Toast.makeText(getApplicationContext(), Config.JSON_USERPAGE.USER_LEFTCOMPANY_ID, Toast
                 .LENGTH_SHORT).show();
         hideBottomUIMenu();
-
         /**
          * 检查是否有虚拟键盘
          */
@@ -66,18 +66,16 @@ public class MainAct extends YazhouActivity {
     @SuppressLint("ResourceType")
     private void init() {
         fragmentTransaction = getFragmentManager();
-        btn_Order = findViewById(R.id.activity_mainBtnOder);
-        btn_Orderlist = findViewById(R.id.activity_mainBtnOderList);
-        btn_OrderUserpage = findViewById(R.id.activity_mainBtnUserpage);
+        btn_Order = findViewById(R.id.activity_main_btnOrder);
+        btn_Orderlist = findViewById(R.id.activity_main_btnOrderlist);
+        btn_OrderUserpage = findViewById(R.id.activity_main_btnUserpage);
         //用来标识用户是否登录的父布局
+        YaZhouStartActivity(LoginAct.class,false);
         if (tools.gettoKen(getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN).equals("")) {
             Toast.makeText(getApplicationContext(), "您还没有登录哦,请你登录之后使用", Toast.LENGTH_LONG).show();
-            // View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout
-            //         .item_main_nologin, null);
-            // activity_mainloginstatusBody.removeAllViews();
-            //  activity_mainloginstatusBody.addView(view);
             //设置预定为登录按钮
         } else {
+            //已经登录  就去获取用户的地址首页地址信息
         }
         Listener();
         Visit();
@@ -118,10 +116,15 @@ public class MainAct extends YazhouActivity {
          * 界面切换监听
          */
         selectFrame(config.FRAMELAYOUT_ORDER);
+
+        final Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim
+                .android_anim_big_to_smail);
         btn_Order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"1",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "1", Toast.LENGTH_SHORT).show();
+                //开始动画
+                btn_Order.startAnimation(animation);
                 selectFrame(config.FRAMELAYOUT_ORDER);
             }
         });
@@ -129,6 +132,8 @@ public class MainAct extends YazhouActivity {
             @Override
             public void onClick(View v) {
                 selectFrame(config.FRAMELAYOUT_ORDERLIST);
+                btn_Orderlist.startAnimation(animation);
+
             }
         });
 
@@ -136,6 +141,8 @@ public class MainAct extends YazhouActivity {
             @Override
             public void onClick(View v) {
                 selectFrame(config.FRAMELAYOUT_USERPAGE);
+                btn_OrderUserpage.startAnimation(animation);
+
             }
         });
     }
@@ -143,32 +150,29 @@ public class MainAct extends YazhouActivity {
     private void selectFrame(int position) {
         FragmentTransaction ft = fragmentTransaction.beginTransaction();
         hideFrame(ft);//先隐藏全部的Frament
-        switch (position){
+        switch (position) {
             case config.FRAMELAYOUT_ORDER:
-                if(mainFrame != null ){
+                if (mainFrame != null) {
                     ft.show(mainFrame);
-                }
-                else {
+                } else {
                     mainFrame = new MainFrame();
-                    ft.add(R.id.activity_main_Frame,mainFrame);
+                    ft.add(R.id.activity_main_Frame, mainFrame);
                 }
                 break;
             case config.FRAMELAYOUT_ORDERLIST:
-                if(orderListFrame != null){
+                if (orderListFrame != null) {
                     ft.show(orderListFrame);
-                }
-                else{
+                } else {
                     orderListFrame = new OrderListFrame();
-                    ft.add(R.id.activity_main_Frame,orderListFrame);
+                    ft.add(R.id.activity_main_Frame, orderListFrame);
                 }
                 break;
             case config.FRAMELAYOUT_USERPAGE:
-                if(userPageFrame != null){
+                if (userPageFrame != null) {
                     ft.show(userPageFrame);
-                }
-                else{
+                } else {
                     userPageFrame = new UserPageFrame();
-                    ft.add(R.id.activity_main_Frame,userPageFrame);
+                    ft.add(R.id.activity_main_Frame, userPageFrame);
                 }
                 break;
         }
@@ -179,10 +183,10 @@ public class MainAct extends YazhouActivity {
         if (mainFrame != null) {
             ft.hide(mainFrame);
         }
-        if(orderListFrame != null){
+        if (orderListFrame != null) {
             ft.hide(orderListFrame);
         }
-        if(userPageFrame != null){
+        if (userPageFrame != null) {
             ft.hide(userPageFrame);
         }
     }

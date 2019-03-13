@@ -11,7 +11,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="70dp"
         android:id="@+id/activity_main_Frame"
         >
 
@@ -20,7 +20,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:paddingTop="5dp"
         android:background="#f2f2f2"
         android:paddingBottom="5dp"
@@ -31,24 +31,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/activity_mainBtnOder"
             >
 
             <ImageView
                 android:id="@+id/activity_main_btnOrder"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/ico_addr" />
+                android:scaleType="center"
+                android:src="@drawable/ico_main" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_below="@id/activity_main_btnOrder"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="预定中心"
-                android:textColor="@color/purple"
+                android:textColor="#000000"
                 android:textSize="12dp" />
 
         </RelativeLayout>
@@ -57,24 +57,49 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/activity_mainBtnOderList"
             >
 
             <ImageView
                 android:id="@+id/activity_main_btnOrderlist"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/ico_addr" />
+                android:scaleType="center"
+                android:src="@drawable/ico_delivery" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_below="@id/activity_main_btnOrderlist"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="配送中"
-                android:textColor="@color/purple"
+                android:textColor="#bfbfbf"
+                android:textSize="12dp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+
+            <ImageView
+                android:id="@+id/activity_main_btnReview"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="center"
+                android:src="@drawable/ico_comment" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@id/activity_main_btnReview"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="早早点评"
+                android:textColor="#bfbfbf"
                 android:textSize="12dp" />
 
         </RelativeLayout>
@@ -83,24 +108,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/activity_mainBtnUserpage"
             >
 
             <ImageView
                 android:id="@+id/activity_main_btnUserpage"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:scaleType="center"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/ico_addr" />
+                android:src="@drawable/ico_sir" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_below="@id/activity_main_btnUserpage"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="个人中心"
-                android:textColor="@color/purple"
+                android:textColor="#bfbfbf"
                 android:textSize="12dp" />
 
         </RelativeLayout>

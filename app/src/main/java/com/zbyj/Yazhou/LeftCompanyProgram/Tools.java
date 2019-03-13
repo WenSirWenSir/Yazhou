@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.zbyj.Yazhou.LeftCompanyProgram.Interface.ProgramInterface;
 import com.zbyj.Yazhou.R;
 
 import java.io.File;
@@ -30,7 +31,8 @@ public class Tools {
      * @return
      */
     public static boolean isIntentConnect(Context context) {
-        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context
+                .CONNECTIVITY_SERVICE);
         if (manager == null) {
             return false;
         } else {
@@ -128,7 +130,8 @@ public class Tools {
      *
      * @param tPhone 电话号码
      */
-    public static void sendVerificationCodeSMS(final Context tContext, String tPhone) {
+    public static void sendVerificationCodeSMS(final Context tContext, String tPhone, final
+    ProgramInterface.SMSInterface listener) {
 
 
         Net.InterServiceGet(tContext, Config.HTTP_ADDR.SendVerificationCodeAddr(), new Net
@@ -136,11 +139,11 @@ public class Tools {
             @Override
             public void onSucess(String tOrgin) {
                 JsonEndata jsonEndata = new JsonEndata(tOrgin);
-                if (jsonEndata.getJsonKeyValue(Config.HttpMethodRequestStatus.HTTP_REQUEST_STATUS).equals(Config.SMS
-                        .SEND_SMS_OK)) {
-                    Toast.makeText(tContext, "短信发送成功,请注意查收", Toast.LENGTH_SHORT).show();
+                if (jsonEndata.getJsonKeyValue(Config.HttpMethodUserAction.KEY_STATUS).equals
+                        (Config.HttpMethodUserAction.STATUS_SENDOK)) {
+                    listener.onSendOk();
                 } else {
-                    Toast.makeText(tContext, "短信发送失败,请检查您的网络是否连接", Toast.LENGTH_SHORT).show();
+                    listener.onSendError();
                 }
             }
 
@@ -153,7 +156,9 @@ public class Tools {
             public void onFail(String tOrgin) {
 
             }
-        }, "phone", tPhone);
+        }, Config.HttpMethodUserAction.KEY_ACTION, "" + Config.HttpMethodUserAction
+                .SEND_VERIFICATION, Config.HttpMethodUserAction.KEY_USER, Tools.getStringMD5
+                (tPhone), Config.HttpMethodUserAction.KEY_PHONE, tPhone);
 
     }
 
@@ -199,7 +204,8 @@ public class Tools {
      */
     @SuppressLint({"NewApi", "MissingPermission"})
     public static String getsystemDevicdeId(Context tContext) {
-        TelephonyManager telephonyManager = (TelephonyManager) tContext.getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager telephonyManager = (TelephonyManager) tContext.getSystemService(Context
+                .TELEPHONY_SERVICE);
         try {
             return telephonyManager.getImei();
         } catch (Exception e) {
@@ -211,7 +217,8 @@ public class Tools {
     /**
      * change the background lines and background color
      */
-    public static void setBackgroundValues(View view, int StorkeWith, String StorkeColor, String BackgroundColor) {
+    public static void setBackgroundValues(View view, int StorkeWith, String StorkeColor, String
+            BackgroundColor) {
         GradientDrawable gradientDrawable = (GradientDrawable) view.getBackground();//get view
         // background
         if (StorkeWith != 0) {
@@ -238,9 +245,10 @@ public class Tools {
      *                        getAlertViewIDpageInstance to get
      */
 
-    public static void showAlertDilg(View view, Context mConext, String title, String context, String cancleStr,
-                                     String confirmStr, final AlertDilgClick alertDilgClick, ConfigPageClass
-                                             .AlertViewIDpage alertViewIDpage) {
+    public static void showAlertDilg(View view, Context mConext, String title, String context,
+                                     String cancleStr, String confirmStr, final AlertDilgClick
+                                             alertDilgClick, ConfigPageClass.AlertViewIDpage
+                                             alertViewIDpage) {
         if (alertViewIDpage != null) {
             final AlertDialog alertDialog = new AlertDialog.Builder(mConext).create();
             alertViewIDpage.getTitle().setText(title);
@@ -281,4 +289,43 @@ public class Tools {
 
         void onCancle(AlertDialog alertDialog);
     }
+
+
+    /**
+     * 检查验证码是否正确
+     */
+    public static void checkVerficationCode(Context tContext, String phone, String code, final
+    ProgramInterface programInterface) {
+        Net.InterServiceGet(tContext, Config.HTTP_ADDR.CheckVerificationAddr(), new Net
+                .onVisitInterServiceListener() {
+            @Override
+            public void onSucess(String tOrgin) {
+                if (programInterface != null) {
+                    programInterface.onSucess(tOrgin, 0);
+
+                }
+            }
+
+            @Override
+            public void onNotConnect() {
+                if (programInterface != null) {
+                    programInterface.onFaile("", 0);
+                }
+
+
+            }
+
+            @Override
+            public void onFail(String tOrgin) {
+                if (programInterface != null) {
+                    programInterface.onFaile("", 0);
+                }
+
+            }
+        }, Config.HttpMethodUserAction.KEY_ACTION, Config.HttpMethodUserAction
+                .CHECK_VERIFICATION, Config.HttpMethodUserAction.KEY_USER, Tools.getStringMD5
+                (phone), Config.HttpMethodUserAction.KEY_CODE, code);
+
+    }
+
 }
