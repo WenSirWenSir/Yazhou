@@ -114,8 +114,7 @@ public class UserCommentAct extends YazhouActivity {
                     //that means we have data,Prompt the user for data
                     View item = LayoutInflater.from(getApplicationContext()).inflate(R.layout
                             .item_trueorfalse_dialog, null);
-                    ConfigPageClass configPageClass = new ConfigPageClass();
-                    ConfigPageClass.AlertViewIDpage alertViewIDpage = configPageClass
+                    ConfigPageClass.AlertViewIDpage alertViewIDpage = ConfigPageClass
                             .getAlertViewIDpageInstance();
                     TextView item_title = item.findViewById(R.id.item_trueorfalse_dialog_title);
                     alertViewIDpage.setTitle(item_title);

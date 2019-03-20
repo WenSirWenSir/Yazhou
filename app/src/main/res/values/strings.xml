@@ -9,5 +9,5 @@
     <string name="MESSAGE_LOGIN_VERIFICATION_ERROR">您的验证码输入有误,请检查</string>
     <string name="UPDATE_USERSEX_SUCESS">设置完成</string>
     <string name="INTER_ERROR">网络访问错误</string>
-    <string name="MESSAGE_LOGIN_USERFIRST">系统检测到您是第一次登录,是否马上去添加一个收件的地址呢?</string>
+    <string name="MESSAGE_LOGIN_USERFIRST">系统检测到您是第一次登录,为了您的订餐顺利.我们需要您留一个默认的收件地址,是否带您去设置地址呢?您可以在个人中心中管理收件地址</string>
 </resources>

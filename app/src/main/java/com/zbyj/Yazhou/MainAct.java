@@ -33,6 +33,7 @@ import com.zbyj.Yazhou.ProgramFrame.OrderListFrame;
 import com.zbyj.Yazhou.ProgramFrame.UserPageFrame;
 import com.zbyj.Yazhou.Utils.NotificationUtils;
 
+import java.util.ArrayList;
 import java.util.Timer;
 
 public class MainAct extends YazhouActivity {
@@ -40,6 +41,8 @@ public class MainAct extends YazhouActivity {
     private FragmentManager fragmentTransaction;
     private Timer Reversetimer, PriceAni;
     private ImageView btn_Order, btn_Orderlist, btn_OrderUserpage;
+    private TextView btn_OrderTitle,btn_OrderlistTitle,btn_OrderUserpageTitle;
+    private ArrayList<TextView> btn_title = new ArrayList<TextView>();
     private MainFrame mainFrame = null;
     private OrderListFrame orderListFrame = null;
     private UserPageFrame userPageFrame = null;
@@ -67,8 +70,14 @@ public class MainAct extends YazhouActivity {
     private void init() {
         fragmentTransaction = getFragmentManager();
         btn_Order = findViewById(R.id.activity_main_btnOrder);
+        btn_OrderTitle = findViewById(R.id.activity_main_btnOrder_Title);//用户的主界面标题
+        btn_title.add(btn_OrderTitle);
         btn_Orderlist = findViewById(R.id.activity_main_btnOrderlist);
+        btn_OrderlistTitle = findViewById(R.id.activity_main_btnOrderlist_Title);//用户的订单界面标题
+        btn_title.add(btn_OrderlistTitle);
         btn_OrderUserpage = findViewById(R.id.activity_main_btnUserpage);
+        btn_OrderUserpageTitle = findViewById(R.id.activity_main_btnUserpage_Title);//用户的界面标题
+        btn_title.add(btn_OrderUserpageTitle);
         //用来标识用户是否登录的父布局
         YaZhouStartActivity(LoginAct.class,false);
         if (tools.gettoKen(getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN).equals("")) {
@@ -120,28 +129,45 @@ public class MainAct extends YazhouActivity {
         final Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim
                 .android_anim_big_to_smail);
         btn_Order.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "1", Toast.LENGTH_SHORT).show();
                 //开始动画
                 btn_Order.startAnimation(animation);
                 selectFrame(config.FRAMELAYOUT_ORDER);
+                //更新标题颜色
+                for (int i = 0;i < btn_title.size();i++){
+                    btn_title.get(i).setTextColor(Color.BLACK);
+                }
+                btn_OrderTitle.setTextColor(Color.parseColor(getResources().getString(R.color.btn_titlecolor)));
             }
         });
         btn_Orderlist.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
                 selectFrame(config.FRAMELAYOUT_ORDERLIST);
                 btn_Orderlist.startAnimation(animation);
+                //更新标题颜色
+                for (int i = 0;i < btn_title.size();i++){
+                    btn_title.get(i).setTextColor(Color.BLACK);
+                }
+                btn_OrderlistTitle.setTextColor(Color.parseColor(getResources().getString(R.color.btn_titlecolor)));
 
             }
         });
 
         btn_OrderUserpage.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
                 selectFrame(config.FRAMELAYOUT_USERPAGE);
                 btn_OrderUserpage.startAnimation(animation);
+                //更新标题颜色
+                for (int i = 0;i < btn_title.size();i++){
+                    btn_title.get(i).setTextColor(Color.BLACK);
+                }
+                btn_OrderUserpageTitle.setTextColor(Color.parseColor(getResources().getString(R.color.btn_titlecolor)));
 
             }
         });

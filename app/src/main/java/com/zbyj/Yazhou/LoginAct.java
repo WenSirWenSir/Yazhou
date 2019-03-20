@@ -1,6 +1,7 @@
 package com.zbyj.Yazhou;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -11,6 +12,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
+import com.zbyj.Yazhou.LeftCompanyProgram.Factory.DialogFactory;
+import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
 
 public class LoginAct extends YazhouActivity {
     private TextView btn_reg;

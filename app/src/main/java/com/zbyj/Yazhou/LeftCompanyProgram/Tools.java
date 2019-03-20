@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.provider.DocumentsContract;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
@@ -16,11 +17,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.XMLUserAddr;
 import com.zbyj.Yazhou.LeftCompanyProgram.Interface.ProgramInterface;
 import com.zbyj.Yazhou.R;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.security.MessageDigest;
+import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 public class Tools {
 
@@ -251,34 +266,57 @@ public class Tools {
                                              alertViewIDpage) {
         if (alertViewIDpage != null) {
             final AlertDialog alertDialog = new AlertDialog.Builder(mConext).create();
-            alertViewIDpage.getTitle().setText(title);
-            alertViewIDpage.getContext().setText(context);
-            alertViewIDpage.getCancle().setText(cancleStr);
-            alertViewIDpage.getConfirm().setText(confirmStr);
-            // cancle
-            alertViewIDpage.getCancle().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (alertDilgClick != null) {
+            if (alertViewIDpage.getConfirm() != null) {
+                alertViewIDpage.getCancle().setText(cancleStr);
+                alertViewIDpage.getCancle().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (alertDilgClick != null) {
 
-                        alertDilgClick.onCancle(alertDialog);
+                            alertDilgClick.onCancle(alertDialog);
+                        }
                     }
-                }
-            });
-            //btn confirm
-            alertViewIDpage.getConfirm().setText(confirmStr);
-            alertViewIDpage.getConfirm().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (alertDilgClick != null) {
-                        alertDilgClick.onConfirm(alertDialog);
+                });
+
+            } else {
+                Log.e(Config.DEBUG,"Tools.java[+]表里的值为空{0001}");
+
+            }
+            if (alertViewIDpage.getTitle() != null) {
+                alertViewIDpage.getTitle().setText(title);
+            } else {
+                Log.e(Config.DEBUG,"Tools.java[+]表里的值为空{0001}");
+
+            }
+            if (alertViewIDpage.getContext() != null) {
+                alertViewIDpage.getContext().setText(context);
+            } else {
+                Log.e(Config.DEBUG,"Tools.java[+]表里的值为空{0001}");
+
+            }
+            if (alertViewIDpage.getConfirm() != null) {
+                alertViewIDpage.getConfirm().setText(confirmStr);
+                alertViewIDpage.getConfirm().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (alertDilgClick != null) {
+                            alertDilgClick.onConfirm(alertDialog);
+                        }
                     }
-                }
-            });
+                });
+
+            } else {
+                Log.e(Config.DEBUG,"Tools.java[+]表里的值为空{0001}");
+            }
+
+            if(alertViewIDpage.isCanwindow()){
+                Log.e(Config.DEBUG,"Tools.java[+]表里的值为空{0002}");
+            }
             alertDialog.setView(view);
             alertDialog.show();
 
         } else {
+            Log.e(Config.DEBUG, "Tools.java[+]表是空的");
 
         }
 
@@ -328,4 +366,59 @@ public class Tools {
 
     }
 
+
+    public static ArrayList<XMLUserAddr>  XMLDomeService(InputStream is) throws Exception {
+        ArrayList<XMLUserAddr> list = new ArrayList<XMLUserAddr>();
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
+        Document document = builder.parse(is);
+        Element element = document.getDocumentElement();//获取元素
+        NodeList  nodes = element.getElementsByTagName("addrs");
+        Log.i(Config.DEBUG,"nodes总数为：" + nodes.getLength());
+        for(int i = 0;i < nodes.getLength();i++){
+            Element bodyelement = (Element) nodes.item(i);
+            XMLUserAddr xmlUserAddr = new XMLUserAddr();
+            NodeList childNodes = bodyelement.getChildNodes();
+            Log.i(Config.DEBUG,"childnodes总数：" + childNodes.getLength());
+            for(int y = 0;y < childNodes.getLength();y++){
+                if(childNodes.item(y).getNodeType() == Node.ELEMENT_NODE){
+                    if("USER_NAME".equals(childNodes.item(y).getNodeName())){
+                        //用户的名称
+                        Log.i(Config.DEBUG,"获取到的名称" + childNodes.item(y).getFirstChild().getNodeValue());
+                        xmlUserAddr.setUSER_NAME(childNodes.item(y).getFirstChild().getNodeValue());
+                    }
+                    else if("USER_TEL".equals(childNodes.item(y).getNodeName())){
+                        Log.i(Config.DEBUG,"获取到的电话" + childNodes.item(y).getFirstChild().getNodeValue());
+                        xmlUserAddr.setUSER_TEL(childNodes.item(y).getFirstChild().getNodeValue());
+                    }
+                    else if("USER_ADDR".equals(childNodes.item(y).getNodeName())){
+                        Log.i(Config.DEBUG,"获取到的地址" + childNodes.item(y).getFirstChild().getNodeValue());
+                        xmlUserAddr.setUSER_ADDR(childNodes.item(y).getFirstChild().getNodeValue());
+                    }
+                    else if("PHYSICS_ADDR".equals(childNodes.item(y).getNodeName())){
+                        Log.i(Config.DEBUG,"获取到的物理地址" + childNodes.item(y).getFirstChild().getNodeValue());
+                        xmlUserAddr.setPHYSICS_ADDR(childNodes.item(y).getFirstChild().getNodeValue());
+                    }
+                    else if("ADDR_IN".equals(childNodes.item(y).getNodeName())){
+                        Log.i(Config.DEBUG,"获取到的地址所属" + childNodes.item(y).getFirstChild().getNodeValue());
+                        xmlUserAddr.setADDR_IN(childNodes.item(y).getFirstChild().getNodeValue());
+                    }
+                    else if("USER_SEX".equals(childNodes.item(y).getNodeName())){
+                        Log.i(Config.DEBUG,"获取到的用户的性别" + childNodes.item(y).getFirstChild().getNodeValue());
+                        xmlUserAddr.setUSER_SEX(childNodes.item(y).getFirstChild().getNodeValue());
+                    }
+                    else if("USER_YEAR".equals(childNodes.item(y).getNodeName())){
+                        Log.i(Config.DEBUG,"获取到的用户的年龄" + childNodes.item(y).getFirstChild().getNodeValue());
+                        xmlUserAddr.setUSER_YEAR(childNodes.item(y).getFirstChild().getNodeValue());
+                    }
+                    else if("DEFAULT_ADDR".equals(childNodes.item(y).getNodeName())){
+                        Log.i(Config.DEBUG,"获取到是否默认地址" + childNodes.item(y).getFirstChild().getNodeValue());
+                        xmlUserAddr.setDEFAULT_ADDR(childNodes.item(y).getFirstChild().getNodeValue());
+                    }
+                }
+            }
+            list.add(xmlUserAddr);
+        }
+        return list;
+    }
 }

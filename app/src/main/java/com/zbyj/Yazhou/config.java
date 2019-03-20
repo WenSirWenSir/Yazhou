@@ -140,13 +140,7 @@ public class config {
         return SERVICE_ADDR + "/tools/SEND_VERIFICATION.php";
     }
 
-    /**
-     * 获取用户的网络服务工厂地址
-     */
 
-    public static String getUsermoduleIntentFactory() {
-        return SERVICE_ADDR + "/tools/USER_TOOLS.php";
-    }
 
     /**
      * 界面

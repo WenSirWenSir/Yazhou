@@ -4,19 +4,30 @@ public class Config {
 
     public static final String DEBUG = "LeftCompanyProgram";
 
-    public static class HttpMethodUserAction{
+    public static class HttpMethodUserAction {
         public static final int SEND_VERIFICATION = 0;
+        public static final String GET_USERVAL = "get_userval";//获取用户的全部数据
+        public static final String GET_DEFAULT_ADDR = "get_userdefault_addr";//获取默认的收件地址
+        public static final String GET_ALLADDR = "get_alladdr";//获取用户的所有收件地址
+        public static final String UPDATE_USER_SEX = "update_user_sex";//更新用户的性别
         public static final String KEY_ACTION = "action";
         public static final String KEY_USER = "user_md5";
         public static final String KEY_TOKEN = "user_token";
         public static final String KEY_STATUS = "status";//键值 获取状态
-        public static final String KEY_PHONE  = "user_phone";
-        public static final String KEY_CODE  = "user_code";
+        public static final String KEY_PHONE = "user_phone";
+        public static final String KEY_CODE = "user_code";
+        public static final String KEY_UPDATESEX = "update_sex" ;//更新的用户的值键
         public static final String STATUS_SENDOK = "0";
         public static final String STATUS_LOGINOK = "0";
         public static final String STATUS_LOGCODE_ERROR = "-3";//验证码错误
         public static final String STATUS_LOGCODE_TOMUCH = "-2";//错误次数太多
+        public static final String STATUS_GETVALUES_NODATA = "2";//没有用户的数据信息
+        public static final String STATUS_GETVALUES_OK = "0";//获取完成
+        public static final String STATUS_GETVALUES_ERROR = "1";//token 过期
+        public static final String STATUS_SELECT_SEX_OK = "0";//更新用户的性别成功
+        public static final String STATUS_SELECT_SEX_ERROR = "1";//更新用户的性别失败
         public static final String CHECK_VERIFICATION = "1";
+
         public static final int UPDATE_USER_VALUES = 1;
     }
 
@@ -53,7 +64,6 @@ public class Config {
     public static class JSON_USERPAGE {
         public static final String USER_NAME = "name";
         public static final String USER_PHNOE = "phone";
-        public static final String USER_PHONE_MD5 = "phone_md5";
         public static final String USER_EROR_NUMBER = "err_number";
         public static final String USER_TOKEN = "token";
         public static final String USER_SEX = "sex";
@@ -69,11 +79,13 @@ public class Config {
         public static final String USER_HEADIMG = "head_img";
         public static final String USER_ABOUT = "user_about";
         public static final String USER_SIGNATURE = "user_signature";
-        public static final String USER_LAST_INCOORD = "last_incoord";//The user last logged incoord,longitude in the former，the dimension in the end
+        public static final String USER_LAST_INCOORD = "last_incoord";//The user last logged
+        // incoord,longitude in the former，the dimension in the end
         public static final String USER_EDUCATION = "education";//学历
         public static final String USER_INTEREST = "interest";//爱好
-        public static final String USER_UNIT  = "unit";//单位
+        public static final String USER_UNIT = "unit";//单位
         public static final String USER_ISBLACK_LIST = "black_list";//用户是否黑名单  0 表示不是 1 表示为黑名单
+        public static final String USER_PHONE_MD5 = "phone_md5";
 
     }
 
@@ -100,8 +112,28 @@ public class Config {
         /**
          * 获取检查验证码的地址
          */
-        public static String CheckVerificationAddr(){
+        public static String CheckVerificationAddr() {
             return HTTP_ADDR.SERVICE + "reg/register.php";
+        }
+
+        /**
+         * 获取用户page的地址
+         */
+        public static String getUser_init() {
+            return HTTP_ADDR.SERVICE + "user/user_init.php";
+        }
+
+
+        /**
+         * 要求更新用户的性别
+         * @return
+         */
+        public static String updateSex() {
+            return HTTP_ADDR.SERVICE + "user/user_init.php";
+
+        }
+        public static String getallAddr(){
+            return HTTP_ADDR.SERVICE + "user/user_init.php";
         }
     }
 

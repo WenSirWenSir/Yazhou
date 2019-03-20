@@ -1,6 +1,7 @@
 package com.zbyj.Yazhou;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -9,12 +10,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -112,8 +123,7 @@ public class tools {
         return null;
     }
 
-    public static int dip2px(Context context
-            , int dip) {
+    public static int dip2px(Context context, int dip) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dip * scale + 0.5f);
     }
@@ -164,8 +174,10 @@ public class tools {
      * @param act     对应要打开的窗口的地址
      */
     @SuppressLint("NewApi")
-    public static NotificationManager showStatueBarNotify(Context context, Class<?> act, int showImg, String showText) {
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+    public static NotificationManager showStatueBarNotify(Context context, Class<?> act, int
+            showImg, String showText) {
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService
+                (Context.NOTIFICATION_SERVICE);
         Notification.Builder builder = new Notification.Builder(context);
         Intent i = new Intent();
         i.setClass(context, act);
@@ -174,7 +186,8 @@ public class tools {
         builder.setContentIntent(pendingIntent);
         builder.setAutoCancel(true);
         builder.setSmallIcon(R.drawable.ico_bell);
-        builder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.ico_bell));
+        builder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable
+                .ico_bell));
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.item_notify);
         remoteViews.setImageViewResource(R.id.item_notify_img, showImg);
         remoteViews.setTextViewText(R.id.item_notify_text, showText);
@@ -194,12 +207,12 @@ public class tools {
      * @return
      */
     public static boolean isIntentConnect(Context context) {
-        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context
+                .CONNECTIVITY_SERVICE);
         if (manager == null) {
             return false;
         } else {
-            @SuppressLint("MissingPermission")
-            NetworkInfo[] info = manager.getAllNetworkInfo();
+            @SuppressLint("MissingPermission") NetworkInfo[] info = manager.getAllNetworkInfo();
             if (info != null) {
                 for (int i = 0; i < info.length; i++) {
                     if (info[i].getState() == NetworkInfo.State.CONNECTED) return true;
@@ -219,11 +232,13 @@ public class tools {
      */
     public static void sendVerificationCodeSMS(final Context tContext, String tPhone) {
 
-        Net.InterServiceGet(tContext, config.getSendVerificationAddr(), new Net.onVisitInterServiceListener() {
+        Net.InterServiceGet(tContext, config.getSendVerificationAddr(), new Net
+                .onVisitInterServiceListener() {
             @Override
             public void onSucess(String tOrgin) {
                 JsonEndata jsonEndata = new JsonEndata(tOrgin);
-                if (jsonEndata.getJsonKeyValue(config.WEB_SERVICE_SEND_MESSAGESTATUS).equals(config.SEND_MESSAGE_OK)) {
+                if (jsonEndata.getJsonKeyValue(config.WEB_SERVICE_SEND_MESSAGESTATUS).equals
+                        (config.SEND_MESSAGE_OK)) {
                     Toast.makeText(tContext, "短信发送成功,请注意查收", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(tContext, "短信发送失败,请检查您的网络是否连接", Toast.LENGTH_SHORT).show();
@@ -242,7 +257,6 @@ public class tools {
         }, "phone", tPhone);
 
     }
-
 
 
     /**
@@ -303,7 +317,8 @@ public class tools {
      */
     @SuppressLint({"NewApi", "MissingPermission"})
     public static String getsystemDevicdeId(Context tContext) {
-        TelephonyManager telephonyManager = (TelephonyManager) tContext.getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager telephonyManager = (TelephonyManager) tContext.getSystemService(Context
+                .TELEPHONY_SERVICE);
         try {
             return telephonyManager.getImei();
         } catch (Exception e) {
@@ -314,9 +329,9 @@ public class tools {
     /**
      * 计算两个地图点p1点 和 p2点之间的距离
      * 失败返回一个null
+     *
      * @param p1
      * @param p2
-     *
      */
     public static Double CalcMapdistance(LatLng p1, LatLng p2) {
         try {
@@ -326,9 +341,5 @@ public class tools {
             return null;
         }
     }
-
-
-
-
 
 }

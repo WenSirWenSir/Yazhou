@@ -20,9 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
-import com.zbyj.Yazhou.Factory.LoginActFactory;
-import com.zbyj.Yazhou.Interface.UserInterface;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyTools.Usertools;
 import com.zbyj.Yazhou.LeftCompanyProgram.Config;
+import com.zbyj.Yazhou.LeftCompanyProgram.Factory.DialogFactory;
 import com.zbyj.Yazhou.LeftCompanyProgram.Interface.ProgramInterface;
 import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
 import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
@@ -233,9 +233,53 @@ public class EndlogCode extends YazhouActivity {
                             if (jsonEndata.getJsonKeyValue(Config.HttpMethodUserAction
                                     .KEY_STATUS).equals(Config.HttpMethodUserAction
                                     .STATUS_LOGINOK)) {
-                                //登录成功
-                                Toast.makeText(getApplicationContext(), "验证成功", Toast
-                                        .LENGTH_SHORT).show();
+                                //登录成功  提示信息框  拉取用户的信息  获取token
+                                final DialogFactory.RefreshDialog refreshDialog = new DialogFactory()
+                                        .new RefreshDialog(EndlogCode.this);
+                                refreshDialog.setDialogView(R.layout.item_wait);
+                                refreshDialog.intenstDialogView(R.id.item_wait_img, R.id
+                                        .item_wait_msg, "加载中", true);
+                                //保存TOKEN
+                                Tools.settoKen(getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN,
+                                        jsonEndata.getJsonKeyValue(USER_KEY_PAGE.KEY_TOKEN));
+                                //保存用户的手机号
+                                Tools.settoKen(getApplicationContext(), USER_KEY_PAGE
+                                        .KEY_USERPHONE, phone);
+                                Usertools.getUservalues(getApplicationContext(), new
+                                        ProgramInterface() {
+                                    @Override
+                                    public void onSucess(String data, int code) {
+                                        Log.i(Config.DEBUG, "" + data);
+                                        JsonEndata json = new JsonEndata(data);
+                                        if (json.getJsonKeyValue(Config.HttpMethodUserAction
+                                                .KEY_STATUS).equals(Config.HttpMethodUserAction
+                                                .STATUS_GETVALUES_OK)) {
+                                            //登录获取数据成功 判断性别是否没有设置
+                                            if(json.getJsonKeyValue(Config.JSON_USERPAGE.USER_SEX).equals("0")){
+                                                //没有设置性别
+                                                YaZhouStartActivity(SelectSexAct.class,true);
+                                            }
+                                            else{
+                                                //判断是否有地址 没有的话 强制性用户要添加一个地址信息
+                                                Usertools.getUserdefaultaddr();
+                                            }
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "获取数据失败",
+                                                    Toast.LENGTH_SHORT).show();
+                                            refreshDialog.dismiss();
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onFaile(String data, int code) {
+                                        Toast.makeText(getApplicationContext(), "获取数据失败", Toast
+                                                .LENGTH_SHORT).show();
+
+                                    }
+                                });
+
+
                             } else if (jsonEndata.getJsonKeyValue(Config.HttpMethodUserAction
                                     .KEY_STATUS).equals(Config.HttpMethodUserAction
                                     .STATUS_LOGCODE_TOMUCH)) {
