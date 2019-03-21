@@ -30,6 +30,7 @@ import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.synchronization.DisplayOptions;
 import com.zbyj.Yazhou.ConfigPageValue.MAP;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.WindowPage;
 import com.zbyj.Yazhou.R;
 import com.zbyj.Yazhou.YazhouActivity;
 import com.zbyj.Yazhou.config;
@@ -58,7 +59,6 @@ public class InputAddrAct extends YazhouActivity {
      * 地图控件初始化
      */
     private void init() {
-
         listView = findViewById(R.id.activity_inputaddr_listview);
         mapView = findViewById(R.id.activity_inputaddr_mapview);
         baiduMap = mapView.getMap();

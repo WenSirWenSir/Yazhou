@@ -84,6 +84,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/TranslucentTheme"
             />
+        <activity android:name=".ProgramAct.ExchangeAct" android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme"/>
     </application>
 
 </manifest>

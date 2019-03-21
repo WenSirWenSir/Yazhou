@@ -79,7 +79,6 @@ public class MainAct extends YazhouActivity {
         btn_OrderUserpageTitle = findViewById(R.id.activity_main_btnUserpage_Title);//用户的界面标题
         btn_title.add(btn_OrderUserpageTitle);
         //用来标识用户是否登录的父布局
-        YaZhouStartActivity(LoginAct.class,false);
         if (tools.gettoKen(getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN).equals("")) {
             Toast.makeText(getApplicationContext(), "您还没有登录哦,请你登录之后使用", Toast.LENGTH_LONG).show();
             //设置预定为登录按钮

@@ -1,5 +1,6 @@
 package com.zbyj.Yazhou;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
 import com.zbyj.Yazhou.LeftCompanyProgram.Net;
 import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
+import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
 import com.zbyj.Yazhou.ProgramAct.zaozaoMainAct;
 
 import java.util.Timer;
@@ -37,6 +39,11 @@ public class Welcome extends YazhouActivity {
         hideBottomUIMenu();
         Log.i("capitalist", tools.getStringMD5("15206036936"));
         init();
+        if(Tools.isPermission(getApplicationContext(),Manifest.permission.ACCESS_COARSE_LOCATION) && Tools.isPermission(getApplicationContext(),Manifest.permission.ACCESS_FINE_LOCATION)){
+            Toast.makeText(getApplicationContext(),"获取到全选",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getApplicationContext(),"没有权限",Toast.LENGTH_SHORT).show();
+        }
         if (tools.IsOnRefusePhone("15206036936")) Log.i("capitalist", "拒绝服务");
     }
 

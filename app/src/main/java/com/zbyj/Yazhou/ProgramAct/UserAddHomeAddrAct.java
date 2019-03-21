@@ -15,6 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zbyj.Yazhou.ConfigPageValue.MAP;
+import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.WindowPage;
+import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
 import com.zbyj.Yazhou.R;
 import com.zbyj.Yazhou.YazhouActivity;
 import com.zbyj.Yazhou.config;
@@ -27,6 +30,7 @@ public class UserAddHomeAddrAct extends YazhouActivity {
     private ImageView btn_back, btn_openmap;
     private TextView addrString;
     private EditText edit_name, edit_phone, edit_street;
+    private int Sex;
 
 
     @SuppressLint("ResourceType")
@@ -39,13 +43,28 @@ public class UserAddHomeAddrAct extends YazhouActivity {
         init();
     }
 
+    @SuppressLint({"ResourceType", "NewApi"})
     private void init() {
+        findViewById(R.id.activity_useraddhome_addr_btnsetSir).setBackground(Tools
+                .setBackgroundType(0, getResources().getString(R.color.TextAndBodyColor),
+                        getResources().getString(R.color.TextAndBodyColor), 0));
+        //判断界面是否传值
         btn_back = findViewById(R.id.activity_useraddhome_addr_btnback);
         btn_openmap = findViewById(R.id.activity_useraddhome_addr_btnopenmap);
         addrString = findViewById(R.id.activity_useraddhome_addrString);//用户的大体位置
         edit_name = findViewById(R.id.activity_useraddhome_addr_editName);//用户名
         edit_phone = findViewById(R.id.activity_useraddhome_addr_editPhone);//用户的地址
         edit_street = findViewById(R.id.activity_useraddhome_addr_editStreet);//用户的街道地址
+        if (!getBundlerValue(WindowPage.ACTION_USER_NAME).equals("")) {
+            //存在界面传值数据
+            edit_name.setText(getBundlerValue(WindowPage.ACTION_USER_NAME));
+        }
+        if (!getBundlerValue(WindowPage.ACTION_USER_TEL).equals("")) {
+            edit_phone.setText(getBundlerValue(WindowPage.ACTION_USER_TEL));
+        }
+        if (!getBundlerValue(WindowPage.ACTION_ADDR).equals("")) {
+            edit_street.setText(getBundlerValue(WindowPage.ACTION_ADDR));
+        }
         Listener();
     }
 
@@ -88,6 +107,40 @@ public class UserAddHomeAddrAct extends YazhouActivity {
             @Override
             public void onClick(View v) {
                 YazhouStartActivityForResult(InputAddrAct.class, false, MAP.SET_USERADDR_SUCESS);
+            }
+        });
+        /**
+         * 选择男士的监听
+         */
+        findViewById(R.id.activity_useraddhome_addr_btnsetSir).setOnClickListener(new View
+                .OnClickListener() {
+
+
+            @SuppressLint({"ResourceType", "NewApi"})
+            @Override
+            public void onClick(View v) {
+                Sex = USER_KEY_PAGE.KEY_SIR;
+                v.setBackground(Tools.setBackgroundType(0, getResources().getString(R.color
+                        .TextAndBodyColor), getResources().getString(R.color.TextAndBodyColor), 0));
+                findViewById(R.id.activity_useraddhome_addr_btnsetLady).setBackgroundColor(Color
+                        .WHITE);
+
+            }
+        });
+        /**
+         * 选择女士的监听
+         */
+        findViewById(R.id.activity_useraddhome_addr_btnsetLady).setOnClickListener(new View
+                .OnClickListener() {
+            @SuppressLint({"NewApi", "ResourceType"})
+            @Override
+            public void onClick(View v) {
+                Sex = USER_KEY_PAGE.KEY_LADY;
+                v.setBackground(Tools.setBackgroundType(0, getResources().getString(R.color
+                        .TextAndBodyColor), getResources().getString(R.color.TextAndBodyColor), 0));
+                findViewById(R.id.activity_useraddhome_addr_btnsetSir).setBackgroundColor(Color
+                        .WHITE);
+
             }
         });
     }

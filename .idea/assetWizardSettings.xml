@@ -19,8 +19,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ico_del" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/../../YaZhou/删除_1.svg" />
+                            <entry key="outputName" value="ico_nodata" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../../YaZhou/望远镜.svg" />
                           </map>
                         </option>
                       </PersistentState>

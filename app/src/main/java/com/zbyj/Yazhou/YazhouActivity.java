@@ -78,7 +78,12 @@ public class YazhouActivity extends Activity {
     protected String getBundlerValue(String key) {
         try {
             Intent intent = this.getIntent();
-            return intent.getStringExtra(key);
+            if(intent.getStringExtra(key) != null){
+                return intent.getStringExtra(key);
+            }
+            else{
+                return "";
+            }
         } catch (Exception e) {
             return "";
         }
