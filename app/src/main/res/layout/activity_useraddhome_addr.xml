@@ -189,7 +189,6 @@
                 android:textColor="#000000"
                 android:textSize="15dp"
                 android:textStyle="bold" />
-            <!--联系电话-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -275,6 +274,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/activity_useraddhome_addr_btnSave"
             android:background="@color/TextAndBodyColor"
             android:gravity="center"
             android:text="保存地址"

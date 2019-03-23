@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -15,9 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zbyj.Yazhou.ConfigPageValue.MAP;
-import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.USER_KEY_PAGE;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.WindowPage;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyTools.Usertools;
+import com.zbyj.Yazhou.LeftCompanyProgram.Config;
+import com.zbyj.Yazhou.LeftCompanyProgram.Interface.ProgramInterface;
+import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
 import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
+import com.zbyj.Yazhou.LoginAct;
 import com.zbyj.Yazhou.R;
 import com.zbyj.Yazhou.YazhouActivity;
 import com.zbyj.Yazhou.config;
@@ -51,9 +57,9 @@ public class UserAddHomeAddrAct extends YazhouActivity {
         //判断界面是否传值
         btn_back = findViewById(R.id.activity_useraddhome_addr_btnback);
         btn_openmap = findViewById(R.id.activity_useraddhome_addr_btnopenmap);
-        addrString = findViewById(R.id.activity_useraddhome_addrString);//用户的大体位置
+        addrString = findViewById(R.id.activity_useraddhome_addrString);//用户的所属位置
         edit_name = findViewById(R.id.activity_useraddhome_addr_editName);//用户名
-        edit_phone = findViewById(R.id.activity_useraddhome_addr_editPhone);//用户的地址
+        edit_phone = findViewById(R.id.activity_useraddhome_addr_editPhone);//用户的手机号码
         edit_street = findViewById(R.id.activity_useraddhome_addr_editStreet);//用户的街道地址
         if (!getBundlerValue(WindowPage.ACTION_USER_NAME).equals("")) {
             //存在界面传值数据
@@ -141,6 +147,83 @@ public class UserAddHomeAddrAct extends YazhouActivity {
                 findViewById(R.id.activity_useraddhome_addr_btnsetSir).setBackgroundColor(Color
                         .WHITE);
 
+            }
+        });
+
+        /**
+         * 保存数据
+         */
+        findViewById(R.id.activity_useraddhome_addr_btnSave).setOnClickListener(new View
+                .OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //判断信息是否为空
+                String addr_in = addrString.getText().toString().trim();//获取用户的所属区域
+                String user = edit_name.getText().toString().trim();//用户名
+                String phone = edit_phone.getText().toString().trim();//用户的电话号码
+                String addr = edit_street.getText().toString().trim();//用户的详细地址
+
+                //判断是否为空
+                if (!TextUtils.isEmpty(addr_in) && !TextUtils.isEmpty(user) && !TextUtils.isEmpty
+                        (phone) && !TextUtils.isEmpty(addr)) {
+                    Log.e(Config.DEBUG, "用户名" + user + "电话" + phone + "所属区域" + addr_in + "街道地址" +
+                            addr);
+
+                    //数据提交 获取性别物理地址
+                    String physics_add = "123,2344";
+                    String year = "23";//年龄
+                    String _default = "1";//是否默认地址
+                    if (!TextUtils.isEmpty(Tools.gettoKen(getApplicationContext(), USER_KEY_PAGE
+                            .KEY_PHONE)) && !TextUtils.isEmpty(Tools.gettoKen
+                            (getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN))) {
+                        //不为空
+                        Usertools.insertUseraddr(getApplicationContext(), user, phone, addr,
+                                physics_add, addr_in, Sex, year, _default, Tools.getStringMD5
+                                        (Tools.gettoKen(getApplicationContext(), USER_KEY_PAGE
+                                                .KEY_PHONE)), Tools.gettoKen
+                                        (getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN), new
+                                        ProgramInterface() {
+                            @Override
+                            public void onSucess(String data, int code) {
+
+                                //网络通信  判断返回值是否成功
+                                JsonEndata jsonEndata = new JsonEndata(data);
+                                if (jsonEndata.getJsonKeyValue(Config.HttpMethodUserAction
+                                        .KEY_STATUS).equals(Config.HttpMethodUserAction
+                                        .STATUS_INSERT_ADDR_OK)) {
+
+                                    //成功
+                                    Toast.makeText(getApplicationContext(), "添加成功", Toast
+                                            .LENGTH_SHORT).show();
+                                } else if (jsonEndata.getJsonKeyValue(Config.HttpMethodUserAction
+                                        .KEY_STATUS).equals(Config.HttpMethodUserAction
+                                        .STATUS_INSERT_ADDR_TOKEN_ERROR)) {
+                                    //ToKen 过期
+                                    Toast.makeText(getApplicationContext(), "登录过期,请重新登录", Toast
+                                            .LENGTH_SHORT).show();
+                                    YaZhouStartActivity(LoginAct.class, true);
+                                } else {
+                                    //失败
+                                    Toast.makeText(getApplicationContext(), "添加失败", Toast
+                                            .LENGTH_SHORT).show();
+                                }
+
+                            }
+
+                            @Override
+                            public void onFaile(String data, int code) {
+                                //网络通信失败
+                            }
+                        });
+
+                    } else {
+                        //没有登录
+                        YaZhouStartActivity(LoginAct.class, true);
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "数据信息填写不完整", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

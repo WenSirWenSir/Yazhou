@@ -26,7 +26,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.baidu.mapapi.SDKInitializer;
-import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.USER_KEY_PAGE;
 import com.zbyj.Yazhou.LeftCompanyProgram.Config;
 import com.zbyj.Yazhou.ProgramFrame.MainFrame;
 import com.zbyj.Yazhou.ProgramFrame.OrderListFrame;

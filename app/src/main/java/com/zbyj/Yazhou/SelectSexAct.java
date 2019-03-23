@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zbyj.Yazhou.ConfigPageValue.USER_KEY_PAGE;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.USER_KEY_PAGE;
 import com.zbyj.Yazhou.LeftCompanyProgram.Config;
 import com.zbyj.Yazhou.LeftCompanyProgram.Net;
 import com.zbyj.Yazhou.LeftCompanyProgram.Tools;

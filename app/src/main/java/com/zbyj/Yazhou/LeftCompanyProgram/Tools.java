@@ -2,17 +2,22 @@ package com.zbyj.Yazhou.LeftCompanyProgram;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.provider.DocumentsContract;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,6 +27,7 @@ import android.widget.Toast;
 
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.XMLUserAddr;
 import com.zbyj.Yazhou.LeftCompanyProgram.Interface.ProgramInterface;
+import com.zbyj.Yazhou.ProgramFrame.UserPageFrame;
 import com.zbyj.Yazhou.R;
 
 import org.w3c.dom.Document;
@@ -475,5 +481,45 @@ public class Tools {
         gradientDrawable.setStroke(width, Color.parseColor(StockColor));//设置线条的宽度和颜色
         gradientDrawable.setCornerRadius(radius);
         return gradientDrawable;
+    }
+
+    /**
+     * 拨打电话
+     *
+     * @param mContext 上下文
+     * @param phone    电话号码
+     */
+
+    public static void callPhone(Context mContext, String phone) {
+        if(!TextUtils.isEmpty(phone)){
+            Log.i(Config.DEBUG,"Tools.java[+]要拨打的电话为:" + phone);
+            Intent i = new Intent(Intent.ACTION_CALL);
+            Uri uri = Uri.parse("tel:" + phone);
+            i.setData(uri);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(i);
+        }
+        else{
+            Toast.makeText(mContext,"实在不好意思,客服人员暂时不方便接电话",Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    /**
+     * 动态申请权限
+     * @param mContext  上下文
+     * @param permission 权限名称
+     */
+    public static void getPermission(Context mContext, String permission){
+        ActivityCompat.requestPermissions((Activity) mContext,new String[]{permission},1);
+    }
+
+
+    /**
+     * 返回客服人员的手机号码
+     * @return
+     */
+    public static String getServicePeoPhone(){
+        return "";
     }
 }

@@ -4,19 +4,42 @@ public class Config {
 
     public static final String DEBUG = "LeftCompanyProgram";
 
+    /**
+     * 访问用户数据的时候  用到的关于用户返回的状态和标识符
+     */
     public static class HttpMethodUserAction {
         public static final int SEND_VERIFICATION = 0;
+        /**
+         * 请求操作
+         */
         public static final String GET_USERVAL = "get_userval";//获取用户的全部数据
         public static final String GET_DEFAULT_ADDR = "get_userdefault_addr";//获取默认的收件地址
         public static final String GET_ALLADDR = "get_alladdr";//获取用户的所有收件地址
         public static final String UPDATE_USER_SEX = "update_user_sex";//更新用户的性别
+        public static final String INSERT_USER_ADDR = "insert_user_addr";//插入一条用户的地址信息
+
+        /**
+         * 标识符号
+         */
         public static final String KEY_ACTION = "action";
         public static final String KEY_USER = "user_md5";
         public static final String KEY_TOKEN = "user_token";
         public static final String KEY_STATUS = "status";//键值 获取状态
         public static final String KEY_PHONE = "user_phone";
         public static final String KEY_CODE = "user_code";
-        public static final String KEY_UPDATESEX = "update_sex" ;//更新的用户的值键
+        public static final String KEY_UPDATESEX = "update_sex";//更新的用户的值键
+        public static final String KEY_ADDR_NAME = "name";//性别
+        public static final String KEY_ADDR_TEL = "tel";//电话
+        public static final String KEY_ADDR_ADDR = "addr";//地址
+        public static final String KEY_PHYSICS_ADDR = "physics_addr";//物理地址
+        public static final String KEY_ADDR_IN = "addr_in";//所属区域
+        public static final String KEY_ADDR_USER_SEX = "user_sex";//性别
+        public static final String KEY_ADDR_USER_YEAR = "user_year";//年龄
+        public static final String KEY_ADDR_DEFAULT = "default";//是否默认地址
+
+        /**
+         * 状态码
+         */
         public static final String STATUS_SENDOK = "0";
         public static final String STATUS_LOGINOK = "0";
         public static final String STATUS_LOGCODE_ERROR = "-3";//验证码错误
@@ -27,6 +50,12 @@ public class Config {
         public static final String STATUS_SELECT_SEX_OK = "0";//更新用户的性别成功
         public static final String STATUS_SELECT_SEX_ERROR = "1";//更新用户的性别失败
         public static final String CHECK_VERIFICATION = "1";
+        public static final String STATUS_INSERT_ADDR_OK = "0";//插入用户的地址成功
+        public static final String STATUS_INSERT_ADDR_ERROR = "-1";//插入失败
+        public static final String STATUS_INSERT_ADDR_TOKEN_ERROR = "-2";//Token 过期
+
+
+
 
         public static final int UPDATE_USER_VALUES = 1;
     }
@@ -126,13 +155,15 @@ public class Config {
 
         /**
          * 要求更新用户的性别
+         *
          * @return
          */
         public static String updateSex() {
             return HTTP_ADDR.SERVICE + "user/user_init.php";
 
         }
-        public static String getallAddr(){
+
+        public static String getallAddr() {
             return HTTP_ADDR.SERVICE + "user/user_init.php";
         }
     }

@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.zbyj.Yazhou">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     //获取设备网络状态，禁用后无法获取网络状态
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     //网络权限，当禁用后，无法进行检索等相关业务
@@ -28,7 +30,7 @@
     //程序在手机屏幕关闭后后台进程仍然运行
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     //照相权限
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -74,18 +76,26 @@
         <activity
             android:name=".ProgramAct.UserCommentAct"
             android:screenOrientation="portrait" />
-        <activity android:name=".ProgramAct.UserContextAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ProgramAct.UserContextAct"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".ProgramAct.UserAllAddrsAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ProgramAct.UserAllAddrsAct"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".ProgramAct.zaozaoMainAct"
+        <activity
+            android:name=".ProgramAct.zaozaoMainAct"
             android:screenOrientation="portrait"
-            android:theme="@style/TranslucentTheme"
-            />
-        <activity android:name=".ProgramAct.ExchangeAct" android:screenOrientation="portrait"
-            android:theme="@style/TranslucentTheme"/>
+            android:theme="@style/TranslucentTheme" />
+        <activity
+            android:name=".ProgramAct.ExchangeAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+        <activity
+            android:name=".ProgramAct.UserHelpCenter"
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
     </application>
 
 </manifest>

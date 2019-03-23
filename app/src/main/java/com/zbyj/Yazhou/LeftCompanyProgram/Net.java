@@ -154,7 +154,8 @@ public class Net {
                     InputStream in = null;
                     try {
                         URL url = new URL(urls[0].trim().toString() + "?" + kvsBuffer.toString());
-                        Log.i(Config.DEBUG,"网络访问的地址" + urls[0].trim().toString()+"?" + kvsBuffer.toString());
+                        Log.i(Config.DEBUG, "网络访问的地址" + urls[0].trim().toString() + "?" +
+                                kvsBuffer.toString());
                         if (url != null) {
                             HttpURLConnection con = (HttpURLConnection) url.openConnection();
                             con.setConnectTimeout(2000);
@@ -170,6 +171,7 @@ public class Net {
                     }
                     return in;
                 }
+
                 @Override
                 protected void onPostExecute(InputStream inputStream) {
                     if (inputStream != null) {
@@ -187,6 +189,11 @@ public class Net {
                 }
             }.execute(url);
         }
+    }
+
+
+    public static void interServicePost(){
+
     }
 
 }

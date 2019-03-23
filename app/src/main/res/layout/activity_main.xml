@@ -119,7 +119,7 @@
                 android:layout_height="35dp"
                 android:scaleType="center"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/ico_sir" />
+                android:src="@drawable/ico_usercenter" />
 
             <TextView
                 android:layout_width="match_parent"
