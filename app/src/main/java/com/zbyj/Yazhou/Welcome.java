@@ -7,6 +7,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Xml;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -18,11 +19,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.USER_KEY_PAGE;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.XML_PAGE;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyTools.XmlBuilder;
+import com.zbyj.Yazhou.LeftCompanyProgram.Config;
+import com.zbyj.Yazhou.LeftCompanyProgram.Interface.ProgramInterface;
 import com.zbyj.Yazhou.LeftCompanyProgram.Net;
 import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
 import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
 import com.zbyj.Yazhou.ProgramAct.zaozaoMainAct;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -36,13 +42,36 @@ public class Welcome extends YazhouActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        ArrayList<XML_PAGE> list = new ArrayList<XML_PAGE>();
+        XML_PAGE xml_page = new XML_PAGE("", "number", "0");
+        xml_page.addGrandsonNode("addr_name", "我爱刘钰").addGrandsonNode("sex", "0").addGrandsonNode
+                ("year", "25");//处理好子节点信息
+        list.add(xml_page);
+        XmlBuilder xmlBuilder = new XmlBuilder("body");
+        StringBuilder xml = xmlBuilder.getXmlString(list);
+        Net.doPostXml(getApplicationContext(), xml, Config.HTTP_ADDR.getUser_init(), new
+                ProgramInterface() {
+
+
+            @Override
+            public void onSucess(String data, int code) {
+
+            }
+
+            @Override
+            public void onFaile(String data, int code) {
+
+            }
+        });
         hideBottomUIMenu();
         Log.i("capitalist", tools.getStringMD5("15206036936"));
         init();
-        if(Tools.isPermission(getApplicationContext(),Manifest.permission.ACCESS_COARSE_LOCATION) && Tools.isPermission(getApplicationContext(),Manifest.permission.ACCESS_FINE_LOCATION)){
-            Toast.makeText(getApplicationContext(),"获取到全选",Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(getApplicationContext(),"没有权限",Toast.LENGTH_SHORT).show();
+        if (Tools.isPermission(getApplicationContext(), Manifest.permission
+                .ACCESS_COARSE_LOCATION) && Tools.isPermission(getApplicationContext(), Manifest
+                .permission.ACCESS_FINE_LOCATION)) {
+            Toast.makeText(getApplicationContext(), "获取到全选", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "没有权限", Toast.LENGTH_SHORT).show();
         }
         if (tools.IsOnRefusePhone("15206036936")) Log.i("capitalist", "拒绝服务");
     }
@@ -52,10 +81,8 @@ public class Welcome extends YazhouActivity {
      */
     @SuppressLint("HandlerLeak")
     private void init() {
-        //测试
         Log.i(config.DEBUG_STR, "token" + tools.gettoKen(getApplicationContext(), USER_KEY_PAGE
                 .KEY_TOKEN));
-
         if (tools.isIntentConnect(getApplicationContext())) {
             Log.i(config.DEBUG_STR, "网络连接中");
         } else {
@@ -64,8 +91,8 @@ public class Welcome extends YazhouActivity {
 
         if (tools.isIntentConnect(getApplicationContext())) {
             //判断是是否需要更新软件信息  和  是否需要展示图片信息
-            Net.InterServiceGet(getApplicationContext(), config.getServiceProgramMainConfig(),
-                    new Net.onVisitInterServiceListener() {
+            Net.doGet(getApplicationContext(), config.getServiceProgramMainConfig(), new Net
+                    .onVisitInterServiceListener() {
                 @SuppressLint("ResourceType")
                 @Override
                 public void onSucess(String tOrgin) {

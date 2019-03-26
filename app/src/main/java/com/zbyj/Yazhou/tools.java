@@ -232,7 +232,7 @@ public class tools {
      */
     public static void sendVerificationCodeSMS(final Context tContext, String tPhone) {
 
-        Net.InterServiceGet(tContext, config.getSendVerificationAddr(), new Net
+        Net.doGet(tContext, config.getSendVerificationAddr(), new Net
                 .onVisitInterServiceListener() {
             @Override
             public void onSucess(String tOrgin) {

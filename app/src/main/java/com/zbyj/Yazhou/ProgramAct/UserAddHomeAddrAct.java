@@ -18,15 +18,20 @@ import android.widget.Toast;
 import com.zbyj.Yazhou.ConfigPageValue.MAP;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.USER_KEY_PAGE;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.WindowPage;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.XML_PAGE;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyTools.Usertools;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyTools.XmlBuilder;
 import com.zbyj.Yazhou.LeftCompanyProgram.Config;
 import com.zbyj.Yazhou.LeftCompanyProgram.Interface.ProgramInterface;
 import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
+import com.zbyj.Yazhou.LeftCompanyProgram.Net;
 import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
 import com.zbyj.Yazhou.LoginAct;
 import com.zbyj.Yazhou.R;
 import com.zbyj.Yazhou.YazhouActivity;
 import com.zbyj.Yazhou.config;
+
+import java.util.ArrayList;
 
 
 /**
@@ -164,6 +169,7 @@ public class UserAddHomeAddrAct extends YazhouActivity {
                 String phone = edit_phone.getText().toString().trim();//用户的电话号码
                 String addr = edit_street.getText().toString().trim();//用户的详细地址
 
+
                 //判断是否为空
                 if (!TextUtils.isEmpty(addr_in) && !TextUtils.isEmpty(user) && !TextUtils.isEmpty
                         (phone) && !TextUtils.isEmpty(addr)) {
@@ -174,48 +180,43 @@ public class UserAddHomeAddrAct extends YazhouActivity {
                     String physics_add = "123,2344";
                     String year = "23";//年龄
                     String _default = "1";//是否默认地址
-                    if (!TextUtils.isEmpty(Tools.gettoKen(getApplicationContext(), USER_KEY_PAGE
-                            .KEY_PHONE)) && !TextUtils.isEmpty(Tools.gettoKen
-                            (getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN))) {
+                    String _phone = Tools.gettoKen(getApplicationContext(), USER_KEY_PAGE
+                            .KEY_PHONE);
+                    String token = Tools.gettoKen(getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN);
+                    if (!TextUtils.isEmpty(_phone) && !TextUtils.isEmpty(token)) {
                         //不为空
-                        Usertools.insertUseraddr(getApplicationContext(), user, phone, addr,
-                                physics_add, addr_in, Sex, year, _default, Tools.getStringMD5
-                                        (Tools.gettoKen(getApplicationContext(), USER_KEY_PAGE
-                                                .KEY_PHONE)), Tools.gettoKen
-                                        (getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN), new
-                                        ProgramInterface() {
+                        //构造XML数据信息
+                        XmlBuilder xmlBuilder = new XmlBuilder("body");
+                        XML_PAGE xml_page = new XML_PAGE("", "", "");
+                        xml_page.addGrandsonNode(Config.HttpMethodUserAction.KEY_USER, Tools
+                                .getStringMD5(_phone)).addGrandsonNode(Config
+                                .HttpMethodUserAction.KEY_TOKEN, token).addGrandsonNode(Config
+                                .HttpMethodUserAction.KEY_ADDR_NAME, user).addGrandsonNode(Config
+                                .HttpMethodUserAction.KEY_ADDR_TEL, phone).addGrandsonNode(Config
+                                .HttpMethodUserAction.KEY_ADDR_ADDR, addr).addGrandsonNode(Config
+                                .HttpMethodUserAction.KEY_ADDR_IN, addr_in).addGrandsonNode
+                                (Config.HttpMethodUserAction.KEY_ADDR_PHYSICS, physics_add)
+                                .addGrandsonNode(Config.HttpMethodUserAction.KEY_ADDR_DEFAULT,
+                                        _default).addGrandsonNode(Config.HttpMethodUserAction
+                                .KEY_ACTION, Config.HttpMethodUserAction.INSERT_USER_ADDR)
+                                .addGrandsonNode(Config.HttpMethodUserAction.KEY_ADDR_USER_SEX,
+                                        Sex + "").addGrandsonNode(Config.HttpMethodUserAction
+                                .KEY_ADDR_USER_YEAR, "23");
+                        ArrayList<XML_PAGE> list = new ArrayList<XML_PAGE>();
+                        list.add(xml_page);
+                        Net.doPostXml(getApplicationContext(), xmlBuilder.getXmlString(list),
+                                Config.HTTP_ADDR.getUser_init(), new ProgramInterface() {
                             @Override
                             public void onSucess(String data, int code) {
-
-                                //网络通信  判断返回值是否成功
-                                JsonEndata jsonEndata = new JsonEndata(data);
-                                if (jsonEndata.getJsonKeyValue(Config.HttpMethodUserAction
-                                        .KEY_STATUS).equals(Config.HttpMethodUserAction
-                                        .STATUS_INSERT_ADDR_OK)) {
-
-                                    //成功
-                                    Toast.makeText(getApplicationContext(), "添加成功", Toast
-                                            .LENGTH_SHORT).show();
-                                } else if (jsonEndata.getJsonKeyValue(Config.HttpMethodUserAction
-                                        .KEY_STATUS).equals(Config.HttpMethodUserAction
-                                        .STATUS_INSERT_ADDR_TOKEN_ERROR)) {
-                                    //ToKen 过期
-                                    Toast.makeText(getApplicationContext(), "登录过期,请重新登录", Toast
-                                            .LENGTH_SHORT).show();
-                                    YaZhouStartActivity(LoginAct.class, true);
-                                } else {
-                                    //失败
-                                    Toast.makeText(getApplicationContext(), "添加失败", Toast
-                                            .LENGTH_SHORT).show();
-                                }
-
+                                Log.i(Config.DEBUG, "xml数据返回" + data.toString());
                             }
 
                             @Override
                             public void onFaile(String data, int code) {
-                                //网络通信失败
+
                             }
                         });
+
 
                     } else {
                         //没有登录

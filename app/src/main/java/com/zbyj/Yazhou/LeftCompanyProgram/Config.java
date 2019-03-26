@@ -28,10 +28,10 @@ public class Config {
         public static final String KEY_PHONE = "user_phone";
         public static final String KEY_CODE = "user_code";
         public static final String KEY_UPDATESEX = "update_sex";//更新的用户的值键
-        public static final String KEY_ADDR_NAME = "name";//性别
+        public static final String KEY_ADDR_NAME = "addr_name";//名称
         public static final String KEY_ADDR_TEL = "tel";//电话
         public static final String KEY_ADDR_ADDR = "addr";//地址
-        public static final String KEY_PHYSICS_ADDR = "physics_addr";//物理地址
+        public static final String KEY_ADDR_PHYSICS = "physics_addr";//物理地址
         public static final String KEY_ADDR_IN = "addr_in";//所属区域
         public static final String KEY_ADDR_USER_SEX = "user_sex";//性别
         public static final String KEY_ADDR_USER_YEAR = "user_year";//年龄
@@ -51,7 +51,7 @@ public class Config {
         public static final String STATUS_SELECT_SEX_ERROR = "1";//更新用户的性别失败
         public static final String CHECK_VERIFICATION = "1";
         public static final String STATUS_INSERT_ADDR_OK = "0";//插入用户的地址成功
-        public static final String STATUS_INSERT_ADDR_ERROR = "-1";//插入失败
+        public static final String STATUS_INSERT_ADDR_ERROR = "1";//插入失败
         public static final String STATUS_INSERT_ADDR_TOKEN_ERROR = "-2";//Token 过期
 
 

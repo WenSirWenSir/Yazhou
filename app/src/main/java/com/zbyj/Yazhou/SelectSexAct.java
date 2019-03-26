@@ -127,7 +127,7 @@ public class SelectSexAct extends YazhouActivity {
                             .show();
                 } else {
                     //更新用户的性别
-                    Net.InterServiceGet(getApplicationContext(), Config.HTTP_ADDR.updateSex(),
+                    Net.doGet(getApplicationContext(), Config.HTTP_ADDR.updateSex(),
                             new Net.onVisitInterServiceListener() {
                         @Override
                         public void onSucess(String tOrgin) {
@@ -137,7 +137,7 @@ public class SelectSexAct extends YazhouActivity {
                                     .KEY_STATUS).equals(Config.HttpMethodUserAction
                                     .STATUS_SELECT_SEX_OK)) {
                                 //第一次登录 设置用户的性别成功  去访问是否有默认收件的地址 如果没有 就让用户去添加一个收件地址
-                                Net.InterServiceGet(getApplicationContext(), Config.HTTP_ADDR
+                                Net.doGet(getApplicationContext(), Config.HTTP_ADDR
                                         .getUser_init(), new Net.onVisitInterServiceListener() {
                                     @Override
                                     public void onSucess(String tOrgin) {

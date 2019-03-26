@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.graphics.drawable.VectorDrawableCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ import android.widget.VideoView;
 import com.baidu.mapapi.SDKInitializer;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.USER_KEY_PAGE;
 import com.zbyj.Yazhou.LeftCompanyProgram.Config;
+import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
 import com.zbyj.Yazhou.ProgramFrame.MainFrame;
 import com.zbyj.Yazhou.ProgramFrame.OrderListFrame;
 import com.zbyj.Yazhou.ProgramFrame.UserPageFrame;
@@ -80,7 +82,7 @@ public class MainAct extends YazhouActivity {
         btn_title.add(btn_OrderUserpageTitle);
         //用来标识用户是否登录的父布局
         if (tools.gettoKen(getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN).equals("")) {
-            Toast.makeText(getApplicationContext(), "您还没有登录哦,请你登录之后使用", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "您q还没有登录哦,请你登录之后使用", Toast.LENGTH_LONG).show();
             //设置预定为登录按钮
         } else {
             //已经登录  就去获取用户的地址首页地址信息
@@ -162,6 +164,12 @@ public class MainAct extends YazhouActivity {
             public void onClick(View v) {
                 selectFrame(config.FRAMELAYOUT_USERPAGE);
                 btn_OrderUserpage.startAnimation(animation);
+                if(!TextUtils.isEmpty(Tools.gettoKen(getApplicationContext(),USER_KEY_PAGE.KEY_PHONE))){
+                    //不为空   判断是否过期
+                }
+                else{
+                    YaZhouStartActivity(LoginAct.class,false);
+                }
                 //更新标题颜色
                 for (int i = 0;i < btn_title.size();i++){
                     btn_title.get(i).setTextColor(Color.BLACK);

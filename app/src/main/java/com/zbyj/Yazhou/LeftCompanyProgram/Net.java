@@ -7,13 +7,17 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.USER_KEY_PAGE;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyTools.XmlBuilder;
 import com.zbyj.Yazhou.LeftCompanyProgram.Interface.ProgramInterface;
 import com.zbyj.Yazhou.tools;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -37,8 +41,8 @@ public class Net {
      * @param mOnVisitInterServiceListener 监听回调
      * @param kvs                          参数对,没有就直接用NULL
      */
-    public static void InterServiceGet(Context context, String tUrl, final Net
-            .onVisitInterServiceListener mOnVisitInterServiceListener, String... kvs) {
+    public static void doGet(Context context, String tUrl, final Net.onVisitInterServiceListener
+            mOnVisitInterServiceListener, String... kvs) {
         if (!Tools.isIntentConnect(context)) {
             //网络无连接 就不做什么操作了
             if (mOnVisitInterServiceListener != null) {
@@ -122,7 +126,7 @@ public class Net {
      * 获取XML文件的网络访问
      */
     @SuppressLint("StaticFieldLeak")
-    public static void getXMLInterGet(Context mContext, String url, final ProgramInterface
+    public static void doGetXml(Context mContext, String url, final ProgramInterface
             .XMLDomServiceInterface xmlDomServiceInterface, String... kvs) {
 
 
@@ -191,8 +195,83 @@ public class Net {
         }
     }
 
+    public static void doPostXml(final Context mContext, final StringBuilder xml, String url,
+                                 final ProgramInterface programInterface) {
+        new AsyncTask<String, Void, String>() {
+            @Override
+            protected String doInBackground(String... _url) {
+                String _data = null;
+                //构建xml数据信息
+                //StringBuilder xml = new StringBuilder();
+                //xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
+                //xml.append("<body>");
+                //xml.append("<addr_name>翁启鑫</addr_name>");
+                //xml.append("</body>");
+                try {
+                    byte[] xmlbyte = xml.toString().getBytes("UTF-8");
+                    Log.i(Config.DEBUG, "提交XML数据信息" + xml);
+                    URL url = new URL(_url[0]);//地址
+                    Log.i(Config.DEBUG, "请求地址:" + url.toString());
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setConnectTimeout(5000);
+                    conn.setDoOutput(true);
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Content-Length", String.valueOf(xmlbyte.length));
+                    conn.setRequestProperty("Content-Type", "text/xml;charset=UTF-8");
+                    OutputStream outStream = conn.getOutputStream();
+                    outStream.write(xmlbyte);
+                    int code = conn.getResponseCode();
+                    if (code == 200) {
+                        InputStream is = conn.getInputStream();
+                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader
+                                (is));
+                        StringBuffer sb = new StringBuffer();
+                        String ReadLine = "";
+                        while ((ReadLine = bufferedReader.readLine()) != null) {
+                            sb.append(ReadLine);
+                        }
+                        is.close();
+                        conn.disconnect();
+                        bufferedReader.close();
+                        _data = sb.toString();
+                    } else {
+                        InputStream eis = conn.getErrorStream();
+                        InputStreamReader isr = new InputStreamReader(eis, "UTF-8");
+                        BufferedReader br = new BufferedReader(isr);
+                        Log.i(Config.DEBUG, "Net.java[+]xml提交失败");
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            Log.e(Config.DEBUG, "Net.java[+]ErrorStream:" + line);
+                        }
+                    }
+                } catch (Exception e) {
+                    Log.e(Config.DEBUG, "Net.java[+]" + e.getMessage() + "1");
+                    e.printStackTrace();
+                }
+                return _data;
+            }
 
-    public static void interServicePost(){
+            @Override
+            protected void onPostExecute(String s) {
+                if (s == null) {
+                    Log.e(Config.DEBUG, "Net.java[+]xml提交返回的数据为null");
+                    if (programInterface != null) {
+                        programInterface.onFaile("", 0);
+                    } else {
+                        Log.e(Config.DEBUG, "Net.java[+]xml提交数据回调为空");
+                    }
+                } else {
+                    //开始监听调用
+                    if (programInterface != null) {
+                        programInterface.onSucess(s.toString(), 0);
+                    } else {
+                        Log.e(Config.DEBUG, "Net.java[+]xml提交数据回调为空");
+                    }
+                }
+                super.onPostExecute(s);
+            }
+        }.execute(url);
+
 
     }
 

@@ -12,4 +12,5 @@ public class USER_KEY_PAGE {
     public static final int KEY_SIR = 1;//先生
     public static final int KEY_LADY = 2;//女士
 
+
 }

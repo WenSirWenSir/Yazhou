@@ -158,7 +158,7 @@ public class Tools {
     ProgramInterface.SMSInterface listener) {
 
 
-        Net.InterServiceGet(tContext, Config.HTTP_ADDR.SendVerificationCodeAddr(), new Net
+        Net.doGet(tContext, Config.HTTP_ADDR.SendVerificationCodeAddr(), new Net
                 .onVisitInterServiceListener() {
             @Override
             public void onSucess(String tOrgin) {
@@ -343,7 +343,7 @@ public class Tools {
      */
     public static void checkVerficationCode(Context tContext, String phone, String code, final
     ProgramInterface programInterface) {
-        Net.InterServiceGet(tContext, Config.HTTP_ADDR.CheckVerificationAddr(), new Net
+        Net.doGet(tContext, Config.HTTP_ADDR.CheckVerificationAddr(), new Net
                 .onVisitInterServiceListener() {
             @Override
             public void onSucess(String tOrgin) {
@@ -376,7 +376,7 @@ public class Tools {
     }
 
 
-    public static ArrayList<XMLUserAddr> XMLDomeService(InputStream is) throws Exception {
+    public static ArrayList<XMLUserAddr> UserAddrXMLDomeService(InputStream is) throws Exception {
         ArrayList<XMLUserAddr> list = new ArrayList<XMLUserAddr>();
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
