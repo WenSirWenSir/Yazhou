@@ -1,6 +1,5 @@
 package com.zbyj.Yazhou.LeftCompanyProgram;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -13,38 +12,41 @@ import android.graphics.drawable.GradientDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.provider.DocumentsContract;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.WEB_VALUES_ACT;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.WINDOW_PAGE;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.XMLUserAddr;
 import com.zbyj.Yazhou.LeftCompanyProgram.Interface.ProgramInterface;
-import com.zbyj.Yazhou.ProgramFrame.UserPageFrame;
-import com.zbyj.Yazhou.R;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 public class Tools {
 
@@ -491,35 +493,38 @@ public class Tools {
      */
 
     public static void callPhone(Context mContext, String phone) {
-        if(!TextUtils.isEmpty(phone)){
-            Log.i(Config.DEBUG,"Tools.java[+]要拨打的电话为:" + phone);
+        if (!TextUtils.isEmpty(phone)) {
+            Log.i(Config.DEBUG, "Tools.java[+]要拨打的电话为:" + phone);
             Intent i = new Intent(Intent.ACTION_CALL);
             Uri uri = Uri.parse("tel:" + phone);
             i.setData(uri);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(i);
-        }
-        else{
-            Toast.makeText(mContext,"实在不好意思,客服人员暂时不方便接电话",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(mContext, "实在不好意思,客服人员暂时不方便接电话", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     /**
      * 动态申请权限
-     * @param mContext  上下文
+     *
+     * @param mContext   上下文
      * @param permission 权限名称
      */
-    public static void getPermission(Context mContext, String permission){
-        ActivityCompat.requestPermissions((Activity) mContext,new String[]{permission},1);
+    public static void getPermission(Context mContext, String permission) {
+        ActivityCompat.requestPermissions((Activity) mContext, new String[]{permission}, 1);
     }
 
 
     /**
      * 返回客服人员的手机号码
+     *
      * @return
      */
-    public static String getServicePeoPhone(){
+    public static String getServicePeoPhone() {
         return "";
     }
+
+
 }

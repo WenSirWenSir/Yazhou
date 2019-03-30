@@ -8,10 +8,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:background="#f1f1f1"
         android:layout_marginBottom="55dp"
-        >
+        android:background="#f1f1f1"
+        android:scrollbars="none">
 
 
         <LinearLayout
@@ -24,13 +23,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="文字评论区域"
-                android:textStyle="bold"
-                android:textSize="15dp"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="10dp"
+                android:text="文字评论区域"
                 android:textColor="#000000"
-                />
+                android:textSize="15dp"
+                android:textStyle="bold" />
             <!--撰写评论区域-->
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -257,9 +255,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:textSize="13sp"
                 android:text="展示图片(只能拍摄一张哦)"
                 android:textColor="#000000"
+                android:textSize="13sp"
                 android:textStyle="bold" />
             <!--拍摄的标志图片-->
             <RelativeLayout
@@ -288,7 +286,7 @@
     <TextView
         android:id="@+id/activity_usercomment_btnOrderComment"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"
@@ -298,7 +296,7 @@
         android:gravity="center"
         android:text="发布评论"
         android:textColor="#000000"
-        android:textSize="15dp"
+        android:textSize="13dp"
         android:textStyle="bold" />
 
     <RelativeLayout
@@ -313,14 +311,13 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="撰写您的评论"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textColor="#ffffff"
+            android:textSize="13sp" />
 
         <ImageView
             android:id="@+id/activity_usercomment_btnback"
             android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:src="@drawable/ico_back" />

@@ -20,7 +20,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:paddingTop="5dp"
         android:background="#f2f2f2"
         android:paddingBottom="5dp"
@@ -45,12 +45,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_below="@id/activity_main_btnOrder"
-                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="预定中心"
                 android:id="@+id/activity_main_btnOrder_Title"
-                android:textColor="#f30d88"
-                android:textSize="12dp" />
+                android:textColor="#000000"
+                android:textSize="10sp" />
 
         </RelativeLayout>
 
@@ -72,12 +71,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_below="@id/activity_main_btnOrderlist"
-                android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="配送中"
-                android:textColor="#000000"
+                android:text="懒猫配送"
+                android:textColor="#666666"
                 android:id="@+id/activity_main_btnOrderlist_Title"
-                android:textSize="12dp" />
+                android:textSize="10sp" />
 
         </RelativeLayout>
         <RelativeLayout
@@ -98,12 +96,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_below="@id/activity_main_btnReview"
-                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="早早点评"
                 android:id="@+id/activity_main_btnReview_Title"
-                android:textColor="#000000"
-                android:textSize="12dp" />
+                android:textColor="#666666"
+                android:textSize="10sp" />
 
         </RelativeLayout>
 
@@ -126,11 +123,10 @@
                 android:layout_height="20dp"
                 android:layout_below="@id/activity_main_btnUserpage"
                 android:id="@+id/activity_main_btnUserpage_Title"
-                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="个人中心"
-                android:textColor="#000000"
-                android:textSize="12dp" />
+                android:textColor="#666666"
+                android:textSize="10sp" />
 
         </RelativeLayout>
 

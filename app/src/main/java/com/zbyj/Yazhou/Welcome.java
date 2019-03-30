@@ -7,7 +7,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Xml;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -18,22 +17,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyAct.LeftCompanyAct;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.USER_KEY_PAGE;
-import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.XML_PAGE;
-import com.zbyj.Yazhou.LeftCompanyProgram.CompanyTools.XmlBuilder;
 import com.zbyj.Yazhou.LeftCompanyProgram.Config;
-import com.zbyj.Yazhou.LeftCompanyProgram.Interface.ProgramInterface;
+import com.zbyj.Yazhou.LeftCompanyProgram.ConfigPageClass;
+import com.zbyj.Yazhou.LeftCompanyProgram.Factory.DialogFactory;
 import com.zbyj.Yazhou.LeftCompanyProgram.Net;
 import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
 import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
-import com.zbyj.Yazhou.ProgramAct.zaozaoMainAct;
 
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Welcome extends YazhouActivity {
-    private ImageView img;
+public class Welcome extends LeftCompanyAct {
     private Handler h;
     private Timer onUseronclick;
 
@@ -42,28 +38,14 @@ public class Welcome extends YazhouActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        ArrayList<XML_PAGE> list = new ArrayList<XML_PAGE>();
-        XML_PAGE xml_page = new XML_PAGE("", "number", "0");
-        xml_page.addGrandsonNode("addr_name", "我爱刘钰").addGrandsonNode("sex", "0").addGrandsonNode
-                ("year", "25");//处理好子节点信息
-        list.add(xml_page);
-        XmlBuilder xmlBuilder = new XmlBuilder("body");
-        StringBuilder xml = xmlBuilder.getXmlString(list);
-        Net.doPostXml(getApplicationContext(), xml, Config.HTTP_ADDR.getUser_init(), new
-                ProgramInterface() {
-
-
-            @Override
-            public void onSucess(String data, int code) {
-
-            }
-
-            @Override
-            public void onFaile(String data, int code) {
-
-            }
-        });
         hideBottomUIMenu();
+        if(Tools.isPermission(getApplicationContext(),Manifest.permission.CAMERA)){
+            Log.i(Config.DEBUG,"照相机权限已经打开");
+        }
+        else{
+            Log.i(Config.DEBUG,"照相机权限已经关闭");
+            getPermission(Manifest.permission.CAMERA,"请求授权","您必须开启了摄像头权限才能去拍摄哦");
+        }
         Log.i("capitalist", tools.getStringMD5("15206036936"));
         init();
         if (Tools.isPermission(getApplicationContext(), Manifest.permission
@@ -100,7 +82,7 @@ public class Welcome extends YazhouActivity {
                     if (jsonEndata.getJsonKeyValue(config.WEB_SERVICE_PROGRAM_VERSION).equals
                             ("1.0")) {
                         Toast.makeText(getApplicationContext(), "需要更新", Toast.LENGTH_LONG).show();
-                    } else if (jsonEndata.getJsonKeyValue(config.WEB_SERVICE_PROGRAM_SHOWIMG)
+                    } else if (!jsonEndata.getJsonKeyValue(config.WEB_SERVICE_PROGRAM_SHOWIMG)
                             .equals("是")) {
                         setStatusBar("#ffffff");
                         //Toast.makeText(getApplicationContext(), "硬件序列号:" + tools
@@ -128,7 +110,7 @@ public class Welcome extends YazhouActivity {
                                 //用户主动取消广告
                                 if (onUseronclick != null) {
                                     onUseronclick.cancel();
-                                    YaZhouStartActivity(MainAct.class, true);
+                                    LeftCompanyActStartActivity(MainAct.class, true);
                                 }
                             }
                         });
@@ -138,29 +120,20 @@ public class Welcome extends YazhouActivity {
                             public void run() {
 
 
-                                YaZhouStartActivity(MainAct.class, true);
+                                LeftCompanyActStartActivity(MainAct.class, true);
                             }
                         }, 3400);
                         activity_welcome_body.addView(view);
                     } else {
-
                         /**
                          * 用户没有点击取消的时候的的线程监听器
                          */
-                        setStatusBar(getResources().getString(R.color.TextAndBodyColor));
-                        img = findViewById(R.id.activity_welcome_title);
-                        TranslateAnimation mAnimation = new TranslateAnimation(Animation
-                                .RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0, Animation
-                                .RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_PARENT, 0.7f);
-                        mAnimation.setDuration(3000);
-                        mAnimation.setInterpolator(new BounceInterpolator());
-                        mAnimation.setFillAfter(true);
-                        img.startAnimation(mAnimation);
+                        setStatusBar("#ffffff");//设置为白色的状态条
                         onUseronclick = new Timer();
                         onUseronclick.schedule(new TimerTask() {
                             @Override
                             public void run() {
-                                YaZhouStartActivity(MainAct.class, true);
+                                LeftCompanyActStartActivity(MainAct.class, true);
                             }
                         }, 3400);
                     }

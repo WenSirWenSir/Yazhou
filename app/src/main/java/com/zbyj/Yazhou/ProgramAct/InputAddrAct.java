@@ -3,11 +3,11 @@ package com.zbyj.Yazhou.ProgramAct;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
@@ -24,21 +24,17 @@ import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationData;
-import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
-import com.baidu.mapapi.synchronization.DisplayOptions;
 import com.zbyj.Yazhou.ConfigPageValue.MAP;
-import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.WindowPage;
 import com.zbyj.Yazhou.R;
-import com.zbyj.Yazhou.YazhouActivity;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyAct.LeftCompanyAct;
 import com.zbyj.Yazhou.config;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputAddrAct extends YazhouActivity {
+public class InputAddrAct extends LeftCompanyAct {
     private MapView mapView;
     private BaiduMap baiduMap;
     private LocationClient locationClient;
@@ -59,6 +55,7 @@ public class InputAddrAct extends YazhouActivity {
      * 地图控件初始化
      */
     private void init() {
+
         listView = findViewById(R.id.activity_inputaddr_listview);
         mapView = findViewById(R.id.activity_inputaddr_mapview);
         baiduMap = mapView.getMap();
@@ -200,6 +197,9 @@ public class InputAddrAct extends YazhouActivity {
         public class Viewpage{
             TextView title;
         }
+    }
+    public  void getPermission(String permission) {
+        ActivityCompat.requestPermissions(this, new String[]{permission}, 1);
     }
     /**
      * 向哪里来的界面返回数据信息

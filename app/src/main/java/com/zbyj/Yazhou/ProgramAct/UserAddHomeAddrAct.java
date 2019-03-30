@@ -4,9 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,27 +15,21 @@ import android.widget.Toast;
 
 import com.zbyj.Yazhou.ConfigPageValue.MAP;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.USER_KEY_PAGE;
-import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.WindowPage;
-import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.XML_PAGE;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.WINDOW_PAGE;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyTools.Usertools;
-import com.zbyj.Yazhou.LeftCompanyProgram.CompanyTools.XmlBuilder;
 import com.zbyj.Yazhou.LeftCompanyProgram.Config;
 import com.zbyj.Yazhou.LeftCompanyProgram.Interface.ProgramInterface;
-import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
-import com.zbyj.Yazhou.LeftCompanyProgram.Net;
 import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
 import com.zbyj.Yazhou.LoginAct;
 import com.zbyj.Yazhou.R;
-import com.zbyj.Yazhou.YazhouActivity;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyAct.LeftCompanyAct;
 import com.zbyj.Yazhou.config;
-
-import java.util.ArrayList;
 
 
 /**
  * 用户新增收件地址
  */
-public class UserAddHomeAddrAct extends YazhouActivity {
+public class UserAddHomeAddrAct extends LeftCompanyAct {
     private ImageView btn_back, btn_openmap;
     private TextView addrString;
     private EditText edit_name, edit_phone, edit_street;
@@ -66,15 +58,15 @@ public class UserAddHomeAddrAct extends YazhouActivity {
         edit_name = findViewById(R.id.activity_useraddhome_addr_editName);//用户名
         edit_phone = findViewById(R.id.activity_useraddhome_addr_editPhone);//用户的手机号码
         edit_street = findViewById(R.id.activity_useraddhome_addr_editStreet);//用户的街道地址
-        if (!getBundlerValue(WindowPage.ACTION_USER_NAME).equals("")) {
+        if (!getBundlerValue(WINDOW_PAGE.ACTION_USER_NAME).equals("")) {
             //存在界面传值数据
-            edit_name.setText(getBundlerValue(WindowPage.ACTION_USER_NAME));
+            edit_name.setText(getBundlerValue(WINDOW_PAGE.ACTION_USER_NAME));
         }
-        if (!getBundlerValue(WindowPage.ACTION_USER_TEL).equals("")) {
-            edit_phone.setText(getBundlerValue(WindowPage.ACTION_USER_TEL));
+        if (!getBundlerValue(WINDOW_PAGE.ACTION_USER_TEL).equals("")) {
+            edit_phone.setText(getBundlerValue(WINDOW_PAGE.ACTION_USER_TEL));
         }
-        if (!getBundlerValue(WindowPage.ACTION_ADDR).equals("")) {
-            edit_street.setText(getBundlerValue(WindowPage.ACTION_ADDR));
+        if (!getBundlerValue(WINDOW_PAGE.ACTION_ADDR).equals("")) {
+            edit_street.setText(getBundlerValue(WINDOW_PAGE.ACTION_ADDR));
         }
         Listener();
     }
@@ -117,7 +109,7 @@ public class UserAddHomeAddrAct extends YazhouActivity {
         btn_openmap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                YazhouStartActivityForResult(InputAddrAct.class, false, MAP.SET_USERADDR_SUCESS);
+                LeftCompanyActStartActivityForResult(InputAddrAct.class, false, MAP.SET_USERADDR_SUCESS);
             }
         });
         /**
@@ -186,41 +178,19 @@ public class UserAddHomeAddrAct extends YazhouActivity {
                     if (!TextUtils.isEmpty(_phone) && !TextUtils.isEmpty(token)) {
                         //不为空
                         //构造XML数据信息
-                        XmlBuilder xmlBuilder = new XmlBuilder("body");
-                        XML_PAGE xml_page = new XML_PAGE("", "", "");
-                        xml_page.addGrandsonNode(Config.HttpMethodUserAction.KEY_USER, Tools
-                                .getStringMD5(_phone)).addGrandsonNode(Config
-                                .HttpMethodUserAction.KEY_TOKEN, token).addGrandsonNode(Config
-                                .HttpMethodUserAction.KEY_ADDR_NAME, user).addGrandsonNode(Config
-                                .HttpMethodUserAction.KEY_ADDR_TEL, phone).addGrandsonNode(Config
-                                .HttpMethodUserAction.KEY_ADDR_ADDR, addr).addGrandsonNode(Config
-                                .HttpMethodUserAction.KEY_ADDR_IN, addr_in).addGrandsonNode
-                                (Config.HttpMethodUserAction.KEY_ADDR_PHYSICS, physics_add)
-                                .addGrandsonNode(Config.HttpMethodUserAction.KEY_ADDR_DEFAULT,
-                                        _default).addGrandsonNode(Config.HttpMethodUserAction
-                                .KEY_ACTION, Config.HttpMethodUserAction.INSERT_USER_ADDR)
-                                .addGrandsonNode(Config.HttpMethodUserAction.KEY_ADDR_USER_SEX,
-                                        Sex + "").addGrandsonNode(Config.HttpMethodUserAction
-                                .KEY_ADDR_USER_YEAR, "23");
-                        ArrayList<XML_PAGE> list = new ArrayList<XML_PAGE>();
-                        list.add(xml_page);
-                        Net.doPostXml(getApplicationContext(), xmlBuilder.getXmlString(list),
-                                Config.HTTP_ADDR.getUser_init(), new ProgramInterface() {
+                        Usertools.insertUseraddr(getApplicationContext(), user, phone, addr, physics_add, addr_in, Sex, "23", _default, Tools.getStringMD5(_phone), token, new ProgramInterface() {
                             @Override
                             public void onSucess(String data, int code) {
-                                Log.i(Config.DEBUG, "xml数据返回" + data.toString());
+
                             }
 
                             @Override
                             public void onFaile(String data, int code) {
-
                             }
                         });
-
-
                     } else {
                         //没有登录
-                        YaZhouStartActivity(LoginAct.class, true);
+                        LeftCompanyActStartActivity(LoginAct.class, true);
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "数据信息填写不完整", Toast.LENGTH_SHORT).show();

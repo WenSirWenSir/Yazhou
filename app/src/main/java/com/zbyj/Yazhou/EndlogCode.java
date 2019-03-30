@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyAct.LeftCompanyAct;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.USER_KEY_PAGE;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyTools.Usertools;
 import com.zbyj.Yazhou.LeftCompanyProgram.Config;
@@ -35,7 +36,7 @@ import java.util.TimerTask;
 /**
  * 输入手机验证码界面
  */
-public class EndlogCode extends YazhouActivity {
+public class EndlogCode extends LeftCompanyAct {
     private TextView btn_login, tv_sendStatus;
     private Handler handler;
     private int position = 60;
@@ -257,7 +258,7 @@ public class EndlogCode extends YazhouActivity {
                                             //登录获取数据成功 判断性别是否没有设置
                                             if(json.getJsonKeyValue(Config.JSON_USERPAGE.USER_SEX).equals("0")){
                                                 //没有设置性别
-                                                YaZhouStartActivity(SelectSexAct.class,true);
+                                                LeftCompanyActStartActivity(SelectSexAct.class,true);
                                             }
                                             else{
                                                 //判断是否有地址 没有的话 强制性用户要添加一个地址信息

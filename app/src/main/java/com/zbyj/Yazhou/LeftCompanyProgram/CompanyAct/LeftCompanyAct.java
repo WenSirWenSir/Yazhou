@@ -1,15 +1,29 @@
-package com.zbyj.Yazhou;
+package com.zbyj.Yazhou.LeftCompanyProgram.CompanyAct;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.WEB_VALUES_ACT;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.WINDOW_PAGE;
+import com.zbyj.Yazhou.LeftCompanyProgram.Config;
+import com.zbyj.Yazhou.LeftCompanyProgram.ConfigPageClass;
+import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
+import com.zbyj.Yazhou.R;
 
 import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
 
@@ -17,7 +31,7 @@ import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
 /**
  * 押粥官方Activity
  */
-public class YazhouActivity extends Activity {
+public class LeftCompanyAct extends Activity {
     private Boolean isBackTwo = false;//退出再按一次
     private Boolean isBackOk = false;
 
@@ -26,7 +40,7 @@ public class YazhouActivity extends Activity {
      *
      * @param Bclass Class的名称
      */
-    protected void YaZhouStartActivity(Class<?> Bclass, Boolean ColseF) {
+    protected void LeftCompanyActStartActivity(Class<?> Bclass, Boolean ColseF) {
         Intent i = new Intent();
         i.setClass(this, Bclass);
         this.startActivity(i);
@@ -41,7 +55,8 @@ public class YazhouActivity extends Activity {
     /**
      *
      */
-    protected void YazhouStartActivityForResult(Class<?> mClass, Boolean ColseF, int requestCode) {
+    protected void LeftCompanyActStartActivityForResult(Class<?> mClass, Boolean ColseF, int
+            requestCode) {
         Intent i = new Intent();
         i.setClass(this, mClass);
         startActivityForResult(i, requestCode);
@@ -53,8 +68,8 @@ public class YazhouActivity extends Activity {
     /**
      * 打开一个窗口 并且传入值
      */
-    protected void YaZhouStartActivityWithBundler(Class<?> Bclass, Boolean ColoseF, String...
-            values) {
+    protected void LeftCompanyActStartActivityWithBundler(Class<?> Bclass, Boolean ColoseF,
+                                                          String... values) {
         Intent intent = new Intent();
         for (int i = 0; i < values.length; i += 2) {
             intent.putExtra(values[i], values[i + 1]);
@@ -68,6 +83,19 @@ public class YazhouActivity extends Activity {
         }
     }
 
+    /**
+     * 启动一个WebView
+     *
+     * @param ColoseF         是否关闭父窗口
+     * @param _web_values_act 构造参数
+     */
+    @SuppressLint("NewApi")
+    protected void LeftCompanyActStartWebView(Boolean ColoseF, WEB_VALUES_ACT _web_values_act) {
+        Intent intent = new Intent();
+        intent.setClass(this, WebServiceAct.class);
+        intent.putExtra(WINDOW_PAGE.RESULT_WEBVIEW, _web_values_act);
+        startActivity(intent);
+    }
 
     /**
      * 获取传入窗口的值
@@ -78,10 +106,9 @@ public class YazhouActivity extends Activity {
     protected String getBundlerValue(String key) {
         try {
             Intent intent = this.getIntent();
-            if(intent.getStringExtra(key) != null){
+            if (intent.getStringExtra(key) != null) {
                 return intent.getStringExtra(key);
-            }
-            else{
+            } else {
                 return "";
             }
         } catch (Exception e) {
@@ -154,6 +181,47 @@ public class YazhouActivity extends Activity {
                     .SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
             decorView.setSystemUiVisibility(options);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    /**
+     * 动态申请权限
+     *
+     * @param permission 权限名称
+     */
+    public void getPermission(final String permission, String title, String context) {
+        ConfigPageClass.AlertViewIDpage alertViewIDpage = new ConfigPageClass.AlertViewIDpage();
+        View item = LayoutInflater.from(getApplicationContext()).inflate(R.layout
+                .item_trueorfalse_dialog, null);
+        alertViewIDpage.setCancle((TextView) item.findViewById(R.id
+                .item_trueorfalse_dialog_btnCancle));
+        alertViewIDpage.setConfirm((TextView) item.findViewById(R.id
+                .item_trueorfalse_dialog_btnDetermine));
+        alertViewIDpage.setTitle((TextView) item.findViewById(R.id.item_trueorfalse_dialog_title));
+        alertViewIDpage.setContext((TextView) item.findViewById(R.id
+                .item_trueorfalse_dialog_content));
+        Tools.showAlertDilg(item, this, title, context, "取消", "去授权", new Tools.AlertDilgClick() {
+            @Override
+            public void onConfirm(AlertDialog alertDialog) {
+                _getPermission(permission);
+            }
+
+            @Override
+            public void onCancle(AlertDialog alertDialog) {
+                Log.e(Config.DEBUG,"LeftCompnayAct.java[+]用户拒接授权");
+
+            }
+        }, alertViewIDpage);
+    }
+
+
+    private void _getPermission(String permission){
+        ActivityCompat.requestPermissions(this, new String[]{permission}, 1);
+
     }
 
 }

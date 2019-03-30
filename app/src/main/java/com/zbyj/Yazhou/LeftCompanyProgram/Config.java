@@ -42,7 +42,8 @@ public class Config {
          */
         public static final String STATUS_SENDOK = "0";
         public static final String STATUS_LOGINOK = "0";
-        public static final String STATUS_LOGCODE_ERROR = "-3";//验证码错误
+        public static final String STATUS_NO_USER = "2";
+        public static final String STATUS_TOKEN_ERROR = "1";//token过期
         public static final String STATUS_LOGCODE_TOMUCH = "-2";//错误次数太多
         public static final String STATUS_GETVALUES_NODATA = "2";//没有用户的数据信息
         public static final String STATUS_GETVALUES_OK = "0";//获取完成
@@ -52,7 +53,7 @@ public class Config {
         public static final String CHECK_VERIFICATION = "1";
         public static final String STATUS_INSERT_ADDR_OK = "0";//插入用户的地址成功
         public static final String STATUS_INSERT_ADDR_ERROR = "1";//插入失败
-        public static final String STATUS_INSERT_ADDR_TOKEN_ERROR = "-2";//Token 过期
+        public static final String STATUS_INSERT_ADDR_TOKEN_ERROR = "2";//Token 过期
 
 
 

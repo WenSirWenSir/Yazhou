@@ -21,6 +21,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 网络访问模块  有关于网络访问的监听和提交事件都在这里
@@ -129,7 +131,6 @@ public class Net {
     public static void doGetXml(Context mContext, String url, final ProgramInterface
             .XMLDomServiceInterface xmlDomServiceInterface, String... kvs) {
 
-
         /**
          * 判断是否没有网络访问
          */
@@ -167,7 +168,27 @@ public class Net {
                             con.setRequestMethod("GET");
                             if (200 == con.getResponseCode()) {
                                 //成功
-                                in = con.getInputStream();
+                                Map<String ,List<String>> headFiels = con.getHeaderFields();
+                                int size = headFiels.size();
+                                for(int i =0 ;i< size;i++){
+                                    if(con.getHeaderFieldKey(i).equals("Content-Type")){
+                                        if(con.getHeaderField(i).indexOf("text/html") != -1){
+                                            Log.e(Config.DEBUG,"应该要用json解析");
+                                            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                                            String len;
+                                            StringBuffer stringBuffer = new StringBuffer();
+                                            while((len = bufferedReader.readLine())!= null){
+                                                stringBuffer.append(len);
+                                            }
+                                            Log.e(Config.DEBUG,"Json数据返回:" + stringBuffer.toString());
+                                            xmlDomServiceInterface.onJson(stringBuffer.toString());
+                                        }
+                                        else{
+                                            Log.e(Config.DEBUG,"应该要用XML解析");
+                                            in = con.getInputStream();
+                                        }
+                                    }
+                                }
                             }
                         }
                     } catch (Exception e) {
@@ -184,9 +205,10 @@ public class Net {
                             xmlDomServiceInterface.onSucess(inputStream);
                         }
                     } else {
-                        //失败
+                        //为空  说明这个可能需要JSON解析
                         if (xmlDomServiceInterface != null) {
-                            xmlDomServiceInterface.onFain();
+
+
                         }
                     }
                     super.onPostExecute(inputStream);

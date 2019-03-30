@@ -5,9 +5,11 @@
     <color name="colorAccent">@android:color/transparent</color>
     <color name="TitleColor">#41c661</color>
     <color name="ThemeColor">#61D9A6</color>
-    <color name="TextAndBodyColor">#f6e64a</color>
-    <color name="btn_color">#f6e64a</color>
+    <color name="TextAndBodyColor">#e9e9e9</color>
+
+    <color name="btn_color">#e9e9e9</color>
     <color name="likeColor">#1ae5be</color>
     <color name="purple">#9833FB</color>
-    <color name="btn_titlecolor">#f30d88</color>
+    <color name="btn_noClickColor">#666666</color>
+    <color name="btn_titlecolor">#000000</color>
 </resources>

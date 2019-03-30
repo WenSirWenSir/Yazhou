@@ -8,26 +8,21 @@ import android.app.FragmentTransaction;
 import android.app.NotificationManager;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.graphics.drawable.VectorDrawableCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.baidu.mapapi.SDKInitializer;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyAct.LeftCompanyAct;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.USER_KEY_PAGE;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.WEB_VALUES_ACT;
 import com.zbyj.Yazhou.LeftCompanyProgram.Config;
 import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
 import com.zbyj.Yazhou.ProgramFrame.MainFrame;
@@ -38,7 +33,7 @@ import com.zbyj.Yazhou.Utils.NotificationUtils;
 import java.util.ArrayList;
 import java.util.Timer;
 
-public class MainAct extends YazhouActivity {
+public class MainAct extends LeftCompanyAct {
     private NotificationManager notificationManager;
     private FragmentManager fragmentTransaction;
     private Timer Reversetimer, PriceAni;
@@ -54,7 +49,7 @@ public class MainAct extends YazhouActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
-        setStatusBar(getResources().getString(R.color.TextAndBodyColor));
+        setStatusBar("#ffffff");
         setBackStatic(true);
         SDKInitializer.initialize(getApplicationContext());
         Toast.makeText(getApplicationContext(), Config.JSON_USERPAGE.USER_LEFTCOMPANY_ID, Toast
@@ -80,6 +75,10 @@ public class MainAct extends YazhouActivity {
         btn_OrderUserpage = findViewById(R.id.activity_main_btnUserpage);
         btn_OrderUserpageTitle = findViewById(R.id.activity_main_btnUserpage_Title);//用户的界面标题
         btn_title.add(btn_OrderUserpageTitle);
+
+        //测试加载网络
+        WEB_VALUES_ACT web_values_act = new WEB_VALUES_ACT("http://www.baidu.com");
+        LeftCompanyActStartWebView(false,web_values_act);
         //用来标识用户是否登录的父布局
         if (tools.gettoKen(getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN).equals("")) {
             Toast.makeText(getApplicationContext(), "您q还没有登录哦,请你登录之后使用", Toast.LENGTH_LONG).show();
@@ -87,6 +86,7 @@ public class MainAct extends YazhouActivity {
         } else {
             //已经登录  就去获取用户的地址首页地址信息
         }
+
         Listener();
         Visit();
 
@@ -138,7 +138,7 @@ public class MainAct extends YazhouActivity {
                 selectFrame(config.FRAMELAYOUT_ORDER);
                 //更新标题颜色
                 for (int i = 0;i < btn_title.size();i++){
-                    btn_title.get(i).setTextColor(Color.BLACK);
+                    btn_title.get(i).setTextColor(Color.parseColor(getResources().getString(R.color.btn_noClickColor)));
                 }
                 btn_OrderTitle.setTextColor(Color.parseColor(getResources().getString(R.color.btn_titlecolor)));
             }
@@ -151,7 +151,7 @@ public class MainAct extends YazhouActivity {
                 btn_Orderlist.startAnimation(animation);
                 //更新标题颜色
                 for (int i = 0;i < btn_title.size();i++){
-                    btn_title.get(i).setTextColor(Color.BLACK);
+                    btn_title.get(i).setTextColor(Color.parseColor(getResources().getString(R.color.btn_noClickColor)));
                 }
                 btn_OrderlistTitle.setTextColor(Color.parseColor(getResources().getString(R.color.btn_titlecolor)));
 
@@ -168,11 +168,24 @@ public class MainAct extends YazhouActivity {
                     //不为空   判断是否过期
                 }
                 else{
-                    YaZhouStartActivity(LoginAct.class,false);
+                    //显示第一个布局
+                    FragmentTransaction ft = fragmentTransaction.beginTransaction();
+                    if(mainFrame != null & userPageFrame != null){
+                        ft.hide(userPageFrame);
+                        ft.show(mainFrame);
+                    }
+                    else{
+                        mainFrame = new MainFrame();
+                        userPageFrame = new UserPageFrame();
+                        ft.hide(userPageFrame);
+                        ft.show(mainFrame);
+                    }
+                    ft.commit();
+                    LeftCompanyActStartActivity(LoginAct.class,false);
                 }
                 //更新标题颜色
                 for (int i = 0;i < btn_title.size();i++){
-                    btn_title.get(i).setTextColor(Color.BLACK);
+                    btn_title.get(i).setTextColor(Color.parseColor(getResources().getString(R.color.btn_noClickColor)));
                 }
                 btn_OrderUserpageTitle.setTextColor(Color.parseColor(getResources().getString(R.color.btn_titlecolor)));
 
@@ -189,7 +202,7 @@ public class MainAct extends YazhouActivity {
                     ft.show(mainFrame);
                 } else {
                     mainFrame = new MainFrame();
-                    ft.add(R.id.activity_main_Frame, mainFrame);
+                    ft.add(R.id.activity_main_Frame, mainFrame,"mainPageFrame");
                 }
                 break;
             case config.FRAMELAYOUT_ORDERLIST:
@@ -205,7 +218,7 @@ public class MainAct extends YazhouActivity {
                     ft.show(userPageFrame);
                 } else {
                     userPageFrame = new UserPageFrame();
-                    ft.add(R.id.activity_main_Frame, userPageFrame);
+                    ft.add(R.id.activity_main_Frame, userPageFrame,"userPageFrame");
                 }
                 break;
         }

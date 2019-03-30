@@ -14,15 +14,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyAct.LeftCompanyAct;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.USER_KEY_PAGE;
 import com.zbyj.Yazhou.LeftCompanyProgram.Config;
 import com.zbyj.Yazhou.LeftCompanyProgram.Net;
 import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
-import com.zbyj.Yazhou.ProgramAct.InputAddrAct;
 import com.zbyj.Yazhou.LeftCompanyProgram.JsonEndata;
 import com.zbyj.Yazhou.ProgramAct.UserAddHomeAddrAct;
 
-public class SelectSexAct extends YazhouActivity {
+public class SelectSexAct extends LeftCompanyAct {
     private RelativeLayout activity_select_sex_headbody;
     private TextView activity_select_btnconfirm;
     private LinearLayout btn_sir, btn_lady;//先生或者女士
@@ -195,7 +195,7 @@ public class SelectSexAct extends YazhouActivity {
                                     @Override
                                     public void onClick(View v) {
                                         //打开地图模块
-                                        YaZhouStartActivity(UserAddHomeAddrAct.class, true);
+                                        LeftCompanyActStartActivity(UserAddHomeAddrAct.class, true);
                                     }
                                 });
                                 alertDialog.setCancelable(false);

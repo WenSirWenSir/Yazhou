@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">押粥</string>
-    <string name="app_development">copyRight©左边远景软件开发工作室</string>
+    <string name="app_name">懒猫粥铺</string>
+    <string name="app_development">CopyRight©懒猫网络技术工作室</string>
     <string name="no_Connect">网络访问错误,请检查您的网络连接</string>
     <string name="no_orderpage">您还没有预定过哦,赶紧去预定份吧！</string>
     <string name="item_main_showuaddr_lookorder">查看我的所有订单</string>

@@ -25,10 +25,10 @@ import com.zbyj.Yazhou.LeftCompanyProgram.Factory.ImageCacheFactory;
 import com.zbyj.Yazhou.LeftCompanyProgram.Tools;
 import com.zbyj.Yazhou.LeftCompanyProgram.UserMsg;
 import com.zbyj.Yazhou.R;
-import com.zbyj.Yazhou.YazhouActivity;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyAct.LeftCompanyAct;
 
 
-public class UserCommentAct extends YazhouActivity {
+public class UserCommentAct extends LeftCompanyAct {
     private ImageView btn_camera, btn_back;
     private EditText et_comment;
     private TextView btn_orderComment;
