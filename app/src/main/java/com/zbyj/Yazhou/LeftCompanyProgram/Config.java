@@ -54,6 +54,7 @@ public class Config {
         public static final String STATUS_INSERT_ADDR_OK = "0";//插入用户的地址成功
         public static final String STATUS_INSERT_ADDR_ERROR = "1";//插入失败
         public static final String STATUS_INSERT_ADDR_TOKEN_ERROR = "2";//Token 过期
+        public static final String STATUS_USER_NOADDRS = "1";//用户没有地址信息
 
 
 

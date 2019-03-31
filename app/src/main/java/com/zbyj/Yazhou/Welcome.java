@@ -39,23 +39,7 @@ public class Welcome extends LeftCompanyAct {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         hideBottomUIMenu();
-        if(Tools.isPermission(getApplicationContext(),Manifest.permission.CAMERA)){
-            Log.i(Config.DEBUG,"照相机权限已经打开");
-        }
-        else{
-            Log.i(Config.DEBUG,"照相机权限已经关闭");
-            getPermission(Manifest.permission.CAMERA,"请求授权","您必须开启了摄像头权限才能去拍摄哦");
-        }
-        Log.i("capitalist", tools.getStringMD5("15206036936"));
         init();
-        if (Tools.isPermission(getApplicationContext(), Manifest.permission
-                .ACCESS_COARSE_LOCATION) && Tools.isPermission(getApplicationContext(), Manifest
-                .permission.ACCESS_FINE_LOCATION)) {
-            Toast.makeText(getApplicationContext(), "获取到全选", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getApplicationContext(), "没有权限", Toast.LENGTH_SHORT).show();
-        }
-        if (tools.IsOnRefusePhone("15206036936")) Log.i("capitalist", "拒绝服务");
     }
 
     /**
@@ -85,8 +69,6 @@ public class Welcome extends LeftCompanyAct {
                     } else if (!jsonEndata.getJsonKeyValue(config.WEB_SERVICE_PROGRAM_SHOWIMG)
                             .equals("是")) {
                         setStatusBar("#ffffff");
-                        //Toast.makeText(getApplicationContext(), "硬件序列号:" + tools
-                        // .getsystemDevicdeId(getApplicationContext()), Toast.LENGTH_LONG).show();
                         Toast.makeText(getApplicationContext(), "要求展示图片,图片地址:" + jsonEndata
                                 .getJsonKeyValue(config.WEB_SERVICE_PROGRAM_IMG), Toast
                                 .LENGTH_LONG).show();

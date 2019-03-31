@@ -4,6 +4,7 @@ package com.zbyj.Yazhou.LeftCompanyProgram;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.util.Log;
 
 
@@ -154,6 +155,8 @@ public class Net {
              * 返回XMLinputStream
              */
             new AsyncTask<String, Void, InputStream>() {
+                boolean isJson = false;//判断是否该用JSON解析
+                String origin = "";//json解析的数据
                 @Override
                 protected InputStream doInBackground(String... urls) {
                     InputStream in = null;
@@ -174,14 +177,15 @@ public class Net {
                                     if(con.getHeaderFieldKey(i).equals("Content-Type")){
                                         if(con.getHeaderField(i).indexOf("text/html") != -1){
                                             Log.e(Config.DEBUG,"应该要用json解析");
+                                            isJson = true;
                                             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
                                             String len;
                                             StringBuffer stringBuffer = new StringBuffer();
                                             while((len = bufferedReader.readLine())!= null){
                                                 stringBuffer.append(len);
                                             }
-                                            Log.e(Config.DEBUG,"Json数据返回:" + stringBuffer.toString());
-                                            xmlDomServiceInterface.onJson(stringBuffer.toString());
+                                            origin = stringBuffer.toString();
+                                            Log.e(Config.DEBUG,"Json数据返回:" + origin);
                                         }
                                         else{
                                             Log.e(Config.DEBUG,"应该要用XML解析");
@@ -206,8 +210,13 @@ public class Net {
                         }
                     } else {
                         //为空  说明这个可能需要JSON解析
-                        if (xmlDomServiceInterface != null) {
-
+                        if (xmlDomServiceInterface != null && isJson) {
+                            if(!TextUtils.isEmpty(origin)){
+                                xmlDomServiceInterface.onJson(origin);
+                            }
+                            else{
+                                Log.e(Config.DEBUG,"Net.java[+]该使用json解析 可是获取文本数据失败");
+                            }
 
                         }
                     }

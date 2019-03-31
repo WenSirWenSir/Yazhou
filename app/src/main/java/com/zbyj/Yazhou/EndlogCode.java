@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyAct.LeftCompanyAct;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.USER_KEY_PAGE;
+import com.zbyj.Yazhou.LeftCompanyProgram.CompanyPage.XMLUserAddr;
 import com.zbyj.Yazhou.LeftCompanyProgram.CompanyTools.Usertools;
 import com.zbyj.Yazhou.LeftCompanyProgram.Config;
 import com.zbyj.Yazhou.LeftCompanyProgram.Factory.DialogFactory;
@@ -235,7 +236,8 @@ public class EndlogCode extends LeftCompanyAct {
                                     .KEY_STATUS).equals(Config.HttpMethodUserAction
                                     .STATUS_LOGINOK)) {
                                 //登录成功  提示信息框  拉取用户的信息  获取token
-                                final DialogFactory.RefreshDialog refreshDialog = new DialogFactory()
+                                final DialogFactory.RefreshDialog refreshDialog = new
+                                        DialogFactory()
                                         .new RefreshDialog(EndlogCode.this);
                                 refreshDialog.setDialogView(R.layout.item_wait);
                                 refreshDialog.intenstDialogView(R.id.item_wait_img, R.id
@@ -256,13 +258,45 @@ public class EndlogCode extends LeftCompanyAct {
                                                 .KEY_STATUS).equals(Config.HttpMethodUserAction
                                                 .STATUS_GETVALUES_OK)) {
                                             //登录获取数据成功 判断性别是否没有设置
-                                            if(json.getJsonKeyValue(Config.JSON_USERPAGE.USER_SEX).equals("0")){
+                                            if (json.getJsonKeyValue(Config.JSON_USERPAGE
+                                                    .USER_SEX).equals("0")) {
                                                 //没有设置性别
-                                                LeftCompanyActStartActivity(SelectSexAct.class,true);
-                                            }
-                                            else{
+                                                LeftCompanyActStartActivity(SelectSexAct.class,
+                                                        true);
+                                            } else {
                                                 //判断是否有地址 没有的话 强制性用户要添加一个地址信息
-                                                Usertools.getUserdefaultaddr();
+                                                Usertools.getUserAllAddr(getApplicationContext(),
+                                                        new XMLforUserAllAddr() {
+                                                    @Override
+                                                    public void onDone(ArrayList<XMLUserAddr>
+                                                                               list) {
+                                                        //有地址信息 直接结束该Activity
+                                                        Toast.makeText(getApplicationContext(),"登录成功",Toast.LENGTH_SHORT).show();
+                                                        refreshDialog.dismiss();
+                                                        finish();
+
+                                                    }
+
+                                                    @Override
+                                                    public void onFain() {
+                                                        Toast.makeText(getApplicationContext(),"登录失败",Toast.LENGTH_SHORT).show();
+                                                        refreshDialog.dismiss();
+                                                        finish();
+
+                                                    }
+
+                                                    @Override
+                                                    public void onDated() {
+
+                                                    }
+
+                                                    @Override
+                                                    public void onJson(String origin) {
+                                                        //json格式的解析 判断用户是否有地址
+                                                        Toast.makeText(getApplicationContext(),"Json解析回调数据为:" + origin,Toast.LENGTH_SHORT).show();
+
+                                                    }
+                                                });
                                             }
                                         } else {
                                             Toast.makeText(getApplicationContext(), "获取数据失败",

@@ -19,8 +19,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ico_share" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/../../YaZhou/懒猫/分享.svg" />
+                            <entry key="outputName" value="ico_key" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../../YaZhou/个人中心.svg" />
                           </map>
                         </option>
                       </PersistentState>

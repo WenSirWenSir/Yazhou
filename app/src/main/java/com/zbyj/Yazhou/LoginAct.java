@@ -61,9 +61,6 @@ public class LoginAct extends LeftCompanyAct {
         btn_regBackground.setColor(Color.parseColor(getResources().getString(R.color
                 .TextAndBodyColor)));
         //头部图标
-        GradientDrawable headicoBackground = (GradientDrawable) headIco.getBackground();
-        headicoBackground.setStroke(5, Color.parseColor("#e9e9e9"));
-        headicoBackground.setColor(Color.parseColor("#e9e9e9"));
     }
 
     @Override

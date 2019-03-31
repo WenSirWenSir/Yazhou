@@ -48,6 +48,13 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+
+/**
+ * 既然遇见了 既然相爱了
+ * 那就别放弃别去计较,别去在意别人的想法。
+ * 加油点
+ * 只是为了以后没有人可以用钱把你砸的低头
+ */
 public class Tools {
 
     /**

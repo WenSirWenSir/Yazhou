@@ -38,7 +38,7 @@ public class MainAct extends LeftCompanyAct {
     private FragmentManager fragmentTransaction;
     private Timer Reversetimer, PriceAni;
     private ImageView btn_Order, btn_Orderlist, btn_OrderUserpage;
-    private TextView btn_OrderTitle,btn_OrderlistTitle,btn_OrderUserpageTitle;
+    private TextView btn_OrderTitle, btn_OrderlistTitle, btn_OrderUserpageTitle;
     private ArrayList<TextView> btn_title = new ArrayList<TextView>();
     private MainFrame mainFrame = null;
     private OrderListFrame orderListFrame = null;
@@ -52,14 +52,10 @@ public class MainAct extends LeftCompanyAct {
         setStatusBar("#ffffff");
         setBackStatic(true);
         SDKInitializer.initialize(getApplicationContext());
-        Toast.makeText(getApplicationContext(), Config.JSON_USERPAGE.USER_LEFTCOMPANY_ID, Toast
-                .LENGTH_SHORT).show();
-        hideBottomUIMenu();
         /**
          * 检查是否有虚拟键盘
          */
         init();
-        checkGetPermission();//判断是否授权
         super.onCreate(savedInstanceState);
     }
 
@@ -75,37 +71,7 @@ public class MainAct extends LeftCompanyAct {
         btn_OrderUserpage = findViewById(R.id.activity_main_btnUserpage);
         btn_OrderUserpageTitle = findViewById(R.id.activity_main_btnUserpage_Title);//用户的界面标题
         btn_title.add(btn_OrderUserpageTitle);
-
-        //测试加载网络
-        WEB_VALUES_ACT web_values_act = new WEB_VALUES_ACT("http://www.baidu.com");
-        LeftCompanyActStartWebView(false,web_values_act);
-        //用来标识用户是否登录的父布局
-        if (tools.gettoKen(getApplicationContext(), USER_KEY_PAGE.KEY_TOKEN).equals("")) {
-            Toast.makeText(getApplicationContext(), "您q还没有登录哦,请你登录之后使用", Toast.LENGTH_LONG).show();
-            //设置预定为登录按钮
-        } else {
-            //已经登录  就去获取用户的地址首页地址信息
-        }
-
         Listener();
-        Visit();
-
-    }
-
-    /**
-     * 不选择退出 给你朵小发发
-     */
-    private void OutputFlower() {
-    }
-
-    /**
-     * 用户请求退出
-     */
-    private void onUserExit() {
-    }
-
-    private void Visit() {
-        //访问服务器获取需要的数据信息
     }
 
     /**
@@ -137,10 +103,12 @@ public class MainAct extends LeftCompanyAct {
                 btn_Order.startAnimation(animation);
                 selectFrame(config.FRAMELAYOUT_ORDER);
                 //更新标题颜色
-                for (int i = 0;i < btn_title.size();i++){
-                    btn_title.get(i).setTextColor(Color.parseColor(getResources().getString(R.color.btn_noClickColor)));
+                for (int i = 0; i < btn_title.size(); i++) {
+                    btn_title.get(i).setTextColor(Color.parseColor(getResources().getString(R
+                            .color.btn_noClickColor)));
                 }
-                btn_OrderTitle.setTextColor(Color.parseColor(getResources().getString(R.color.btn_titlecolor)));
+                btn_OrderTitle.setTextColor(Color.parseColor(getResources().getString(R.color
+                        .btn_titlecolor)));
             }
         });
         btn_Orderlist.setOnClickListener(new View.OnClickListener() {
@@ -150,10 +118,12 @@ public class MainAct extends LeftCompanyAct {
                 selectFrame(config.FRAMELAYOUT_ORDERLIST);
                 btn_Orderlist.startAnimation(animation);
                 //更新标题颜色
-                for (int i = 0;i < btn_title.size();i++){
-                    btn_title.get(i).setTextColor(Color.parseColor(getResources().getString(R.color.btn_noClickColor)));
+                for (int i = 0; i < btn_title.size(); i++) {
+                    btn_title.get(i).setTextColor(Color.parseColor(getResources().getString(R
+                            .color.btn_noClickColor)));
                 }
-                btn_OrderlistTitle.setTextColor(Color.parseColor(getResources().getString(R.color.btn_titlecolor)));
+                btn_OrderlistTitle.setTextColor(Color.parseColor(getResources().getString(R.color
+                        .btn_titlecolor)));
 
             }
         });
@@ -164,30 +134,31 @@ public class MainAct extends LeftCompanyAct {
             public void onClick(View v) {
                 selectFrame(config.FRAMELAYOUT_USERPAGE);
                 btn_OrderUserpage.startAnimation(animation);
-                if(!TextUtils.isEmpty(Tools.gettoKen(getApplicationContext(),USER_KEY_PAGE.KEY_PHONE))){
+                if (!TextUtils.isEmpty(Tools.gettoKen(getApplicationContext(), USER_KEY_PAGE
+                        .KEY_PHONE))) {
                     //不为空   判断是否过期
-                }
-                else{
+                } else {
                     //显示第一个布局
                     FragmentTransaction ft = fragmentTransaction.beginTransaction();
-                    if(mainFrame != null & userPageFrame != null){
+                    if (mainFrame != null & userPageFrame != null) {
                         ft.hide(userPageFrame);
                         ft.show(mainFrame);
-                    }
-                    else{
+                    } else {
                         mainFrame = new MainFrame();
                         userPageFrame = new UserPageFrame();
                         ft.hide(userPageFrame);
                         ft.show(mainFrame);
                     }
                     ft.commit();
-                    LeftCompanyActStartActivity(LoginAct.class,false);
+                    LeftCompanyActStartActivity(LoginAct.class, false);
                 }
                 //更新标题颜色
-                for (int i = 0;i < btn_title.size();i++){
-                    btn_title.get(i).setTextColor(Color.parseColor(getResources().getString(R.color.btn_noClickColor)));
+                for (int i = 0; i < btn_title.size(); i++) {
+                    btn_title.get(i).setTextColor(Color.parseColor(getResources().getString(R
+                            .color.btn_noClickColor)));
                 }
-                btn_OrderUserpageTitle.setTextColor(Color.parseColor(getResources().getString(R.color.btn_titlecolor)));
+                btn_OrderUserpageTitle.setTextColor(Color.parseColor(getResources().getString(R
+                        .color.btn_titlecolor)));
 
             }
         });
@@ -202,7 +173,7 @@ public class MainAct extends LeftCompanyAct {
                     ft.show(mainFrame);
                 } else {
                     mainFrame = new MainFrame();
-                    ft.add(R.id.activity_main_Frame, mainFrame,"mainPageFrame");
+                    ft.add(R.id.activity_main_Frame, mainFrame, "mainPageFrame");
                 }
                 break;
             case config.FRAMELAYOUT_ORDERLIST:
@@ -218,7 +189,7 @@ public class MainAct extends LeftCompanyAct {
                     ft.show(userPageFrame);
                 } else {
                     userPageFrame = new UserPageFrame();
-                    ft.add(R.id.activity_main_Frame, userPageFrame,"userPageFrame");
+                    ft.add(R.id.activity_main_Frame, userPageFrame, "userPageFrame");
                 }
                 break;
         }
@@ -243,13 +214,11 @@ public class MainAct extends LeftCompanyAct {
         Log.i("capitalist", "onRestart");
         showNotification(LoginAct.class, R.drawable.ico_ok, "您的订单已经成功送达哦,您可以点击评价");
         //重新获取焦点的话 要把倒计时的线程重新启动
-        hideBottomUIMenu();//隐藏导航
         super.onRestart();
     }
 
     @Override
     protected void onResume() {
-        hideBottomUIMenu();//隐藏导航
         Log.i("capitalist", "onResume");
         super.onResume();
     }
@@ -276,49 +245,5 @@ public class MainAct extends LeftCompanyAct {
         super.onDestroy();
     }
 
-
-    /**
-     * 判断应用是否获取了权限
-     *
-     * @return
-     */
-    @SuppressLint("NewApi")
-    public void checkGetPermission() {
-        //判断是否有读取手机状态码权限
-        if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) == PackageManager
-                .PERMISSION_GRANTED) {
-            Toast.makeText(getApplicationContext(), "授权", Toast.LENGTH_SHORT).show();//应用授权
-        } else {
-            Toast.makeText(getApplicationContext(), "没有授权", Toast.LENGTH_SHORT).show();
-            //没有授权 弹出对话框 交代授权的
-            final AlertDialog builder = new AlertDialog.Builder(MainAct.this).create();
-            View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout
-                    .item_trueorfalse_dialog, null);
-            builder.setView(view);
-            TextView title = view.findViewById(R.id.item_trueorfalse_dialog_title);
-            title.setText("重要提示");
-            TextView context = view.findViewById(R.id.item_trueorfalse_dialog_content);
-            context.setText("我们需要获取您的手机唯一识别号用来标识您的注册/登录信息,如果您没有授权.您的登录可能会有问题,请你点击授权给予押粥权限.");
-            TextView btn_cancle = view.findViewById(R.id.item_trueorfalse_dialog_btnCancle);
-            btn_cancle.setText("残忍拒绝");
-            builder.setCancelable(true);
-            btn_cancle.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    builder.dismiss();//销毁界面
-                }
-            });
-            TextView btn_determine = view.findViewById(R.id.item_trueorfalse_dialog_btnDetermine);
-            btn_determine.setText("去授权");
-            btn_determine.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //用户同意授权 就提示授权窗口
-
-                }
-            });
-            builder.show();
-        }
-    }
 
 }
